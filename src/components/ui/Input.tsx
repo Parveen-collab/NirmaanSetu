@@ -1,5 +1,5 @@
 // src/components/ui/Input.tsx
-import React, { useState, forwardRef } from 'react'
+import React, { useId, useState, forwardRef } from 'react'
 
 type ValidationType = 'mobile' | 'email' | 'password' | 'custom'
 
@@ -24,9 +24,13 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     },
     ref
   ) => {
+    const id = useId()
     const [error, setError] = useState('')
+    const [touched, setTouched] = useState(false)
 
     const validate = (value: string) => {
+      if (!validation) return true
+
       let isValid = true
       let message = ''
 
@@ -58,35 +62,56 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
 
       setError(isValid ? '' : message)
       onValidityChange?.(isValid)
+      return isValid
     }
 
     return (
       <div className="flex flex-col gap-1">
         {label && (
-          <label className="text-sm font-medium text-zinc-700 dark:text-zinc-300">
+          <label
+            htmlFor={id}
+            className="text-sm font-medium text-zinc-700 dark:text-zinc-300"
+          >
             {label}
           </label>
         )}
 
         <input
           {...props}
+          id={id}
           ref={ref}
-          onBlur={(e) => validate(e.target.value)}
-          onChange={(e) => {
-            props.onChange?.(e)
+          aria-invalid={!!error}
+          aria-describedby={error ? `${id}-error` : undefined}
+          onBlur={(e) => {
+            setTouched(true)
             validate(e.target.value)
           }}
-          className={`w-full rounded-lg border px-4 py-2 text-sm outline-none transition
+          onChange={(e) => {
+            props.onChange?.(e)
+            if (touched) validate(e.target.value)
+          }}
+          className={`
+            w-full rounded-lg border px-4 py-2
+            text-base outline-none transition
             ${
               error
-                ? 'border-red-500 focus:ring-red-200'
+                ? 'border-red-500 focus:ring-2 focus:ring-red-200'
                 : 'border-zinc-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-100'
             }
             dark:border-zinc-700 dark:bg-zinc-800 dark:text-white
-            ${className}`}
+            ${className}
+          `}
         />
 
-        {error && <span className="text-xs text-red-500">{error}</span>}
+        {error && (
+          <span
+            id={`${id}-error`}
+            role="alert"
+            className="text-xs text-red-500"
+          >
+            {error}
+          </span>
+        )}
       </div>
     )
   }

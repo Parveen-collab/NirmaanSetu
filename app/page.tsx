@@ -1,36 +1,37 @@
 'use client'
 
-import Input from '@/src/components/ui/context/Input'
-import Button from '@/src/components/ui/context/Button'
-import Modal from '@/src/components/ui/context/SuccessModal'
 import { useState } from 'react'
-import VerifyOtpModal from '@/src/components/ui/auth/VerifyOtpModal'
 import { useRouter } from 'next/navigation'
 
+import Input from '@/src/components/ui/Input'
+import Button from '@/src/components/ui/Button'
+import Modal from '@/src/components/ui/SuccessModal'
+import VerifyOtpModal from '@/src/components/ui/auth/VerifyOtpModal'
 
 export default function MobileVerificationPage() {
   const router = useRouter()
+
   const [mobile, setMobile] = useState('')
   const [loading, setLoading] = useState(false)
   const [isMobileValid, setIsMobileValid] = useState(false)
   const [showSuccess, setShowSuccess] = useState(false)
   const [showOtp, setShowOtp] = useState(false)
 
-
-  const handleSendOtp = async () => {
+  const handleSendOtp = () => {
     setLoading(true)
 
-    // Simulate API call
+    // Simulated API call
     setTimeout(() => {
       setLoading(false)
-      setMobile('')               // clear input
+      setMobile('')
       setIsMobileValid(false)
-      setShowSuccess(true)        // show popup
+      setShowSuccess(true)
     }, 1500)
   }
 
   return (
     <>
+      {/* Main Page */}
       <div className="flex min-h-screen items-center justify-center bg-zinc-50 px-4 dark:bg-black">
         <div className="w-full max-w-sm rounded-xl bg-white p-6 shadow-md dark:bg-zinc-900">
           <h1 className="mb-2 text-center text-2xl font-semibold dark:text-white">
@@ -63,7 +64,7 @@ export default function MobileVerificationPage() {
         </div>
       </div>
 
-      {/* Success Modal */}
+      {/* OTP Sent Success Modal */}
       <Modal
         open={showSuccess}
         onClose={() => setShowSuccess(false)}
@@ -84,14 +85,12 @@ export default function MobileVerificationPage() {
         </Button>
       </Modal>
 
-
-      {/* OTP Modal */}
+      {/* Verify OTP Modal */}
       <VerifyOtpModal
         open={showOtp}
         onClose={() => setShowOtp(false)}
         onVerifySuccess={() => router.push('/home')}
       />
-
     </>
   )
 }
