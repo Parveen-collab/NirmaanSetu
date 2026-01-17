@@ -88,7 +88,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           }}
           onChange={(e) => {
             props.onChange?.(e)
-            if (touched) validate(e.target.value)
+            validate(e.target.value)
           }}
           className={`
             w-full rounded-lg border px-4 py-2

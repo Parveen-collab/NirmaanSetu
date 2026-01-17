@@ -1,5 +1,8 @@
 // src/components/ui/Button.tsx
+'use client'
+
 import React from 'react'
+import Link from 'next/link'
 
 type ButtonVariant =
   | 'primary'
@@ -8,12 +11,14 @@ type ButtonVariant =
   | 'warning'
   | 'error'
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   loading?: boolean
   variant?: ButtonVariant
   leftIcon?: React.ReactNode
   rightIcon?: React.ReactNode
   fullWidth?: boolean
+  href?: string // ⭐ optional navigation
 }
 
 const VARIANT_CLASSES: Record<ButtonVariant, string> = {
@@ -39,6 +44,36 @@ const VARIANT_CLASSES: Record<ButtonVariant, string> = {
   `,
 }
 
+function ButtonContent({
+  children,
+  loading,
+  leftIcon,
+  rightIcon,
+}: {
+  children: React.ReactNode
+  loading?: boolean
+  leftIcon?: React.ReactNode
+  rightIcon?: React.ReactNode
+}) {
+  return (
+    <>
+      {leftIcon && (
+        <span className={`flex items-center ${loading ? 'opacity-0' : ''}`}>
+          {leftIcon}
+        </span>
+      )}
+
+      <span>{loading ? 'Sending…' : children}</span>
+
+      {rightIcon && (
+        <span className={`flex items-center ${loading ? 'opacity-0' : ''}`}>
+          {rightIcon}
+        </span>
+      )}
+    </>
+  )
+}
+
 export default function Button({
   children,
   loading = false,
@@ -48,41 +83,56 @@ export default function Button({
   fullWidth = true,
   className = '',
   disabled,
+  href,
+  onClick,
+  type = 'button',
   ...props
 }: ButtonProps) {
+  const classes = `
+    ${fullWidth ? 'w-full' : ''}
+    rounded-lg px-4 py-2 text-sm font-medium
+    inline-flex items-center justify-center gap-2
+    transition active:scale-95
+    focus:outline-none focus:ring-2
+    disabled:cursor-not-allowed disabled:opacity-60
+    ${VARIANT_CLASSES[variant]}
+    ${className}
+  `
+
+  const isDisabled = disabled || loading
+
+  // 🔹 CASE 1: Navigation button
+  if (href && !isDisabled) {
+    return (
+      <Link href={href} className={classes}>
+        <ButtonContent
+          loading={loading}
+          leftIcon={leftIcon}
+          rightIcon={rightIcon}
+        >
+          {children}
+        </ButtonContent>
+      </Link>
+    )
+  }
+
+  // 🔹 CASE 2: Regular button
   return (
     <button
       {...props}
-      type={props.type ?? 'button'}
-      disabled={loading || disabled}
+      type={type}
+      disabled={isDisabled}
+      onClick={onClick}
       aria-busy={loading}
-      aria-live="polite"
-      className={`
-        ${fullWidth ? 'w-full' : ''}
-        rounded-lg px-4 py-2 text-sm font-medium
-        inline-flex items-center justify-center gap-2
-        transition active:scale-95
-        focus:outline-none focus:ring-2
-        disabled:cursor-not-allowed disabled:opacity-60
-        ${VARIANT_CLASSES[variant]}
-        ${className}
-      `}
+      className={classes}
     >
-      {leftIcon && (
-        <span className={`flex items-center ${loading ? 'opacity-0' : ''}`}>
-          {leftIcon}
-        </span>
-      )}
-
-      <span>
-        {loading ? 'Sending…' : children}
-      </span>
-
-      {rightIcon && (
-        <span className={`flex items-center ${loading ? 'opacity-0' : ''}`}>
-          {rightIcon}
-        </span>
-      )}
+      <ButtonContent
+        loading={loading}
+        leftIcon={leftIcon}
+        rightIcon={rightIcon}
+      >
+        {children}
+      </ButtonContent>
     </button>
   )
 }

@@ -9,11 +9,11 @@ import React, { useState } from 'react'
 
 const NAV_LINKS = [
   { label: 'Home', href: '/home' },
-  { label: 'Media & Coverages', href: '/media' },
-  { label: 'Blogs', href: '/blogs' },
-  { label: 'About Us', href: '/about' },
-  { label: 'Contact Us', href: '/contact' },
-  { label: 'FAQs', href: '/faqs' },
+  { label: 'Media & Coverages', href: 'home/media-coverage' },
+  { label: 'Blogs', href: 'home/blogs' },
+  { label: 'About Us', href: 'home/aboutUs' },
+  { label: 'Contact Us', href: 'home/contactUs' },
+  { label: 'FAQs', href: '/home/faq' },
 ]
 
 const Home = () => {
@@ -69,10 +69,10 @@ const Home = () => {
           {/* Actions + Hamburger */}
           <div className="flex items-center gap-2">
             <div className="hidden md:flex gap-2">
-              <Button fullWidth={false} variant="secondary">
+              <Button href='/home/login' fullWidth={false} variant="secondary">
                 Login
               </Button>
-              <Button fullWidth={false}>
+              <Button href='/home/register' fullWidth={false}>
                 Register
               </Button>
             </div>
