@@ -1,147 +1,153 @@
 'use client'
-
-import Button from '@/src/components/ui/Button'
-import Image from 'next/image'
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-import { Menu, X } from 'lucide-react'
-import React, { useState } from 'react'
-
-const NAV_LINKS = [
-  { label: 'Home', href: '/home' },
-  { label: 'Media & Coverages', href: 'home/media-coverage' },
-  { label: 'Blogs', href: 'home/blogs' },
-  { label: 'About Us', href: 'home/aboutUs' },
-  { label: 'Contact Us', href: 'home/contactUs' },
-  { label: 'FAQs', href: '/home/faq' },
-]
+import Link from "next/link";
 
 const Home = () => {
-  const pathname = usePathname()
-  const [menuOpen, setMenuOpen] = useState(false)
-
-  const isActive = (href: string) => pathname === href
 
   return (
     <div className="flex min-h-screen flex-col bg-zinc-50 font-sans dark:bg-black">
-
-      {/* Header */}
-      <header className="border-b border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-900">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4">
-
-          {/* Logo */}
-          <div className="flex items-center gap-2">
-            <Image
-              src="/logo-NirmaanSetu.jpg"
-              alt="NirmaanSetu logo"
-              width={32}
-              height={32}
-              priority
-            />
-            <span className="text-lg font-semibold text-zinc-800 dark:text-white">
-              NirmaanSetu
-            </span>
-          </div>
-
-          {/* Desktop Navigation */}
-          <nav
-            className="hidden md:flex items-center gap-4 text-sm"
-            aria-label="Main navigation"
-          >
-            {NAV_LINKS.map(({ label, href }) => (
-              <Link
-                key={href}
-                href={href}
-                aria-current={isActive(href) ? 'page' : undefined}
-                className={`transition
-                  ${
-                    isActive(href)
-                      ? 'text-blue-600 font-medium dark:text-blue-400'
-                      : 'text-zinc-600 hover:text-blue-600 dark:text-zinc-300 dark:hover:text-blue-400'
-                  }
-                `}
-              >
-                {label}
-              </Link>
-            ))}
-          </nav>
-
-          {/* Actions + Hamburger */}
-          <div className="flex items-center gap-2">
-            <div className="hidden md:flex gap-2">
-              <Button href='/home/login' fullWidth={false} variant="secondary">
-                Login
-              </Button>
-              <Button href='/home/register' fullWidth={false}>
-                Register
-              </Button>
-            </div>
-
-            {/* Mobile Menu Toggle */}
-            <button
-              onClick={() => setMenuOpen((prev) => !prev)}
-              aria-label="Toggle navigation menu"
-              aria-expanded={menuOpen}
-              className="md:hidden rounded-md p-2 text-zinc-700 hover:bg-zinc-100 dark:text-zinc-200 dark:hover:bg-zinc-800"
-            >
-              {menuOpen ? <X size={20} /> : <Menu size={20} />}
-            </button>
-          </div>
-        </div>
-
-        {/* Mobile Navigation */}
-        {menuOpen && (
-          <div
-            className="md:hidden border-t border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-900"
-            role="menu"
-          >
-            <nav className="flex flex-col px-4 py-4 space-y-3">
-              {NAV_LINKS.map(({ label, href }) => (
-                <Link
-                  key={href}
-                  href={href}
-                  onClick={() => setMenuOpen(false)}
-                  aria-current={isActive(href) ? 'page' : undefined}
-                  className={`text-sm transition
-                    ${
-                      isActive(href)
-                        ? 'text-blue-600 font-medium dark:text-blue-400'
-                        : 'text-zinc-700 hover:text-blue-600 dark:text-zinc-300 dark:hover:text-blue-400'
-                    }
-                  `}
-                >
-                  {label}
-                </Link>
-              ))}
-
-              <div className="pt-3 flex gap-2">
-                <Button variant="secondary">Login</Button>
-                <Button>Register</Button>
-              </div>
-            </nav>
-          </div>
-        )}
-      </header>
-
       {/* Main Content */}
-      <main className="flex flex-1 items-center justify-center px-4">
-        <section className="text-center max-w-xl">
-          <h1 className="mb-2 text-2xl sm:text-3xl font-semibold text-zinc-800 dark:text-white">
-            Welcome to NirmaanSetu 🎉
+      <main className="bg-background text-foreground">
+
+        {/* ================= HERO SECTION ================= */}
+        <section className="min-h-[80vh] flex flex-col items-center justify-center text-center px-6 animate-fade">
+          <h1 className="text-4xl md:text-5xl font-bold text-primary mb-4">
+            India’s Construction Workforce Platform
           </h1>
 
-          <p className="text-sm sm:text-base text-zinc-600 dark:text-zinc-400">
-            This is your home page content area.
+          <p className="text-lg text-muted max-w-2xl mb-8">
+            NirmaanSetu connects skilled workers, contractors, and material suppliers
+            to build faster, smarter, and more transparently.
           </p>
-        </section>
-      </main>
 
-      {/* Footer */}
-      <footer className="border-t border-zinc-200 bg-white px-4 py-3 dark:border-zinc-800 dark:bg-zinc-900">
-        <p className="text-center text-xs text-zinc-500 dark:text-zinc-400">
-          © {new Date().getFullYear()} NirmaanSetu. All rights reserved.
-        </p>
-      </footer>
+          <div className="flex flex-wrap gap-4 justify-center">
+            <Link
+              href="/jobs"
+              className="px-8 py-3 bg-primary text-white rounded-full font-semibold hover:opacity-90 transition cursor-pointer"
+            >
+              Find Jobs
+            </Link>
+
+            <Link
+              href="/workforce"
+              className="px-8 py-3 border border-primary text-primary rounded-full font-semibold hover:bg-primary hover:text-white transition cursor-pointer"
+            >
+              Hire Workers
+            </Link>
+          </div>
+        </section>
+
+        {/* ================= QUICK ACTIONS ================= */}
+        <section className="py-16 px-6 max-w-6xl mx-auto">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+            {[
+              { title: "Find Jobs", desc: "Daily & contract work nearby", link: "/jobs" },
+              { title: "Hire Workers", desc: "Verified skilled workforce", link: "/workforce" },
+              { title: "Sell Materials", desc: "List products from your shop", link: "/sell-materials" },
+              { title: "Buy Materials", desc: "Compare prices near you", link: "/buy-materials" },
+            ].map((item, i) => (
+              <Link
+                key={i}
+                href={item.link}
+                className="border rounded-2xl p-6 hover:shadow-md transition cursor-pointer animate-fade"
+              >
+                <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
+                <p className="text-muted text-sm">{item.desc}</p>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        {/* ================= SERVICES OVERVIEW ================= */}
+        <section className="py-20 bg-zinc-50 dark:bg-zinc-900 px-6">
+          <div className="max-w-6xl mx-auto text-center">
+            <h2 className="text-3xl font-bold mb-4 text-primary">
+              What We Offer
+            </h2>
+            <p className="text-muted max-w-xl mx-auto mb-12">
+              A complete ecosystem for construction workers, contractors,
+              and material suppliers.
+            </p>
+
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[
+                "Job matching for skilled labour",
+                "Verified contractors & workers",
+                "Location-based hiring",
+                "Construction material marketplace",
+                "Transparent communication",
+                "Secure & trusted ecosystem",
+              ].map((service, i) => (
+                <div
+                  key={i}
+                  className="border rounded-xl p-6 text-left hover:shadow transition animate-fade"
+                >
+                  <p className="font-medium">{service}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ================= HOW IT WORKS ================= */}
+        <section className="py-20 px-6 max-w-6xl mx-auto">
+          <h2 className="text-3xl font-bold text-center mb-12 text-primary">
+            How It Works
+          </h2>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+            {[
+              "Register with mobile number",
+              "Create your profile",
+              "Search or post work",
+              "Connect & start work",
+            ].map((step, i) => (
+              <div
+                key={i}
+                className="border rounded-xl p-6 hover:shadow-md transition animate-fade"
+              >
+                <div className="text-2xl font-bold text-primary mb-2">
+                  {i + 1}
+                </div>
+                <p className="text-muted">{step}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ================= TRUST SECTION ================= */}
+        <section className="py-16 bg-primary text-white px-6">
+          <div className="max-w-6xl mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+            {[
+              "Verified Workforce",
+              "Nearby Hiring",
+              "Fair Pricing",
+              "Trusted Platform",
+            ].map((item, i) => (
+              <div key={i} className="animate-fade">
+                <h3 className="text-xl font-semibold">{item}</h3>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ================= FINAL CTA ================= */}
+        <section className="py-20 px-6 text-center">
+          <h2 className="text-3xl font-bold mb-4 text-primary">
+            Start Building with NirmaanSetu
+          </h2>
+          <p className="text-muted mb-6">
+            Whether you’re a worker, contractor, or supplier — we’ve got you covered.
+          </p>
+
+          <Link
+            href="/jobs"
+            className="px-10 py-4 bg-primary text-white rounded-full font-semibold hover:opacity-90 transition cursor-pointer"
+          >
+            Get Started
+          </Link>
+        </section>
+
+      </main>
     </div>
   )
 }
