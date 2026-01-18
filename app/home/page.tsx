@@ -1,5 +1,7 @@
 'use client'
 import Link from "next/link";
+import CallToAction from "./aboutUs/aboutUsComponent/CallToAction";
+import Button from "@/src/components/ui/Button";
 
 const Home = () => {
 
@@ -18,22 +20,6 @@ const Home = () => {
             NirmaanSetu connects skilled workers, contractors, and material suppliers
             to build faster, smarter, and more transparently.
           </p>
-
-          <div className="flex flex-wrap gap-4 justify-center">
-            <Link
-              href="/jobs"
-              className="px-8 py-3 bg-primary text-white rounded-full font-semibold hover:opacity-90 transition cursor-pointer"
-            >
-              Find Jobs
-            </Link>
-
-            <Link
-              href="/workforce"
-              className="px-8 py-3 border border-primary text-primary rounded-full font-semibold hover:bg-primary hover:text-white transition cursor-pointer"
-            >
-              Hire Workers
-            </Link>
-          </div>
         </section>
 
         {/* ================= QUICK ACTIONS ================= */}
@@ -138,13 +124,17 @@ const Home = () => {
           <p className="text-muted mb-6">
             Whether you’re a worker, contractor, or supplier — we’ve got you covered.
           </p>
-
-          <Link
+          <div className="flex flex-wrap gap-4 justify-center">
+            <Button href="/home/login">
+              Get Started
+            </Button>
+          </div>
+          {/* <Link
             href="/jobs"
             className="px-10 py-4 bg-primary text-white rounded-full font-semibold hover:opacity-90 transition cursor-pointer"
           >
             Get Started
-          </Link>
+          </Link> */}
         </section>
 
       </main>

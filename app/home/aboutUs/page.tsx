@@ -1,4 +1,10 @@
 import React from 'react'
+import Hero from './aboutUsComponent/Hero';
+import WhoWeAre from './aboutUsComponent/WhoWeAre';
+import MissioVissionValues from './aboutUsComponent/MissionVissionValues';
+import WhyNirmaanSetu from './aboutUsComponent/WhyNirmaanSetu';
+import OurTeam from './aboutUsComponent/OurTeam';
+import CallToAction from './aboutUsComponent/CallToAction';
 
 export const metadata = {
   title: "About Us | NirmaanSetu",
@@ -11,19 +17,18 @@ const AboutUs = () => {
     <main className="bg-background text-foreground">
 
       {/* ================= HERO ================= */}
-      <section className="py-20 px-6 max-w-6xl mx-auto text-center animate-fade">
-        <h1 className="text-4xl md:text-5xl font-bold text-primary mb-4">
-          About NirmaanSetu
-        </h1>
+      <Hero/>
+      {/* <section className="py-20 px-6 max-w-6xl mx-auto text-center animate-fade">
         <p className="text-lg text-muted max-w-3xl mx-auto">
           NirmaanSetu is a digital platform built to organize, empower, and
           connect India’s construction workforce with contractors, builders,
           and material suppliers — transparently and efficiently.
         </p>
-      </section>
+      </section> */}
 
       {/* ================= WHO WE ARE ================= */}
-      <section className="py-16 px-6 max-w-6xl mx-auto">
+      <WhoWeAre/>
+      {/* <section className="py-16 px-6 max-w-6xl mx-auto">
         <div className="grid md:grid-cols-2 gap-10 items-center">
           <div>
             <h2 className="text-3xl font-bold mb-4 text-primary">
@@ -55,10 +60,11 @@ const AboutUs = () => {
             </ul>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* ================= MISSION / VISION / VALUES ================= */}
-      <section className="py-20 bg-zinc-50 dark:bg-zinc-900 px-6">
+      <MissioVissionValues/>
+      {/* <section className="py-20 bg-zinc-50 dark:bg-zinc-900 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-3 gap-6 text-center">
 
@@ -95,10 +101,11 @@ const AboutUs = () => {
 
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* ================= WHY NIRMAANSETU ================= */}
-      <section className="py-20 px-6 max-w-6xl mx-auto">
+      <WhyNirmaanSetu/>
+      {/* <section className="py-20 px-6 max-w-6xl mx-auto">
         <h2 className="text-3xl font-bold text-center mb-12 text-primary">
           Why NirmaanSetu?
         </h2>
@@ -120,10 +127,11 @@ const AboutUs = () => {
             </div>
           ))}
         </div>
-      </section>
+      </section> */}
 
       {/* ================= TEAM ================= */}
-      <section className="py-20 bg-zinc-50 dark:bg-zinc-900 px-6">
+      <OurTeam/>
+      {/* <section className="py-20 bg-zinc-50 dark:bg-zinc-900 px-6">
         <div className="max-w-6xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-4 text-primary">
             Our Team
@@ -151,10 +159,11 @@ const AboutUs = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* ================= CTA ================= */}
-      <section className="py-20 px-6 text-center">
+      <CallToAction/>
+      {/* <section className="py-20 px-6 text-center">
         <h2 className="text-3xl font-bold mb-4 text-primary">
           Join the NirmaanSetu Ecosystem
         </h2>
@@ -166,19 +175,19 @@ const AboutUs = () => {
         <div className="flex flex-wrap gap-4 justify-center">
           <a
             href="/jobs"
-            className="px-8 py-3 bg-primary text-white rounded-full font-semibold hover:opacity-90 transition cursor-pointer"
+            className="px-8 py-3 border border-primary bg-primary text-black rounded-full font-semibold hover:opacity-90 transition cursor-pointer"
           >
-            Find Jobs
+            Find Works
           </a>
 
           <a
             href="/workforce"
-            className="px-8 py-3 border border-primary text-primary rounded-full font-semibold hover:bg-primary hover:text-white transition cursor-pointer"
+            className="px-8 py-3 border border-primary text-primary rounded-full font-semibold hover:bg-primary hover: transition cursor-pointer"
           >
             Hire Workers
           </a>
         </div>
-      </section>
+      </section> */}
 
     </main>
   )
