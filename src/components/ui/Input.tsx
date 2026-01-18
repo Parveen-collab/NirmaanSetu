@@ -1,7 +1,7 @@
 // src/components/ui/Input.tsx
 import React, { useId, useState, forwardRef } from 'react'
 
-type ValidationType = 'mobile' | 'email' | 'password' | 'custom'
+type ValidationType = 'text' | 'number' | 'mobile' | 'email' | 'password' | 'custom'
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string
@@ -35,6 +35,16 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       let message = ''
 
       switch (validation) {
+        case 'text':
+          isValid = value.trim().length > 0
+          message = 'This field cannot be empty.'
+          break
+
+        case 'number':
+          isValid = /^\d+$/.test(value)
+          message = 'Enter a valid number.'
+          break
+
         case 'mobile':
           isValid = /^[6-9]\d{9}$/.test(value)
           message = 'Enter a valid 10-digit mobile number'
