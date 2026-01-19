@@ -9,6 +9,7 @@ import AddressDetails from "./registerComponent/AddressDetails";
 import RoleSelector from "./registerComponent/RoleSelector";
 import RoleSpecificDetails from "./registerComponent/RoleSpecificDetails";
 import LivePhotoUpload from "./registerComponent/LivePhotoUpload";
+import LeftInfo from "./registerComponent/LeftInfo";
 
 export default function Register() {
   const [showSuccess, setShowSuccess] = useState(false);
@@ -23,17 +24,7 @@ export default function Register() {
     <div className="min-h-screen grid grid-cols-1 md:grid-cols-2 bg-background">
       
       {/* LEFT INFO */}
-      <div className="hidden md:flex flex-col justify-center px-12 bg-primary text-black">
-        <h1 className="text-4xl font-bold mb-6">NirmaanSetu</h1>
-        <p className="text-lg mb-8">
-          A single platform for construction workers, contractors, and material suppliers.
-        </p>
-        <ul className="space-y-4 text-sm">
-          <li>✔ Employees can find jobs nearby</li>
-          <li>✔ Employers can post and manage jobs</li>
-          <li>✔ Shopkeepers can sell construction materials</li>
-        </ul>
-      </div>
+      <LeftInfo/>
 
       {/* FORM */}
       <div className="flex items-center justify-center px-6 py-10">

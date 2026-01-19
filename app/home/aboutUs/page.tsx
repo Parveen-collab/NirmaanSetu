@@ -1,10 +1,10 @@
-import React from 'react'
-import Hero from './aboutUsComponent/Hero';
+//About Us Page
+import Hero from '../../../src/components/ui/Hero';
 import WhoWeAre from './aboutUsComponent/WhoWeAre';
 import MissioVissionValues from './aboutUsComponent/MissionVissionValues';
 import WhyNirmaanSetu from './aboutUsComponent/WhyNirmaanSetu';
 import OurTeam from './aboutUsComponent/OurTeam';
-import CallToAction from './aboutUsComponent/CallToAction';
+import CallToAction from '../../../src/components/ui/CallToAction';
 
 export const metadata = {
   title: "About Us | NirmaanSetu",
