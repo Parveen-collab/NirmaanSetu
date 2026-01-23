@@ -80,7 +80,7 @@ export default function Button({
   variant = 'primary',
   leftIcon,
   rightIcon,
-  fullWidth = true,
+  fullWidth = false,
   className = '',
   disabled,
   href,

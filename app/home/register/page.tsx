@@ -1,6 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useProfile } from "@/context/ProfileContext";
+
 import Button from "@/src/components/ui/Button";
 import Modal from "@/src/components/ui/SuccessModal";
 
@@ -14,19 +17,46 @@ import LeftInfo from "./registerComponent/LeftInfo";
 export default function Register() {
   const [showSuccess, setShowSuccess] = useState(false);
   const [role, setRole] = useState<"employee" | "employer" | "shop" | "">("");
+  const { setProfile } = useProfile();
+  const router = useRouter();
+
+  const [formData, setFormData] = useState<any>({
+    mobile: "",
+    fullName: "",
+    aadhaar: "",
+    permanentAddress: "",
+    currentAddress: "",
+    role: "",
+    serviceCategory: "",
+    serviceSpecialty: "",
+    experience: "",
+    companyName: "",
+    companyAddress: "",
+    companyPhotos: "",
+    shopName: "",
+    shopCategory: "",
+    shopSpeciality: "",
+    shopType: "",
+    shopAddress: "",
+    photo: null,
+  });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    const finalData = {
+      ...formData,
+      role,
+    };
+
+    setProfile(finalData); // ✅ Save to context
     setShowSuccess(true);
   };
 
   return (
     <div className="min-h-screen grid grid-cols-1 md:grid-cols-2 bg-background">
-      
-      {/* LEFT INFO */}
-      <LeftInfo/>
+      <LeftInfo />
 
-      {/* FORM */}
       <div className="flex items-center justify-center px-6 py-10">
         <form
           onSubmit={handleSubmit}
@@ -37,11 +67,11 @@ export default function Register() {
             Register to get started with NirmaanSetu
           </p>
 
-          <BasicDetails />
-          <AddressDetails />
+          <BasicDetails formData={formData} setFormData={setFormData} />
+          <AddressDetails formData={formData} setFormData={setFormData} />
           <RoleSelector role={role} setRole={setRole} />
-          <RoleSpecificDetails role={role} />
-          <LivePhotoUpload />
+          <RoleSpecificDetails role={role} formData={formData} setFormData={setFormData} />
+          <LivePhotoUpload formData={formData} setFormData={setFormData} />
 
           <Button type="submit" className="mt-6 w-full">
             Submit
@@ -59,8 +89,11 @@ export default function Register() {
           Registration completed successfully.
         </p>
 
-        <Button href="/dashboard" variant="success">
-          OK
+        <Button
+          variant="success"
+          onClick={() => router.push("/profile")}
+        >
+          Go to Profile
         </Button>
       </Modal>
     </div>

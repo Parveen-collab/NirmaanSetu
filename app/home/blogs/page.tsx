@@ -25,8 +25,8 @@ const Blogs = () => {
         <BlogCards/>
 
         {/* Load More */}
-        <div className="text-center mt-16">
-          <Button>
+        <div className="text-center mt-16 mb-6">
+          <Button className='inline-block'>
             Load More Articles
           </Button>
         </div>
