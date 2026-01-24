@@ -70,6 +70,7 @@ export default function DashboardPage() {
                   <MenuItem href="/dashboard/help" icon={<HelpCircle size={18} />} label="Help" />
                   <MenuItem href="/dashboard/feedback" icon={<MessageCircle size={18} />} label="Feedback" />
                   <MenuItem href="/dashboard/change-password" icon={<Lock size={18} />} label="Change Password" />
+                  <MenuItem href="/dashboard/wallet" icon={<Lock size={18} />} label="Wallet" />
 
                   <div className="border-t my-1" />
 

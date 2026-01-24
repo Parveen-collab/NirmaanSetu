@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { useProfile } from "@/context/ProfileContext";
+import { useProfile } from "@/src/context/ProfileContext";
 
 import Button from "@/src/components/ui/Button";
 import Modal from "@/src/components/ui/SuccessModal";
