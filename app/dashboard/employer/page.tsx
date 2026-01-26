@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import { MapPin, Share2, Info, Briefcase } from "lucide-react";
+import Button from "@/src/components/ui/Button";
 
 interface Employer {
   id: number;
@@ -94,17 +95,26 @@ export default function EmployerPage() {
 
             {/* Actions */}
             <div className="mt-5 flex items-center justify-between gap-3">
-              <button className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-zinc-900 dark:bg-white text-white dark:text-black py-2 text-sm font-medium hover:opacity-90 transition">
+              <Button>
                 Post Work
-              </button>
+              </Button>
+              {/* <button className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-zinc-900 dark:bg-white text-white dark:text-black py-2 text-sm font-medium hover:opacity-90 transition">
+                Post Work
+              </button> */}
 
-              <button className="rounded-xl border border-zinc-200 dark:border-zinc-700 p-2 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition">
+              <Button>
                 <Share2 size={16} />
-              </button>
+              </Button>
+              {/* <button className="rounded-xl border border-zinc-200 dark:border-zinc-700 p-2 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition">
+                <Share2 size={16} />
+              </button> */}
 
-              <button className="rounded-xl border border-zinc-200 dark:border-zinc-700 p-2 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition">
+              <Button href="/dashboard/employer/employer-details">
                 <Info size={16} />
-              </button>
+              </Button>
+              {/* <button className="rounded-xl border border-zinc-200 dark:border-zinc-700 p-2 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition">
+                <Info size={16} />
+              </button> */}
             </div>
           </div>
         ))}

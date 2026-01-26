@@ -2,6 +2,7 @@
 
 import React from "react";
 import { MapPin, Phone, Share2, Info, CalendarDays, IndianRupee, Package } from "lucide-react";
+import Button from "@/src/components/ui/Button";
 
 interface Project {
   id: number;
@@ -85,24 +86,37 @@ export default function ProjectPage() {
 
             {/* Actions */}
             <div className="mt-5 flex items-center justify-between gap-3">
-              <button className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-zinc-900 dark:bg-white text-white dark:text-black py-2 text-sm font-medium hover:opacity-90 transition">
+              <Button>
                 Apply
-              </button>
+              </Button>
+              {/* <button className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-zinc-900 dark:bg-white text-white dark:text-black py-2 text-sm font-medium hover:opacity-90 transition">
+                Apply
+              </button> */}
 
-              <button className="rounded-xl border border-zinc-200 dark:border-zinc-700 p-2 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition">
+              <Button>
                 <Share2 size={16} />
-              </button>
+              </Button>
+              {/* <button className="rounded-xl border border-zinc-200 dark:border-zinc-700 p-2 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition">
+                <Share2 size={16} />
+              </button> */}
 
-              <button className="rounded-xl border border-zinc-200 dark:border-zinc-700 p-2 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition">
+              <Button href="/dashboard/project/work-details">
                 <Info size={16} />
-              </button>
+              </Button>
+              {/* <button className="rounded-xl border border-zinc-200 dark:border-zinc-700 p-2 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition">
+                <Info size={16} />
+              </button> */}
             </div>
 
             {/* Apply for Material */}
-            <button className="mt-4 flex w-full items-center justify-center gap-2 rounded-xl border border-zinc-300 dark:border-zinc-700 py-2 text-sm font-medium text-zinc-800 dark:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition">
+            <Button>
               <Package size={16} />
               Apply for Material
-            </button>
+            </Button>
+            {/* <button className="mt-4 flex w-full items-center justify-center gap-2 rounded-xl border border-zinc-300 dark:border-zinc-700 py-2 text-sm font-medium text-zinc-800 dark:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition">
+              <Package size={16} />
+              Apply for Material
+            </button> */}
           </div>
         ))}
       </div>
