@@ -1,9 +1,11 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { Search, Share2, UserPlus, Info } from "lucide-react";
 import Button from "@/src/components/ui/Button";
+import ShareModal from "@/src/components/ui/ShareModal";
+import HireEmployeeModal from "@/app/dashboard/employee/employeeComponent/HireEmployeeModal";
 
 interface Employee {
   id: number;
@@ -46,9 +48,13 @@ const employees: Employee[] = [
 ];
 
 export default function EmployeePage() {
+  const [showHireModal, setShowHireModal] = useState(false);
+  const [openModal, setOpenModal] = useState<
+    "apply" | "material" | "share" | null
+  >(null);
   return (
     <div className="min-h-screen bg-zinc-50 dark:bg-black px-4 py-6 sm:px-6 lg:px-10">
-      
+
       {/* Header */}
       <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <h1 className="text-2xl font-semibold text-zinc-900 dark:text-white">
@@ -127,11 +133,10 @@ export default function EmployeePage() {
                   Availability:
                 </span>{" "}
                 <span
-                  className={`ml-1 rounded-full px-2 py-0.5 text-xs font-medium ${
-                    emp.availability === "Available"
-                      ? "bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300"
-                      : "bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300"
-                  }`}
+                  className={`ml-1 rounded-full px-2 py-0.5 text-xs font-medium ${emp.availability === "Available"
+                    ? "bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300"
+                    : "bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300"
+                    }`}
                 >
                   {emp.availability}
                 </span>
@@ -140,7 +145,7 @@ export default function EmployeePage() {
 
             {/* Actions */}
             <div className="mt-5 flex items-center justify-between gap-3">
-              <Button>
+              <Button onClick={() => setShowHireModal(true)}>
                 <UserPlus size={16} />
                 Hire
               </Button>
@@ -149,7 +154,7 @@ export default function EmployeePage() {
                 Hire
               </button> */}
 
-              <Button>
+              <Button onClick={() => setOpenModal("share")}>
                 <Share2 size={16} />
               </Button>
               {/* <button className="rounded-xl border border-zinc-200 dark:border-zinc-700 p-2 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition">
@@ -166,6 +171,14 @@ export default function EmployeePage() {
           </div>
         ))}
       </div>
+      {openModal === "share" && (
+        <ShareModal onClose={() => setOpenModal(null)} />
+      )}
+
+      {showHireModal && (
+        <HireEmployeeModal onClose={() => setShowHireModal(false)} />
+      )}
+
     </div>
   );
 }

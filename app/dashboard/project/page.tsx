@@ -1,8 +1,13 @@
 "use client";
 
-import React from "react";
 import { MapPin, Phone, Share2, Info, CalendarDays, IndianRupee, Package } from "lucide-react";
 import Button from "@/src/components/ui/Button";
+import ApplyModal from "@/src/components/ui/ApplyModal";
+import MaterialApplyModal from "@/app/dashboard/project/projectComponent/MaterialApplyModal";
+import ShareModal from "@/src/components/ui/ShareModal";
+import React, { useState } from "react";
+
+
 
 interface Project {
   id: number;
@@ -41,6 +46,10 @@ const projects: Project[] = [
 ];
 
 export default function ProjectPage() {
+  const [openModal, setOpenModal] = useState<
+    "apply" | "material" | "share" | null
+  >(null);
+
   return (
     <div className="min-h-screen bg-zinc-50 dark:bg-black px-4 py-6 sm:px-6 lg:px-10">
 
@@ -86,16 +95,18 @@ export default function ProjectPage() {
 
             {/* Actions */}
             <div className="mt-5 flex items-center justify-between gap-3">
-              <Button>
+              <Button onClick={() => setOpenModal("apply")}>
                 Apply
               </Button>
+
               {/* <button className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-zinc-900 dark:bg-white text-white dark:text-black py-2 text-sm font-medium hover:opacity-90 transition">
                 Apply
               </button> */}
 
-              <Button>
+              <Button onClick={() => setOpenModal("share")}>
                 <Share2 size={16} />
               </Button>
+
               {/* <button className="rounded-xl border border-zinc-200 dark:border-zinc-700 p-2 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition">
                 <Share2 size={16} />
               </button> */}
@@ -103,13 +114,14 @@ export default function ProjectPage() {
               <Button href="/dashboard/project/work-details">
                 <Info size={16} />
               </Button>
+
               {/* <button className="rounded-xl border border-zinc-200 dark:border-zinc-700 p-2 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition">
                 <Info size={16} />
               </button> */}
             </div>
 
             {/* Apply for Material */}
-            <Button>
+            <Button onClick={() => setOpenModal("material")}>
               <Package size={16} />
               Apply for Material
             </Button>
@@ -120,6 +132,19 @@ export default function ProjectPage() {
           </div>
         ))}
       </div>
+      {/* Modals */}
+      {openModal === "apply" && (
+        <ApplyModal onClose={() => setOpenModal(null)} />
+      )}
+
+      {openModal === "material" && (
+        <MaterialApplyModal onClose={() => setOpenModal(null)} />
+      )}
+
+      {openModal === "share" && (
+        <ShareModal onClose={() => setOpenModal(null)} />
+      )}
+
     </div>
   );
 }

@@ -1,9 +1,10 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { MapPin, Share2, Info, Briefcase } from "lucide-react";
 import Button from "@/src/components/ui/Button";
+import ShareModal from "@/src/components/ui/ShareModal";
 
 interface Employer {
   id: number;
@@ -42,6 +43,9 @@ const employers: Employer[] = [
 ];
 
 export default function EmployerPage() {
+  const [openModal, setOpenModal] = useState<
+    "apply" | "material" | "share" | null
+  >(null);
   return (
     <div className="min-h-screen bg-zinc-50 dark:bg-black px-4 py-6 sm:px-6 lg:px-10">
 
@@ -95,14 +99,14 @@ export default function EmployerPage() {
 
             {/* Actions */}
             <div className="mt-5 flex items-center justify-between gap-3">
-              <Button>
+              <Button href="/dashboard/employer/post-work">
                 Post Work
               </Button>
               {/* <button className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-zinc-900 dark:bg-white text-white dark:text-black py-2 text-sm font-medium hover:opacity-90 transition">
                 Post Work
               </button> */}
 
-              <Button>
+              <Button onClick={() => setOpenModal("share")}>
                 <Share2 size={16} />
               </Button>
               {/* <button className="rounded-xl border border-zinc-200 dark:border-zinc-700 p-2 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition">
@@ -119,6 +123,9 @@ export default function EmployerPage() {
           </div>
         ))}
       </div>
+      {openModal === "share" && (
+        <ShareModal onClose={() => setOpenModal(null)} />
+      )}
     </div>
   );
 }
