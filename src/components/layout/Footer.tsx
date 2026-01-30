@@ -63,42 +63,59 @@ const Footer = () => {
           <div>
             <h3 className="font-semibold mb-4">Services</h3>
             <ul className="space-y-2 text-sm text-zinc-300 mb-6">
-              <li>» Find Works</li>
-              <li>» Hiring</li>
-              <li>» Selling</li>
+              {[
+                { label: 'Find Works', href: '/home/login' },
+                { label: 'Hiring', href: '/home/login' },
+                { label: 'Selling', href: '/home/login' },
+              ].map((item) => (
+                <li key={item.label}>
+                  <Link href={item.href} className="hover:text-primary transition">
+                    » {item.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
-
-            {/* <h3 className="font-semibold mb-4">Home Services</h3>
-            <ul className="space-y-2 text-sm text-zinc-300">
-              <li>» Plumbers</li>
-              <li>» Carpenters</li>
-              <li>» House Keeping</li>
-              <li>» Electrician</li>
-              <li>» Painting</li>
-              <li>» Pest Control</li>
-            </ul> */}
           </div>
 
           {/* Address */}
           <div>
             <h3 className="font-semibold mb-4">Address</h3>
             <div className="space-y-4 text-sm text-zinc-300">
-              <p className="flex gap-3">
-                <MapPin className="w-5 h-5 text-primary" />
-                Nagar Bihta, Laee, Bihta <br />
-                Patna, Bihar, India-801112
-              </p>
 
-              <p className="flex gap-3">
+              {/* Address → Google Maps */}
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=Nagar+Bihta+Laee+Bihta+Patna+Bihar+801112"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex gap-3 hover:text-white transition"
+              >
+                <MapPin className="w-5 h-5 text-primary" />
+                <span>
+                  Nagar Bihta, Laee, Bihta <br />
+                  Patna, Bihar, India-801112
+                </span>
+              </a>
+
+              {/* Phone → Dialer */}
+              <a
+                href="tel:+917527975589"
+                className="flex gap-3 hover:text-white transition"
+              >
                 <Phone className="w-5 h-5 text-primary" />
                 +91 7527975589
-              </p>
+              </a>
 
-              <p className="flex gap-3">
+              {/* Email → Gmail / Mail App */}
+              <a
+                href="mailto:pk16061999@gmail.com"
+                className="flex gap-3 hover:text-white transition"
+              >
                 <Mail className="w-5 h-5 text-primary" />
                 pk16061999@gmail.com
-              </p>
+              </a>
+
             </div>
+
           </div>
         </div>
 
@@ -115,7 +132,7 @@ const Footer = () => {
             </Link>
           </p>
 
-          <CopyrightFooter/>
+          <CopyrightFooter />
           {/* <p>
             © {new Date().getFullYear()} NirmaanSetu. All Rights Reserved.
           </p> */}

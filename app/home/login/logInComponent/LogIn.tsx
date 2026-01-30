@@ -46,10 +46,10 @@ const LogIn = () => {
         <p className="mt-6 text-center text-sm text-muted">
           Forgot your password?{" "}
           <Link
-            href="/forgot-password"
+            href="/home/reset-password"
             className="font-medium text-primary hover:underline"
           >
-            Reset here
+            Click here
           </Link>
         </p>
 
@@ -57,7 +57,7 @@ const LogIn = () => {
         <p className="mt-4 text-center text-sm text-muted">
           New user?{" "}
           <Link
-            href="/register"
+            href="/home/register"
             className="font-medium text-primary hover:underline"
           >
             Register

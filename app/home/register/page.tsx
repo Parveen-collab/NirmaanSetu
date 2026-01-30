@@ -13,6 +13,7 @@ import RoleSelector from "./registerComponent/RoleSelector";
 import RoleSpecificDetails from "./registerComponent/RoleSpecificDetails";
 import LivePhotoUpload from "./registerComponent/LivePhotoUpload";
 import LeftInfo from "./registerComponent/LeftInfo";
+import Link from "next/link";
 
 export default function Register() {
   const [showSuccess, setShowSuccess] = useState(false);
@@ -76,6 +77,17 @@ export default function Register() {
           <Button type="submit" className="mt-6 w-full">
             Submit
           </Button>
+
+          {/* Register */}
+          <p className="mt-4 text-center text-sm text-muted">
+            Already user?{" "}
+            <Link
+              href="/home/login"
+              className="font-medium text-primary hover:underline"
+            >
+              Login
+            </Link>
+          </p>
         </form>
       </div>
 
@@ -91,9 +103,9 @@ export default function Register() {
 
         <Button
           variant="success"
-          onClick={() => router.push("/profile")}
+          onClick={() => router.push("/home/login")}
         >
-          Go to Profile
+          Go to Login
         </Button>
       </Modal>
     </div>

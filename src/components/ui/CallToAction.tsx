@@ -17,15 +17,15 @@ export default function CallToAction() {
                 </p>
 
                 <div className="flex flex-wrap gap-4 justify-center">
-                    <Button>
+                    <Button href="/home/login">
                         Find Works
                     </Button>
 
-                    <Button>
+                    <Button href="/home/login">
                         Hire Workers
                     </Button>
 
-                    <Button>
+                    <Button href="/home/login">
                         Sell Materials
                     </Button>
                 </div>

@@ -9,7 +9,12 @@ export default function ContactInfo() {
                     <Phone className="w-6 h-6 text-primary mt-1" />
                     <div>
                         <h3 className="font-semibold text-lg">Call Us</h3>
-                        <p className="text-muted">+91 91219 12165</p>
+                        <a
+                            href="tel:+917527975589"
+                            className="flex gap-3 hover:text-red transition"
+                        >
+                            <p className="text-muted">+91 7527975589</p>
+                        </a>
                     </div>
                 </div>
 
@@ -18,7 +23,12 @@ export default function ContactInfo() {
                     <Mail className="w-6 h-6 text-primary mt-1" />
                     <div>
                         <h3 className="font-semibold text-lg">Email</h3>
-                        <p className="text-muted">support@nirmaansetu.in</p>
+                        <a
+                            href="mailto:pk16061999@gmail.com"
+                            className="flex gap-3 hover:text-red transition"
+                        >
+                            <p className="text-muted">support@nirmaansetu.in</p>
+                        </a>
                     </div>
                 </div>
 
@@ -27,10 +37,17 @@ export default function ContactInfo() {
                     <MapPin className="w-6 h-6 text-primary mt-1" />
                     <div>
                         <h3 className="font-semibold text-lg">Office Address</h3>
-                        <p className="text-muted">
-                            NirmaanSetu Pvt. Ltd.<br />
-                            Sector Office Address, (City, State)
-                        </p>
+                        <a
+                            href="https://www.google.com/maps/search/?api=1&query=Nagar+Bihta+Laee+Bihta+Patna+Bihar+801112"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex gap-3 hover:text-red transition"
+                        >
+                            <p className="text-muted">
+                                NirmaanSetu Pvt. Ltd.<br />
+                                Nagar Bihta, (Patna, Bihar-801112)
+                            </p>
+                        </a>
                     </div>
                 </div>
             </section>

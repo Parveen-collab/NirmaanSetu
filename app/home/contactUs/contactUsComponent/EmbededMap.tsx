@@ -11,7 +11,7 @@ export default function EmbededMap() {
                     <iframe
                         className="w-full h-full"
                         loading="lazy"
-                        src={`https://maps.google.com/maps?q=Hyderabad%20Telangana%20India&t=&z=13&ie=UTF8&iwloc=&output=embed`}
+                        src={`https://www.google.com/maps?q=Lai+Bihta+Patna+Bihar&z=17&output=embed`}
                     ></iframe>
                 </div>
             </section>

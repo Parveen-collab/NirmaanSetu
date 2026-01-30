@@ -1,4 +1,7 @@
 'use client'
+
+import Button from "@/src/components/ui/Button"
+
 export default function GetInTouch() {
     return (
         <div>
@@ -46,12 +49,15 @@ export default function GetInTouch() {
                         rows={4}
                     />
 
-                    <button
+                    <Button>
+                        Submit
+                    </Button>
+                    {/* <button
                         type="submit"
                         className="px-8 py-3 bg-primary text-white rounded-full font-semibold hover:opacity-95 transition cursor-pointer"
                     >
                         Submit
-                    </button>
+                    </button> */}
                 </form>
             </section>
         </div>

@@ -1,12 +1,29 @@
 'use client'
 
+import Button from '@/src/components/ui/Button'
+import SuccessModal from '@/src/components/ui/SuccessModal'
 import { X } from 'lucide-react'
+import { useState } from 'react'
+import { useRouter } from "next/navigation";
+
 
 interface Props {
   onClose?: () => void
 }
 
 export default function HireEmployeeModal({ onClose }: Props) {
+  const router = useRouter();
+  const [open, setOpen] = useState(false);
+  const [isSuccessOpen, setIsSuccessOpen] = useState(false);
+  const handleSendHireRequest = () => {
+    // 👉 call API here if needed
+    // await sendHireRequest();
+
+    // open success modal
+    setIsSuccessOpen(true);
+  };
+
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
       <div className="relative w-full max-w-md rounded-2xl bg-white dark:bg-zinc-900 p-6 animate-fade">
@@ -73,12 +90,9 @@ export default function HireEmployeeModal({ onClose }: Props) {
 
         {/* Action Buttons */}
         <div className="mt-6 space-y-3">
-          <button
-            className="w-full rounded-full bg-primary py-3 text-white font-semibold
-                       hover:opacity-90 transition"
-          >
+          <Button onClick={handleSendHireRequest}>
             Send Hire Request
-          </button>
+          </Button>
 
           <button
             onClick={onClose}
@@ -89,6 +103,28 @@ export default function HireEmployeeModal({ onClose }: Props) {
         </div>
 
       </div>
+
+      <SuccessModal
+        open={isSuccessOpen}
+        onClose={() => {
+          setIsSuccessOpen(false)
+        }}
+        title="Hire request sent."
+      >
+        <p className="mb-6 text-center text-sm text-zinc-600 dark:text-zinc-300">
+          HIRE request sent successfully 🎉
+        </p>
+
+        <Button
+          variant="success"
+          onClick={() => {
+            router.push("/dashboard/employee");
+          }}
+        >
+          Go to Employee
+        </Button>
+      </SuccessModal>
     </div>
+
   )
 }
