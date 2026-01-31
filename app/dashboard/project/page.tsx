@@ -99,36 +99,20 @@ export default function ProjectPage() {
                 Apply
               </Button>
 
-              {/* <button className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-zinc-900 dark:bg-white text-white dark:text-black py-2 text-sm font-medium hover:opacity-90 transition">
-                Apply
-              </button> */}
-
               <Button onClick={() => setOpenModal("share")}>
                 <Share2 size={16} />
               </Button>
 
-              {/* <button className="rounded-xl border border-zinc-200 dark:border-zinc-700 p-2 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition">
-                <Share2 size={16} />
-              </button> */}
-
               <Button href="/dashboard/project/work-details">
                 <Info size={16} />
               </Button>
-
-              {/* <button className="rounded-xl border border-zinc-200 dark:border-zinc-700 p-2 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition">
-                <Info size={16} />
-              </button> */}
+              
+              {/* Apply for Material */}
+              <Button onClick={() => setOpenModal("material")}>
+                <Package size={16} />
+                Apply for Material
+              </Button>
             </div>
-
-            {/* Apply for Material */}
-            <Button onClick={() => setOpenModal("material")}>
-              <Package size={16} />
-              Apply for Material
-            </Button>
-            {/* <button className="mt-4 flex w-full items-center justify-center gap-2 rounded-xl border border-zinc-300 dark:border-zinc-700 py-2 text-sm font-medium text-zinc-800 dark:text-zinc-200 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition">
-              <Package size={16} />
-              Apply for Material
-            </button> */}
           </div>
         ))}
       </div>

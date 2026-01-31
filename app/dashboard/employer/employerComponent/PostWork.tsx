@@ -1,8 +1,15 @@
 'use client'
 
+import Button from '@/src/components/ui/Button'
+import SuccessModal from '@/src/components/ui/SuccessModal';
 import { CalendarDays, MapPin, IndianRupee, Briefcase } from 'lucide-react'
+// import router from 'next/router';
+import { useRouter } from 'next/navigation'
+import { useState } from 'react';
 
 export default function PostWork() {
+  const router = useRouter()
+  const [showSuccess, setShowSuccess] = useState(false)
   return (
     <div className="min-h-screen bg-background text-foreground px-4 py-10">
       <div className="max-w-3xl mx-auto animate-fade">
@@ -132,14 +139,37 @@ export default function PostWork() {
           </div>
 
           {/* Submit */}
-          <button
-            className="w-full rounded-full bg-primary py-3 text-white font-semibold
-                       hover:opacity-90 transition"
-          >
+          <Button onClick={() => setShowSuccess(true)}>
             Post Work
-          </button>
+          </Button>
         </div>
       </div>
+
+      {/* Posting a Work Success Modal */}
+      <SuccessModal
+        open={showSuccess}
+        onClose={() => {
+          setShowSuccess(false);
+        }}
+        title="Work Posted"
+      >
+        <p className="mb-6 text-center text-sm text-zinc-600 dark:text-zinc-300">
+          Posted a Work successfully 🎉
+        </p>
+
+        <Button
+          variant="success"
+          onClick={() => {
+            setShowSuccess(false)
+            setTimeout(() => {
+              router.push("/dashboard/project")
+            }, 0)
+          }}
+
+        >
+          Ok
+        </Button>
+      </SuccessModal>
     </div>
   )
 }

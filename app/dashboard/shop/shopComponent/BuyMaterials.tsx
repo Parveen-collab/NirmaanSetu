@@ -1,5 +1,6 @@
 'use client'
 
+import Button from '@/src/components/ui/Button'
 import {
   Search,
   MapPin,
@@ -89,9 +90,9 @@ export default function BuyMaterials() {
 
               {/* Actions */}
               <div className="flex gap-3">
-                <button className="flex-1 rounded-full bg-primary py-2 text-white font-semibold hover:opacity-90 transition">
+                <Button href='/dashboard/shop/buy-materials/payment'>
                   Buy Now
-                </button>
+                </Button>
 
                 <Link
                   href="/shops/1"

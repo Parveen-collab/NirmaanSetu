@@ -1,5 +1,7 @@
 'use client'
 
+import Button from '@/src/components/ui/Button'
+import ShareModal from '@/src/components/ui/ShareModal'
 import {
   MapPin,
   Phone,
@@ -7,10 +9,16 @@ import {
   Calendar,
   BadgeCheck,
   Building2,
+  Info,
+  Share2,
 } from 'lucide-react'
 import Link from 'next/link'
+import { useState } from 'react'
 
 export default function EmployerDetails() {
+  const [openModal, setOpenModal] = useState<
+    "apply" | "material" | "share" | null
+  >(null);
   return (
     <div className="min-h-screen bg-background text-foreground px-4 py-10">
       <div className="max-w-4xl mx-auto space-y-10 animate-fade">
@@ -136,6 +144,20 @@ export default function EmployerDetails() {
         </section>
 
       </div>
+      {/* Actions */}
+      <div className="mt-5 flex items-center justify-between gap-3">
+        <Button href="/dashboard/employer/post-work">
+          Post Work
+        </Button>
+
+        <Button onClick={() => setOpenModal("share")}>
+          <Share2 size={16} />
+        </Button>
+        
+      </div>
+      {openModal === "share" && (
+        <ShareModal onClose={() => setOpenModal(null)} />
+      )}
     </div>
   )
 }

@@ -4,7 +4,6 @@ import Button from '@/src/components/ui/Button'
 import SuccessModal from '@/src/components/ui/SuccessModal'
 import { X } from 'lucide-react'
 import { useState } from 'react'
-import { useRouter } from "next/navigation";
 
 
 interface Props {
@@ -12,8 +11,6 @@ interface Props {
 }
 
 export default function HireEmployeeModal({ onClose }: Props) {
-  const router = useRouter();
-  const [open, setOpen] = useState(false);
   const [isSuccessOpen, setIsSuccessOpen] = useState(false);
   const handleSendHireRequest = () => {
     // 👉 call API here if needed
@@ -118,10 +115,11 @@ export default function HireEmployeeModal({ onClose }: Props) {
         <Button
           variant="success"
           onClick={() => {
-            router.push("/dashboard/employee");
+            setIsSuccessOpen(false);
+            onClose?.();
           }}
         >
-          Go to Employee
+          ok
         </Button>
       </SuccessModal>
     </div>

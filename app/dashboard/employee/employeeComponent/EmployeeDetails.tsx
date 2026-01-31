@@ -1,5 +1,7 @@
 'use client'
 
+import Button from '@/src/components/ui/Button'
+import ShareModal from '@/src/components/ui/ShareModal'
 import {
   MapPin,
   Phone,
@@ -7,16 +9,32 @@ import {
   Star,
   Calendar,
   BadgeCheck,
+  UserPlus,
+  Share2,
 } from 'lucide-react'
+import HireEmployeeModal from './HireEmployeeModal'
+import { useState } from 'react'
 
 export default function EmployeeDetails() {
+  const [showHireModal, setShowHireModal] = useState(false);
+  const [openModal, setOpenModal] = useState<
+    "apply" | "material" | "share" | null
+  >(null);
+  // function setShowHireModal(arg0: boolean): void {
+  //   throw new Error('Function not implemented.')
+  // }
+
+  // function setOpenModal(arg0: string): void {
+  //   throw new Error('Function not implemented.')
+  // }
+
   return (
     <div className="min-h-screen bg-background text-foreground px-4 py-10">
       <div className="max-w-4xl mx-auto space-y-10 animate-fade">
 
         {/* ================= PROFILE HEADER ================= */}
         <section className="flex flex-col sm:flex-row gap-6 items-center sm:items-start border rounded-2xl p-6 shadow-sm">
-          
+
           {/* Photo */}
           <div className="w-28 h-28 rounded-full bg-zinc-200 dark:bg-zinc-800 flex items-center justify-center text-xl font-semibold">
             RK
@@ -122,6 +140,24 @@ export default function EmployeeDetails() {
         </section>
 
       </div>
+      {/* Actions */}
+      <div className="mt-5 flex items-center justify-between gap-3">
+        <Button onClick={() => setShowHireModal(true)}>
+          <UserPlus size={16} />
+          Hire
+        </Button>
+
+        <Button onClick={() => setOpenModal("share")}>
+          <Share2 size={16} />
+        </Button>
+      </div>
+      {openModal === "share" && (
+        <ShareModal onClose={() => setOpenModal(null)} />
+      )}
+
+      {showHireModal && (
+        <HireEmployeeModal onClose={() => setShowHireModal(false)} />
+      )}
     </div>
   )
 }

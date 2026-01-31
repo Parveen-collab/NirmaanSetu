@@ -1,5 +1,7 @@
 'use client'
 
+import Button from '@/src/components/ui/Button'
+import ShareModal from '@/src/components/ui/ShareModal'
 import {
   MapPin,
   Phone,
@@ -7,9 +9,16 @@ import {
   BadgeCheck,
   Package,
   IndianRupee,
+  Info,
+  Share2,
+  ShoppingCart,
 } from 'lucide-react'
+import { useState } from 'react';
 
 export default function ShopDetails() {
+  const [openModal, setOpenModal] = useState<
+    "apply" | "material" | "share" | null
+  >(null);
   return (
     <div className="min-h-screen bg-background text-foreground px-4 py-10">
       <div className="max-w-4xl mx-auto space-y-10 animate-fade">
@@ -151,6 +160,23 @@ export default function ShopDetails() {
         </section>
 
       </div>
+      
+      {/* Actions */}
+      <div className="mt-5 flex items-center justify-between gap-3">
+
+        <Button href="/dashboard/shop/buy-materials">
+          <ShoppingCart size={16} />
+          Buy Materials
+        </Button>
+
+        <Button onClick={() => setOpenModal("share")}>
+          <Share2 size={16} />
+        </Button>
+      </div>
+
+      {openModal === "share" && (
+        <ShareModal onClose={() => setOpenModal(null)} />
+      )}
     </div>
   )
 }

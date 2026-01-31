@@ -1,7 +1,8 @@
 'use client'
 
 import { useState } from 'react'
-import { Bell, User, LogOut, Lock, MessageCircle, HelpCircle, UserCircle } from 'lucide-react'
+import { Bell, User, LogOut, Lock, MessageCircle, HelpCircle, UserCircle, Wallet,
+  ShoppingBag } from 'lucide-react'
 import Button from '@/src/components/ui/Button'
 import Link from 'next/link'
 import { useRouter } from "next/navigation";
@@ -78,7 +79,8 @@ const DashBoardHeader = () => {
                   <MenuItem href="/dashboard/help" icon={<HelpCircle size={18} />} label="Help" />
                   <MenuItem href="/dashboard/feedback" icon={<MessageCircle size={18} />} label="Feedback" />
                   <MenuItem href="/dashboard/change-password" icon={<Lock size={18} />} label="Change Password" />
-                  <MenuItem href="/dashboard/wallet" icon={<Lock size={18} />} label="Wallet" />
+                  <MenuItem href="/dashboard/wallet" icon={<Wallet size={18} />} label="Wallet" />
+                  <MenuItem href="/dashboard/my-orders" icon={<ShoppingBag size={18} />} label="My Orders" />
 
                   <div className="border-t my-1" />
 
