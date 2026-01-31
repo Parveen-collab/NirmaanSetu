@@ -1,9 +1,12 @@
 import React from 'react'
+import RefundPolicy from '@/app/home/refund-policy/refundPolicyComponent/RefundPolicy'
 
-const RefundPolicy = () => {
+const Page = () => {
   return (
-    <div>Welcome to Refund Policy Page.</div>
+    <div>
+      <RefundPolicy/>
+    </div>
   )
 }
 
-export default RefundPolicy
+export default Page

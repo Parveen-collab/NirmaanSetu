@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { Phone, Mail, MapPin } from 'lucide-react'
 import CopyrightFooter from './CopyrightFooter'
+import SocialMedia from '@/src/components/ui/SocialMedia'
 
 const Footer = () => {
   return (
@@ -25,17 +26,7 @@ const Footer = () => {
               and material suppliers across India.
             </p>
 
-            {/* Social Icons (placeholders) */}
-            <div className="flex gap-4">
-              {['I', 'f', 'L', 'X'].map((icon) => (
-                <div
-                  key={icon}
-                  className="w-9 h-9 rounded-full border border-zinc-400 flex items-center justify-center hover:bg-primary hover:border-primary transition cursor-pointer"
-                >
-                  {icon}
-                </div>
-              ))}
-            </div>
+            <SocialMedia/>
           </div>
 
           {/* Quick Links */}

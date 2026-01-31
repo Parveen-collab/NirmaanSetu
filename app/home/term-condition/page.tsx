@@ -1,9 +1,12 @@
 import React from 'react'
+import TermsConditions from '@/app/home/term-condition/termsConditionsComponent/TermsConditions'
 
-const TermsConditions = () => {
+const Page = () => {
   return (
-    <div>Welcome to Terms & Conditions Page.</div>
+    <div>
+      <TermsConditions/>
+    </div>
   )
 }
 
-export default TermsConditions
+export default Page
