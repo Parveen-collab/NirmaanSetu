@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { Share2, Info, ShoppingCart } from "lucide-react";
 import Button from "@/src/components/ui/Button";
+import SearchBar from "@/src/components/ui/SearchBar";
 
 interface Shop {
   id: number;
@@ -46,13 +47,15 @@ export default function ShopPage() {
     <div className="min-h-screen bg-zinc-50 dark:bg-black px-4 py-6 sm:px-6 lg:px-10">
 
       {/* Header */}
-      <div className="mb-6">
+      <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <h1 className="text-2xl font-semibold text-zinc-900 dark:text-white">
           Shops
         </h1>
         <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
           Find material suppliers and shops for your projects
         </p>
+        {/* Search */}
+        <SearchBar />
       </div>
 
       {/* Shops Grid */}

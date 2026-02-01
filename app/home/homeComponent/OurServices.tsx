@@ -2,7 +2,7 @@
 export default function OurServices() {
     return (
         <div>
-            <section className="py-20 bg-zinc-50 dark:bg-zinc-900 px-6">
+            <section className="py-10 bg-zinc-50 dark:bg-zinc-900 px-6">
                 <div className="max-w-6xl mx-auto text-center">
                     <h2 className="text-3xl font-bold mb-4 text-primary">
                         What We Offer

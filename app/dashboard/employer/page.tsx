@@ -5,6 +5,7 @@ import Image from "next/image";
 import { MapPin, Share2, Info, Briefcase } from "lucide-react";
 import Button from "@/src/components/ui/Button";
 import ShareModal from "@/src/components/ui/ShareModal";
+import SearchBar from "@/src/components/ui/SearchBar";
 
 interface Employer {
   id: number;
@@ -50,13 +51,16 @@ export default function EmployerPage() {
     <div className="min-h-screen bg-zinc-50 dark:bg-black px-4 py-6 sm:px-6 lg:px-10">
 
       {/* Header */}
-      <div className="mb-6">
+      <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <h1 className="text-2xl font-semibold text-zinc-900 dark:text-white">
           Employers
         </h1>
         <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
           Find project owners and companies hiring workers
         </p>
+
+        {/* Search */}
+        <SearchBar />
       </div>
 
       {/* Employer Grid */}

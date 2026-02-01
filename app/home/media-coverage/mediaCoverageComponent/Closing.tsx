@@ -10,7 +10,7 @@ export default function Closing() {
                     NirmaanSetu is more than a platform — it is a step toward a more
                     transparent, efficient, and inclusive construction ecosystem.
                     We look forward to sharing our journey as we continue to grow
-                    and create impact across India.
+                    and create impact across world.
                 </p>
             </section>
         </div>

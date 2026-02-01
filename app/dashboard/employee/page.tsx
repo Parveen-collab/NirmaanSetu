@@ -6,6 +6,7 @@ import { Search, Share2, UserPlus, Info } from "lucide-react";
 import Button from "@/src/components/ui/Button";
 import ShareModal from "@/src/components/ui/ShareModal";
 import HireEmployeeModal from "@/app/dashboard/employee/employeeComponent/HireEmployeeModal";
+import SearchBar from "@/src/components/ui/SearchBar";
 
 interface Employee {
   id: number;
@@ -60,16 +61,20 @@ export default function EmployeePage() {
         <h1 className="text-2xl font-semibold text-zinc-900 dark:text-white">
           Employees
         </h1>
+        <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
+          Find employees to complete your works on time
+        </p>
 
         {/* Search */}
-        <div className="relative w-full sm:w-80">
+        <SearchBar />
+        {/* <div className="relative w-full sm:w-80">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400" size={18} />
           <input
             type="text"
             placeholder="Search employee..."
             className="w-full rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 py-2.5 pl-10 pr-4 text-sm text-zinc-900 dark:text-white outline-none focus:ring-2 focus:ring-zinc-300 dark:focus:ring-zinc-700"
           />
-        </div>
+        </div> */}
       </div>
 
       {/* Employee Grid */}
@@ -149,7 +154,7 @@ export default function EmployeePage() {
           </div>
         ))}
       </div>
-      
+
       {openModal === "share" && (
         <ShareModal onClose={() => setOpenModal(null)} />
       )}

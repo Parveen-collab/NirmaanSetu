@@ -9,7 +9,7 @@ export default function MediaStory() {
                 <p className="text-muted leading-7">
                     NirmaanSetu is building a digital ecosystem that simplifies hiring,
                     job discovery, and material sourcing in the construction sector.
-                    By focusing on transparency, accessibility, and local connectivity,
+                    By focusing on local connectivity, accessibility, and transparency
                     the platform aims to deliver real-world impact at scale.
                 </p>
             </section>

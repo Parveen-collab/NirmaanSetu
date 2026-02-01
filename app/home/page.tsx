@@ -8,25 +8,15 @@ import TrustSection from "./homeComponent/TrustSection";
 const Home = () => {
 
   return (
-    <div className="flex min-h-screen flex-col bg-zinc-50 font-sans dark:bg-black">
-      {/* Main Content */}
-      <main className="bg-background text-foreground">
-        {/* HERO SECTION */}
-        <Hero/>
-
-        {/* SERVICES OVERVIEW */}
-        <OurServices/>
-
-        {/* HOW IT WORKS */}
-        <HowItWorks/>
-
-        {/* TRUST SECTION */}
-        <TrustSection/>
-
-        {/* FINAL CTA */}
-        <CallToAction/>
-      </main>
-    </div>
+    <main className="bg-background text-foreground">
+      <div className="mx-auto w-full max-w-7xl px-4">
+        <Hero />
+        <OurServices />
+        <HowItWorks />
+        <TrustSection />
+        <CallToAction />
+      </div>
+    </main>
   )
 }
 

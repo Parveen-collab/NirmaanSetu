@@ -6,6 +6,7 @@ import ApplyModal from "@/src/components/ui/ApplyModal";
 import MaterialApplyModal from "@/app/dashboard/project/projectComponent/MaterialApplyModal";
 import ShareModal from "@/src/components/ui/ShareModal";
 import React, { useState } from "react";
+import SearchBar from "@/src/components/ui/SearchBar";
 
 
 
@@ -54,13 +55,15 @@ export default function ProjectPage() {
     <div className="min-h-screen bg-zinc-50 dark:bg-black px-4 py-6 sm:px-6 lg:px-10">
 
       {/* Header */}
-      <div className="mb-6">
+      <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <h1 className="text-2xl font-semibold text-zinc-900 dark:text-white">
           Projects
         </h1>
         <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
           Explore and apply for active construction projects
         </p>
+        {/* Search */}
+        <SearchBar />
       </div>
 
       {/* Projects Grid */}
@@ -106,7 +109,7 @@ export default function ProjectPage() {
               <Button href="/dashboard/project/work-details">
                 <Info size={16} />
               </Button>
-              
+
               {/* Apply for Material */}
               <Button onClick={() => setOpenModal("material")}>
                 <Package size={16} />

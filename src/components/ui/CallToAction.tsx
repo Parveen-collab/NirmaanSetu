@@ -3,34 +3,34 @@
 import Button from "@/src/components/ui/Button"
 
 export default function CallToAction() {
-    return (
-        <div>
-            <section className="py-20 px-6 text-center">
+  return (
+    <section className="py-20 px-6 text-center">
+      <h2 className="text-3xl font-bold mb-4 text-primary">
+        Start Working, Hiring, or Selling — All in One Platform
+      </h2>
 
-                <h2 className="text-3xl font-bold mb-4 text-primary">
-                    Join the NirmaanSetu Ecosystem
-                </h2>
-                
-                <p className="text-muted mb-8">
-                    Whether you are a worker, contractor, or supplier — NirmaanSetu
-                    is built for you.
-                </p>
+      <p className="text-muted mb-8 max-w-2xl mx-auto">
+        NirmaanSetu helps workers find jobs, contractors hire faster,
+        and suppliers reach verified buyers — with complete transparency.
+      </p>
 
-                <div className="flex flex-wrap gap-4 justify-center">
-                    <Button href="/home/login">
-                        Find Works
-                    </Button>
+      <div className="flex flex-wrap gap-4 justify-center">
+        <Button href="/home/login">
+          Find Work
+        </Button>
 
-                    <Button href="/home/login">
-                        Hire Workers
-                    </Button>
+        <Button href="/home/login">
+          Hire Skilled Workers
+        </Button>
 
-                    <Button href="/home/login">
-                        Sell Materials
-                    </Button>
-                </div>
+        <Button href="/home/login">
+          Sell Construction Materials
+        </Button>
+      </div>
 
-            </section>
-        </div>
-    )
+      <p className="text-xs text-muted mt-6">
+        Free to join • No middlemen • Transparent process
+      </p>
+    </section>
+  )
 }
