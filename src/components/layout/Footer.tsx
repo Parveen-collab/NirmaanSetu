@@ -124,9 +124,6 @@ const Footer = () => {
           </p>
 
           <CopyrightFooter />
-          {/* <p>
-            © {new Date().getFullYear()} NirmaanSetu. All Rights Reserved.
-          </p> */}
         </div>
       </div>
     </footer>

@@ -161,15 +161,16 @@ export default function VerifyOtpModal({
               {error}
             </p>
           )}
-
-          <Button
-            loading={loading}
-            disabled={!isOtpComplete}
-            onClick={handleVerify}
-            variant="success"
-          >
-            Verify OTP
-          </Button>
+          <div className='mt-4 flex items-center justify-center'>
+            <Button
+              loading={loading}
+              disabled={!isOtpComplete}
+              onClick={handleVerify}
+              variant="success"
+            >
+              Verify OTP
+            </Button>
+          </div>
         </div>
       </div>
 
@@ -186,17 +187,18 @@ export default function VerifyOtpModal({
         <p className="mb-6 text-center text-sm text-zinc-600 dark:text-zinc-300">
           OTP verified successfully 🎉
         </p>
-
-        <Button
-          variant="success"
-          onClick={() => {
-            setShowVerifiedSuccess(false)
-            onClose()
-            onVerifySuccess()
-          }}
-        >
-          Go to Home
-        </Button>
+        <div className='mt-4 flex items-center justify-center'>
+          <Button
+            variant="success"
+            onClick={() => {
+              setShowVerifiedSuccess(false)
+              onClose()
+              onVerifySuccess()
+            }}
+          >
+            Go to Home
+          </Button>
+        </div>
       </SuccessModal>
     </>
   )

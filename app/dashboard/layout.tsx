@@ -8,13 +8,15 @@ export default function HomeLayout({
 }) {
   return (
     <div className="flex min-h-screen flex-col bg-zinc-50 font-sans dark:bg-black">
-      <DashBoardHeader/>
+      <DashBoardHeader />
 
       <main className="flex-1">
         {children}
       </main>
 
-      <CopyrightFooter/>
+      <div className='border-t bg-white'>
+        <CopyrightFooter />
+      </div>
     </div>
   )
 }

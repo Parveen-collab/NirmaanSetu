@@ -52,7 +52,7 @@ export default function MobileVerificationPage() {
             onValidityChange={setIsMobileValid}
           />
 
-          <div className="mt-4">
+          <div className="mt-4 flex items-center justify-center">
             <Button
               loading={loading}
               disabled={!isMobileValid}
@@ -74,15 +74,17 @@ export default function MobileVerificationPage() {
           OTP has been sent successfully to your mobile number.
         </p>
 
-        <Button
-          variant="success"
-          onClick={() => {
-            setShowSuccess(false)
-            setShowOtp(true)
-          }}
-        >
-          OK
-        </Button>
+        <div className='mt-4 flex items-center justify-center'>
+          <Button
+            variant="success"
+            onClick={() => {
+              setShowSuccess(false)
+              setShowOtp(true)
+            }}
+          >
+            OK
+          </Button>
+        </div>
       </Modal>
 
       {/* Verify OTP Modal */}
