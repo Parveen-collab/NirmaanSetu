@@ -11,23 +11,20 @@ export const metadata = {
 
 const ContactUs = () => {
   return (
-    <div className="flex min-h-screen flex-col bg-zinc-50 font-sans dark:bg-black">
-      <main className='bg-background text-foreground'>
+    <main className='bg-background text-foreground'>
+      <div className="mx-auto w-full max-w-7xl px-4">
         {/* Page Header */}
-        <h1 className="text-4xl font-bold text-primary mb-6">
-          Contact Us
-        </h1>
+        <section className="min-h-[20vh] flex flex-col items-center justify-center text-center px-6 animate-fade">
+          <h1 className="text-4xl md:text-5xl font-bold text-primary mb-4">
+            Contact Us
+          </h1>
+        </section>
 
-        {/* Contact Info */}
-        <ContactInfo/>
-
-        {/* Get In Touch */}
-        <GetInTouch/>
-
-        {/* Embedded Map */}
-        <EmbededMap/>
-      </main>
-    </div>
+        <ContactInfo />
+        <GetInTouch />
+        <EmbededMap />
+      </div>
+    </main>
   )
 }
 

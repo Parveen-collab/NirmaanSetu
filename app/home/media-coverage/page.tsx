@@ -26,30 +26,6 @@ const Page = () => {
         <Closing/>
       </div>
     </main>
-    // <div className="flex min-h-screen flex-col bg-zinc-50 font-sans dark:bg-black">
-    //   <main className='bg-background text-foreground'>
-
-    //     <MediaCoverage/>
-
-    //     {/* Media Story */}
-    //     <MediaStory/>
-
-    //     {/* Coverage Highlights */}
-    //     <CoverageHighlights/>
-
-    //     {/* Press Mentions */}
-    //     <PressMentions/>
-
-    //     {/* Awards */}
-    //     <Awards/>
-
-    //     {/* Media Resources */}
-    //     <MediaResources/>
-
-    //     {/* Closing */}
-    //     <Closing/>
-    //   </main>
-    // </div>
   )
 }
 

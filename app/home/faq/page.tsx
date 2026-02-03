@@ -6,5 +6,11 @@ export const metadata = {
 };
 
 export default function FAQPage() {
-  return <FAQ />;
+  return (
+    <main className="bg-background text-foreground">
+      <div className="mx-auto w-full max-w-7xl px-4">
+        <FAQ />
+      </div>
+    </main>
+  )
 }

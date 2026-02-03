@@ -13,16 +13,11 @@ export const metadata = {
 
 const Blogs = () => {
   return (
-    <div className="flex min-h-screen flex-col bg-zinc-50 font-sans dark:bg-black">
-      <main className='bg-background text-foreground'>
-        {/* Header */}
-        <Header/>
-
-        {/* Search & Filter */}
-        <SearchFilters/>
-
-        {/* Blog Cards */}
-        <BlogCards/>
+    <main className='bg-background text-foreground'>
+      <div className="mx-auto w-full max-w-7xl px-4">
+        <Header />
+        <SearchFilters />
+        <BlogCards />
 
         {/* Load More */}
         <div className="text-center mt-16 mb-6">
@@ -30,8 +25,8 @@ const Blogs = () => {
             Load More...
           </Button>
         </div>
-      </main>
-    </div>
+      </div>
+    </main>
   )
 }
 
