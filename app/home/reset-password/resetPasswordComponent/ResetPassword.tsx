@@ -1,8 +1,10 @@
-import React from 'react'
+import AuthPage from '@/src/components/ui/AuthPage'
 
 const ResetPassword = () => {
   return (
-    <div>Welcome to Reset Password Page.</div>
+    <div>
+      <AuthPage type='mobile'/>
+    </div>
   )
 }
 

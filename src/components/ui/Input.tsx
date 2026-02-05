@@ -1,7 +1,7 @@
 // src/components/ui/Input.tsx
 import React, { useId, useState, forwardRef } from 'react'
 
-type ValidationType = 'text' | 'number' | 'mobile' | 'email' | 'password' | 'custom'
+export type ValidationType = 'text' | 'number' | 'mobile' | 'email' | 'password' | 'custom'
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string

@@ -9,6 +9,8 @@ interface VerifyOtpModalProps {
   open: boolean
   onClose: () => void
   onVerifySuccess: () => void
+  identifier: string
+  type: 'mobile' | 'email'
 }
 
 export default function VerifyOtpModal({
