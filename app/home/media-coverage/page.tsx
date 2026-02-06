@@ -1,11 +1,11 @@
 //Login Page
-import MediaStory from './mediaCoverageComponent/MediaStory';
-import CoverageHighlights from './mediaCoverageComponent/CoverageHighlights';
-import PressMentions from './mediaCoverageComponent/PressMentions';
-import MediaResources from './mediaCoverageComponent/MediaResources';
-import Closing from './mediaCoverageComponent/Closing';
-import Awards from './mediaCoverageComponent/Awards';
-import MediaCoverage from './mediaCoverageComponent/MediaCoverage';
+import MediaStory from '../../../src/components/ui/mediaCoverageComponent/MediaStory';
+import CoverageHighlights from '../../../src/components/ui/mediaCoverageComponent/CoverageHighlights';
+import PressMentions from '../../../src/components/ui/mediaCoverageComponent/PressMentions';
+import MediaResources from '../../../src/components/ui/mediaCoverageComponent/MediaResources';
+import Closing from '../../../src/components/ui/mediaCoverageComponent/Closing';
+import Awards from '../../../src/components/ui/mediaCoverageComponent/Awards';
+import MediaCoverage from '../../../src/components/ui/mediaCoverageComponent/MediaCoverage';
 
 export const metadata = {
   title: "Media & Coverage | NirmaanSetu",

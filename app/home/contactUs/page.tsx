@@ -1,7 +1,7 @@
 //Contact Us Page
-import ContactInfo from "./contactUsComponent/ContactInfo";
-import EmbededMap from "./contactUsComponent/EmbededMap";
-import GetInTouch from "./contactUsComponent/GetInTouch";
+import ContactInfo from "../../../src/components/ui/contactUsComponent/ContactInfo";
+import EmbededMap from "../../../src/components/ui/contactUsComponent/EmbededMap";
+import GetInTouch from "../../../src/components/ui/contactUsComponent/GetInTouch";
 
 export const metadata = {
   title: "Contact Us | NirmaanSetu",

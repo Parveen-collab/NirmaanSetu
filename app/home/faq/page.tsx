@@ -1,4 +1,4 @@
-import FAQ from "@/app/home/faq/faqComponents/FAQ";
+import FAQ from "@/src/components/ui/faqComponents/FAQ";
 export const metadata = {
   title: "FAQ | NirmaanSetu",
   description:

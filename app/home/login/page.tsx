@@ -1,4 +1,4 @@
-import LogIn from "@/app/home/login/logInComponent/LogIn";
+import LogIn from "@/src/components/ui/logInComponent/LogIn";
 
 export const metadata = {
   title: "Login | NirmaanSetu",

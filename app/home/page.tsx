@@ -1,9 +1,9 @@
 //Home page
 import CallToAction from "@/src/components/ui/CallToAction";
 import Hero from "@/src/components/ui/Hero";
-import OurServices from "./homeComponent/OurServices";
-import HowItWorks from "./homeComponent/HowItWorks";
-import TrustSection from "./homeComponent/TrustSection";
+import OurServices from "../../src/components/ui/homeComponent/OurServices";
+import HowItWorks from "../../src/components/ui/homeComponent/HowItWorks";
+import TrustSection from "../../src/components/ui/homeComponent/TrustSection";
 
 const Home = () => {
 

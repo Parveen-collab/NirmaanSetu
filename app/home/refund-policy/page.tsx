@@ -1,5 +1,5 @@
 import React from 'react'
-import RefundPolicy from '@/app/home/refund-policy/refundPolicyComponent/RefundPolicy'
+import RefundPolicy from '@/src/components/ui/refundPolicyComponent/RefundPolicy'
 
 const Page = () => {
   return (
