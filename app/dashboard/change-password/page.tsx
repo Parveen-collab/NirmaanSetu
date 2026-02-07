@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
-import Button from '@/src/components/ui/Button'
+import Button from '@/src/components/features/Button'
 
 const ChangePassword = () => {
   const [currentPassword, setCurrentPassword] = useState('')

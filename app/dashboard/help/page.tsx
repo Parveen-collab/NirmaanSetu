@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 import { ChevronDown, ChevronUp, Mail, Phone } from 'lucide-react'
-import Button from '@/src/components/ui/Button'
+import Button from '@/src/components/features/Button'
 
 const FAQS = [
   {

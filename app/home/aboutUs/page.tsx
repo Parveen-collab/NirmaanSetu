@@ -1,10 +1,10 @@
 //About Us Page
-import Hero from '../../../src/components/ui/Hero';
-import WhoWeAre from '../../../src/components/ui/aboutUsComponent/WhoWeAre';
-import MissioVissionValues from '../../../src/components/ui/aboutUsComponent/MissionVissionValues';
-import WhyNirmaanSetu from '../../../src/components/ui/aboutUsComponent/WhyNirmaanSetu';
-import OurTeam from '../../../src/components/ui/aboutUsComponent/OurTeam';
-import CallToAction from '../../../src/components/ui/CallToAction';
+import Hero from '../../../src/components/features/Hero';
+import WhoWeAre from '../../../src/components/features/aboutUsComponent/WhoWeAre';
+import MissioVissionValues from '../../../src/components/features/aboutUsComponent/MissionVissionValues';
+import WhyNirmaanSetu from '../../../src/components/features/aboutUsComponent/WhyNirmaanSetu';
+import OurTeam from '../../../src/components/features/aboutUsComponent/OurTeam';
+import CallToAction from '../../../src/components/features/CallToAction';
 
 export const metadata = {
   title: "About Us | NirmaanSetu",

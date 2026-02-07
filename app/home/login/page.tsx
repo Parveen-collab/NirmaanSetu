@@ -1,4 +1,4 @@
-import LogIn from "@/src/components/ui/logInComponent/LogIn";
+import LogIn from "@/src/components/features/logInComponent/LogIn";
 
 export const metadata = {
   title: "Login | NirmaanSetu",

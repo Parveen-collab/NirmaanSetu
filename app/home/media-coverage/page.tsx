@@ -1,11 +1,11 @@
 //Login Page
-import MediaStory from '../../../src/components/ui/mediaCoverageComponent/MediaStory';
-import CoverageHighlights from '../../../src/components/ui/mediaCoverageComponent/CoverageHighlights';
-import PressMentions from '../../../src/components/ui/mediaCoverageComponent/PressMentions';
-import MediaResources from '../../../src/components/ui/mediaCoverageComponent/MediaResources';
-import Closing from '../../../src/components/ui/mediaCoverageComponent/Closing';
-import Awards from '../../../src/components/ui/mediaCoverageComponent/Awards';
-import MediaCoverage from '../../../src/components/ui/mediaCoverageComponent/MediaCoverage';
+import MediaStory from '../../../src/components/features/mediaCoverageComponent/MediaStory';
+import CoverageHighlights from '../../../src/components/features/mediaCoverageComponent/CoverageHighlights';
+import PressMentions from '../../../src/components/features/mediaCoverageComponent/PressMentions';
+import MediaResources from '../../../src/components/features/mediaCoverageComponent/MediaResources';
+import Closing from '../../../src/components/features/mediaCoverageComponent/Closing';
+import Awards from '../../../src/components/features/mediaCoverageComponent/Awards';
+import MediaCoverage from '../../../src/components/features/mediaCoverageComponent/MediaCoverage';
 
 export const metadata = {
   title: "Media & Coverage | NirmaanSetu",

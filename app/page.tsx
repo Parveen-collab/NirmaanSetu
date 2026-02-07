@@ -1,4 +1,4 @@
-import AuthPage from '@/src/components/ui/AuthPage'
+import AuthPage from '@/src/components/features/AuthPage'
 
 const page = () => {
   return (

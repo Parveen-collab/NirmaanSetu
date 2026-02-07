@@ -4,15 +4,15 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useProfile } from "@/src/context/ProfileContext";
 
-import Button from "@/src/components/ui/Button";
-import Modal from "@/src/components/ui/SuccessModal";
+import Button from "@/src/components/features/Button";
+import Modal from "@/src/components/features/SuccessModal";
 
-import BasicDetails from "../../../src/components/ui/registerComponent/BasicDetails";
-import AddressDetails from "../../../src/components/ui/registerComponent/AddressDetails";
-import RoleSelector from "../../../src/components/ui/registerComponent/RoleSelector";
-import RoleSpecificDetails from "../../../src/components/ui/registerComponent/RoleSpecificDetails";
-import LivePhotoUpload from "../../../src/components/ui/registerComponent/LivePhotoUpload";
-import LeftInfo from "../../../src/components/ui/registerComponent/LeftInfo";
+import BasicDetails from "../../../src/components/features/registerComponent/BasicDetails";
+import AddressDetails from "../../../src/components/features/registerComponent/AddressDetails";
+import RoleSelector from "../../../src/components/features/registerComponent/RoleSelector";
+import RoleSpecificDetails from "../../../src/components/features/registerComponent/RoleSpecificDetails";
+import LivePhotoUpload from "../../../src/components/features/registerComponent/LivePhotoUpload";
+import LeftInfo from "../../../src/components/features/registerComponent/LeftInfo";
 import Link from "next/link";
 
 export default function Register() {

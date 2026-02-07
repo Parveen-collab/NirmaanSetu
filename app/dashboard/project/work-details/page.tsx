@@ -1,5 +1,5 @@
 import React from 'react'
-import WorkDetail from '../projectComponent/WorkDetail'
+import WorkDetail from '@/src/components/features/projectComponent/WorkDetail'
 
 const page = () => {
   return (

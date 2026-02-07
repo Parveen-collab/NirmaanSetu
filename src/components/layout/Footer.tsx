@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { Phone, Mail, MapPin } from 'lucide-react'
 import CopyrightFooter from './CopyrightFooter'
-import SocialMedia from '@/src/components/ui/SocialMedia'
+import SocialMedia from '@/src/components/features/SocialMedia'
 
 const Footer = () => {
   return (
