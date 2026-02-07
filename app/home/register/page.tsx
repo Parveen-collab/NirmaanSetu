@@ -7,12 +7,12 @@ import { useProfile } from "@/src/context/ProfileContext";
 import Button from "@/src/components/common/Button";
 import Modal from "@/src/components/features/SuccessModal";
 
-import BasicDetails from "../../../src/components/features/registerComponent/BasicDetails";
-import AddressDetails from "../../../src/components/features/registerComponent/AddressDetails";
-import RoleSelector from "../../../src/components/features/registerComponent/RoleSelector";
-import RoleSpecificDetails from "../../../src/components/features/registerComponent/RoleSpecificDetails";
-import LivePhotoUpload from "../../../src/components/features/registerComponent/LivePhotoUpload";
-import LeftInfo from "../../../src/components/features/registerComponent/LeftInfo";
+import BasicDetails from "@/src/components/features/registerComponent/BasicDetails";
+import AddressDetails from "@/src/components/features/registerComponent/AddressDetails";
+import RoleSelector from "@/src/components/features/registerComponent/RoleSelector";
+import RoleSpecificDetails from "@/src/components/features/registerComponent/RoleSpecificDetails";
+import LivePhotoUpload from "@/src/components/features/registerComponent/LivePhotoUpload";
+import LeftInfo from "@/src/components/features/registerComponent/LeftInfo";
 import Link from "next/link";
 
 export default function Register() {

@@ -1,5 +1,5 @@
 import React from 'react'
-import ShopDetails from '../../../../src/components/features/shopComponent/ShopDetails'
+import ShopDetails from '@/src/components/features/shopComponent/ShopDetails'
 
 const page = () => {
   return (

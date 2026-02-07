@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from "react"
-import Button from "../common/Button"
+import Button from "@/src/components/common/Button"
 import SuccessModal from "./SuccessModal"
 
 export default function ApplyModal({ onClose }: { onClose?: () => void }) {
