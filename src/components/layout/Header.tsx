@@ -5,7 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Menu, X } from 'lucide-react'
-import Button from '@/src/components/features/Button'
+import Button from '@/src/components/common/Button'
 
 const NAV_LINKS = [
   { label: 'Home', href: '/home' },

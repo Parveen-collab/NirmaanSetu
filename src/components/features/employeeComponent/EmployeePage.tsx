@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { Search, Share2, UserPlus, Info } from "lucide-react";
-import Button from "@/src/components/features/Button";
+import Button from "@/src/components/common/Button";
 import ShareModal from "@/src/components/features/ShareModal";
 import HireEmployeeModal from "@/src/components/features/employeeComponent/HireEmployeeModal";
 import SearchBar from "@/src/components/features/SearchBar";

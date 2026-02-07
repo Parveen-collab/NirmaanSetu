@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { MapPin, Briefcase, Phone, Calendar, Package, Info, Share2 } from 'lucide-react'
-import Button from '@/src/components/features/Button'
+import Button from '@/src/components/common/Button'
 import ApplyModal from '@/src/components/features/ApplyModal'
 import MaterialApplyModal from './MaterialApplyModal'
 import ShareModal from '@/src/components/features/ShareModal'

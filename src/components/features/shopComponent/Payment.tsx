@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import Button from '@/src/components/features/Button'
+import Button from '@/src/components/common/Button'
 import SuccessModal from '@/src/components/features/SuccessModal'
 
 const Payment = () => {

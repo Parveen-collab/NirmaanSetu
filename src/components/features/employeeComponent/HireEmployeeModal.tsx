@@ -1,6 +1,6 @@
 'use client'
 
-import Button from '@/src/components/features/Button'
+import Button from '@/src/components/common/Button'
 import SuccessModal from '@/src/components/features/SuccessModal'
 import { X } from 'lucide-react'
 import { useState } from 'react'

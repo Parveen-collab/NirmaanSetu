@@ -1,6 +1,6 @@
 'use client'
 
-import Button from '@/src/components/features/Button'
+import Button from '@/src/components/common/Button'
 import SuccessModal from '@/src/components/features/SuccessModal';
 import { CalendarDays, MapPin, IndianRupee, Briefcase } from 'lucide-react'
 // import router from 'next/router';

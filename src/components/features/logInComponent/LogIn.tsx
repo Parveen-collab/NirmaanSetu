@@ -2,8 +2,8 @@
 
 import React from "react";
 import Link from "next/link";
-import Input from "@/src/components/features/Input";
-import Button from "@/src/components/features/Button";
+import Input from "@/src/components/common/Input";
+import Button from "@/src/components/common/Button";
 
 const LogIn = () => {
   return (

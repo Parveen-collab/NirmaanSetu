@@ -4,7 +4,7 @@ import ShareModal from "@/src/components/features/ShareModal";
 import React, { useState } from "react";
 import Image from "next/image";
 import { Share2, Info, ShoppingCart } from "lucide-react";
-import Button from "@/src/components/features/Button";
+import Button from "@/src/components/common/Button";
 import SearchBar from "@/src/components/features/SearchBar";
 
 interface Shop {

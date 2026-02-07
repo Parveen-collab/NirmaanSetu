@@ -1,6 +1,6 @@
 'use client'
 
-import Button from '@/src/components/features/Button'
+import Button from '@/src/components/common/Button'
 import ShareModal from '@/src/components/features/ShareModal'
 import {
   MapPin,

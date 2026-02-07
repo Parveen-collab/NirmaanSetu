@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { Bell, User, LogOut, Lock, MessageCircle, HelpCircle, UserCircle, Wallet,
   ShoppingBag } from 'lucide-react'
-import Button from '@/src/components/features/Button'
+import Button from '@/src/components/common/Button'
 import Link from 'next/link'
 import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";

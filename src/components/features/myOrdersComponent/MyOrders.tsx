@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import Button from '@/src/components/features/Button'
+import Button from '@/src/components/common/Button'
 
 const orders = [
   {

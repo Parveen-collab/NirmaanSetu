@@ -3,8 +3,8 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 
-import Input from '@/src/components/features/Input'
-import Button from '@/src/components/features/Button'
+import Input from '@/src/components/common/Input'
+import Button from '@/src/components/common/Button'
 import Modal from '@/src/components/features/SuccessModal'
 import VerifyOtpModal from '@/src/components/features/auth/VerifyOtpModal'
 

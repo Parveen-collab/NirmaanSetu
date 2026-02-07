@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useProfile } from "@/src/context/ProfileContext";
 
-import Button from "@/src/components/features/Button";
+import Button from "@/src/components/common/Button";
 import Modal from "@/src/components/features/SuccessModal";
 
 import BasicDetails from "../../../src/components/features/registerComponent/BasicDetails";

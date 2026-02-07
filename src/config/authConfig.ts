@@ -1,4 +1,4 @@
-import type { ValidationType } from '@/src/components/features/Input'
+import type { ValidationType } from '@/src/components/common/Input'
 import type { AuthType } from '@/src/types/auth'
 
 type AuthFieldConfig = {

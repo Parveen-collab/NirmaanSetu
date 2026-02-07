@@ -1,5 +1,5 @@
 //Blogs page
-import Button from '@/src/components/features/Button';
+import Button from '@/src/components/common/Button';
 import BlogCards from '../../../src/components/features/blogComponent/BlogCards';
 import SearchFilters from '../../../src/components/features/blogComponent/SearchFilters';
 import Header from '../../../src/components/features/blogComponent/Header';
