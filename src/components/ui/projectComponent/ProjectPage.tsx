@@ -3,7 +3,7 @@
 import { MapPin, Phone, Share2, Info, CalendarDays, IndianRupee, Package } from "lucide-react";
 import Button from "@/src/components/ui/Button";
 import ApplyModal from "@/src/components/ui/ApplyModal";
-import MaterialApplyModal from "@/app/dashboard/project/projectComponent/MaterialApplyModal";
+import MaterialApplyModal from "@/src/components/ui/projectComponent/MaterialApplyModal";
 import ShareModal from "@/src/components/ui/ShareModal";
 import React, { useState } from "react";
 import SearchBar from "@/src/components/ui/SearchBar";

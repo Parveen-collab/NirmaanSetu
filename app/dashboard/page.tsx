@@ -1,10 +1,10 @@
 'use client'
 
 import { useState } from 'react'
-import EmployeePage from "./employee/employeeComponent/EmployeePage"
-import EmployerPage from "./employer/employerComponent/EmployerPage"
-import ProjectPage from "./project/projectComponent/ProjectPage"
-import ShopPage from "./shop/shopComponent/ShopPage"
+import EmployeePage from "../../src/components/ui/employeeComponent/EmployeePage"
+import EmployerPage from "../../src/components/ui/employerComponent/EmployerPage"
+import ProjectPage from "@/src/components/ui/projectComponent/ProjectPage"
+import ShopPage from "../../src/components/ui/shopComponent/ShopPage"
 
 export default function DashboardPage() {
   const [activeTab, setActiveTab] = useState('employees')

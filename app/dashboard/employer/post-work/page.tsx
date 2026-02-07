@@ -1,5 +1,5 @@
 import React from 'react'
-import PostWork from '@/app/dashboard/employer/employerComponent/PostWork'
+import PostWork from '@/src/components/ui/employerComponent/PostWork'
 
 const page = () => {
   return (

@@ -1,5 +1,5 @@
 import React from 'react'
-import MyOrders from './myOrdersComponent/MyOrders'
+import MyOrders from '../../../src/components/ui/myOrdersComponent/MyOrders'
 
 const page = () => {
   return (

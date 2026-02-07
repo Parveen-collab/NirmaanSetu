@@ -1,5 +1,5 @@
 import React from 'react'
-import Payment from '../../shopComponent/Payment'
+import Payment from '../../../../../src/components/ui/shopComponent/Payment'
 
 const page = () => {
   return (

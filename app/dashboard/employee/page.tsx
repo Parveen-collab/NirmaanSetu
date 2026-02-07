@@ -1,5 +1,5 @@
 import React from 'react'
-import EmployeePage from './employeeComponent/EmployeePage'
+import EmployeePage from '../../../src/components/ui/employeeComponent/EmployeePage'
 
 const page = () => {
   return (

@@ -4,7 +4,7 @@ import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 
 import CopyrightFooter from '@/src/components/layout/CopyrightFooter'
-import DashBoardHeader from './dashboardComponent/DashBoardHeader'
+import DashBoardHeader from '../../src/components/ui/dashboardComponent/DashBoardHeader'
 
 export default function DashboardLayout({
   children,

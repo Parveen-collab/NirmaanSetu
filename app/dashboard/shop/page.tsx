@@ -1,5 +1,5 @@
 import React from 'react'
-import ShopPage from './shopComponent/ShopPage'
+import ShopPage from '../../../src/components/ui/shopComponent/ShopPage'
 
 const page = () => {
   return (

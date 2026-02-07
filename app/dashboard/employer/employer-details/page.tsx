@@ -1,5 +1,5 @@
 import React from 'react'
-import EmployerDetails from '../employerComponent/EmployerDetails'
+import EmployerDetails from '../../../../src/components/ui/employerComponent/EmployerDetails'
 
 const page = () => {
   return (

@@ -5,7 +5,7 @@ import Image from "next/image";
 import { Search, Share2, UserPlus, Info } from "lucide-react";
 import Button from "@/src/components/ui/Button";
 import ShareModal from "@/src/components/ui/ShareModal";
-import HireEmployeeModal from "@/app/dashboard/employee/employeeComponent/HireEmployeeModal";
+import HireEmployeeModal from "@/src/components/ui/employeeComponent/HireEmployeeModal";
 import SearchBar from "@/src/components/ui/SearchBar";
 
 interface Employee {
