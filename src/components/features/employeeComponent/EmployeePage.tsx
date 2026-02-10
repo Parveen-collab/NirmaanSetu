@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { Search, Share2, UserPlus, Info } from "lucide-react";
+import { Share2, UserPlus, Info } from "lucide-react";
 import Button from "@/src/components/common/Button";
 import ShareModal from "@/src/components/features/ShareModal";
 import HireEmployeeModal from "@/src/components/features/employeeComponent/HireEmployeeModal";
@@ -53,21 +53,22 @@ export default function EmployeePage() {
   const [openModal, setOpenModal] = useState<
     "apply" | "material" | "share" | null
   >(null);
+
   return (
     <div className="min-h-screen bg-zinc-50 dark:bg-black px-4 py-6 sm:px-6 lg:px-10">
 
       {/* Header */}
       <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <h1 className="text-2xl font-semibold text-zinc-900 dark:text-white">
-          Employees
-        </h1>
-        <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
-          Find employees to complete your works on time
-        </p>
+        <div>
+          <h1 className="text-2xl font-semibold text-zinc-900 dark:text-white">
+            Employees
+          </h1>
+          <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-400">
+            Find employees to complete your works on time
+          </p>
+        </div>
 
-        {/* Search */}
         <SearchBar />
-        
       </div>
 
       {/* Employee Grid */}
@@ -106,6 +107,7 @@ export default function EmployeePage() {
                   {emp.specialization}
                 </span>
               </p>
+
               <p>
                 <span className="font-medium text-zinc-700 dark:text-zinc-300">
                   Experience:
@@ -114,15 +116,17 @@ export default function EmployeePage() {
                   {emp.experience}
                 </span>
               </p>
+
               <p>
                 <span className="font-medium text-zinc-700 dark:text-zinc-300">
                   Availability:
                 </span>{" "}
                 <span
-                  className={`ml-1 rounded-full px-2 py-0.5 text-xs font-medium ${emp.availability === "Available"
-                    ? "bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300"
-                    : "bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300"
-                    }`}
+                  className={`ml-1 rounded-full px-2 py-0.5 text-xs font-medium ${
+                    emp.availability === "Available"
+                      ? "bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300"
+                      : "bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300"
+                  }`}
                 >
                   {emp.availability}
                 </span>
@@ -140,7 +144,8 @@ export default function EmployeePage() {
                 <Share2 size={16} />
               </Button>
 
-              <Button href="/dashboard/employee/employee-details">
+              {/* ✅ Dynamic route by ID */}
+              <Button href={`/employee/${emp.id}`}>
                 <Info size={16} />
               </Button>
             </div>
@@ -155,7 +160,6 @@ export default function EmployeePage() {
       {showHireModal && (
         <HireEmployeeModal onClose={() => setShowHireModal(false)} />
       )}
-
     </div>
   );
 }
