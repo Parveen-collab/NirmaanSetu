@@ -18,7 +18,7 @@ export const authConfig: Record<AuthType, AuthFieldConfig> = {
     description: 'Enter your mobile number to receive an OTP',
     label: 'Mobile Number',
     placeholder: 'Enter mobile number',
-    type: 'tel',
+    type: 'mobile',
     validation: 'mobile',
     successText: 'OTP has been sent to your mobile number.',
     redirectTo: '/home/register',

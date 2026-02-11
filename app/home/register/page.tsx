@@ -176,13 +176,14 @@ export default function Register() {
         <p className="mb-6 text-center text-sm text-zinc-600 dark:text-zinc-300">
           Registration completed successfully.
         </p>
-
-        <Button
-          variant="success"
-          onClick={() => router.push("/home/login")}
-        >
-          Go to Login
-        </Button>
+        <div className="flex justify-center content-center">
+          <Button
+            variant="success"
+            onClick={() => router.push("/home/login")}
+          >
+            Ok
+          </Button>
+        </div>
       </Modal>
     </div>
   );

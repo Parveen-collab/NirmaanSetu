@@ -16,7 +16,7 @@ export default function RoleSelector({ role, setRole }: Props) {
             onClick={() => setRole(r)}
             className={`rounded-lg border py-2 text-sm font-medium transition ${
               role === r
-                ? "bg-primary text-white border-primary"
+                ? "bg-primary text-red border-primary"
                 : "border-zinc-300 hover:border-primary"
             }`}
           >

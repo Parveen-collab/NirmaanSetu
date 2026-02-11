@@ -1,24 +1,25 @@
+import Input from "@/src/components/common/Input";
+
 export default function BasicDetails({ formData, setFormData }: any) {
   return (
     <div className="space-y-4">
-      <input
-        type="tel"
+      <Input
+        type="mobile"
         placeholder="Mobile Number (OTP verified)"
-        className="input"
         value={formData.mobile}
         onChange={(e) => setFormData({ ...formData, mobile: e.target.value })}
       />
-      <input
+
+      <Input
         type="text"
         placeholder="Full Name"
-        className="input"
         value={formData.fullName}
         onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
       />
-      <input
-        type="text"
+
+      <Input
+        type="number"
         placeholder="Aadhaar Number"
-        className="input"
         value={formData.aadhaar}
         onChange={(e) => setFormData({ ...formData, aadhaar: e.target.value })}
       />

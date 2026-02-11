@@ -1,7 +1,7 @@
 // src/components/features/Input.tsx
 import React, { useId, useState, forwardRef } from 'react'
 
-export type ValidationType = 'text' | 'number' | 'mobile' | 'email' | 'password' | 'custom'
+export type ValidationType = 'text' | 'number' | 'mobile' | 'email' | 'password' | 'file' | 'custom'
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string
@@ -28,7 +28,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     const [error, setError] = useState('')
     const [touched, setTouched] = useState(false)
 
-    const validate = (value: string) => {
+    const validate = (value: string, files?: FileList | null) => {
       if (!validation) return true
 
       let isValid = true
@@ -62,6 +62,11 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             'Password must be 8+ chars, include uppercase, lowercase, number & symbol'
           break
 
+        case 'file':
+          isValid = !!files && files.length > 0
+          message = 'Please upload a file'
+          break
+
         case 'custom':
           if (customValidator) {
             isValid = customValidator(value)
@@ -74,6 +79,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       onValidityChange?.(isValid)
       return isValid
     }
+
 
     return (
       <div className="flex flex-col gap-1">
@@ -103,10 +109,9 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           className={`
             w-full rounded-lg border px-4 py-2
             text-base outline-none transition
-            ${
-              error
-                ? 'border-red-500 focus:ring-2 focus:ring-red-200'
-                : 'border-zinc-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-100'
+            ${error
+              ? 'border-red-500 focus:ring-2 focus:ring-red-200'
+              : 'border-zinc-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-100'
             }
             dark:border-zinc-700 dark:bg-zinc-800 dark:text-white
             ${className}
