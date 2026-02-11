@@ -16,6 +16,8 @@ import LeftInfo from "@/src/components/features/registerComponent/LeftInfo";
 import Link from "next/link";
 
 export default function Register() {
+  const [currentStep, setCurrentStep] = useState(1);
+  const TOTAL_STEPS = 5;
   const [showSuccess, setShowSuccess] = useState(false);
   const [role, setRole] = useState<"employee" | "employer" | "shop" | "">("");
   const { setProfile } = useProfile();
@@ -42,6 +44,18 @@ export default function Register() {
     photo: null,
   });
 
+  const nextStep = () => {
+    if (currentStep < TOTAL_STEPS) {
+      setCurrentStep((prev) => prev + 1);
+    }
+  };
+
+  const prevStep = () => {
+    if (currentStep > 1) {
+      setCurrentStep((prev) => prev - 1);
+    }
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -54,32 +68,94 @@ export default function Register() {
     setShowSuccess(true);
   };
 
+  const renderStep = () => {
+    switch (currentStep) {
+      case 1:
+        return <BasicDetails formData={formData} setFormData={setFormData} />;
+      case 2:
+        return <AddressDetails formData={formData} setFormData={setFormData} />;
+      case 3:
+        return <RoleSelector role={role} setRole={setRole} />;
+      case 4:
+        return (
+          <RoleSpecificDetails
+            role={role}
+            formData={formData}
+            setFormData={setFormData}
+          />
+        );
+      case 5:
+        return <LivePhotoUpload formData={formData} setFormData={setFormData} />;
+      default:
+        return <BasicDetails formData={formData} setFormData={setFormData} />;
+    }
+  };
+
+  const stepTitles = [
+    "Identity",
+    "Location",
+    "Role Definition",
+    "Professional Info",
+    "Verification",
+  ];
+
   return (
     <div className="min-h-screen grid grid-cols-1 md:grid-cols-2 bg-background">
       <LeftInfo />
 
       <div className="flex items-center justify-center px-6 py-10">
-        <form
-          onSubmit={handleSubmit}
-          className="w-full max-w-lg rounded-2xl bg-white p-8 shadow-md dark:bg-zinc-900 animate-fade"
-        >
+        <div className="w-full max-w-lg rounded-2xl bg-white p-8 shadow-md dark:bg-zinc-900 animate-fade">
+          {/* Progress Bar */}
+          <div className="mb-8">
+            <div className="flex justify-between mb-2">
+              <span className="text-xs font-semibold text-primary uppercase">
+                Step {currentStep} of {TOTAL_STEPS}
+              </span>
+              <span className="text-xs font-semibold text-primary uppercase">
+                {stepTitles[currentStep - 1]}
+              </span>
+            </div>
+            <div className="h-2 w-full bg-zinc-100 dark:bg-zinc-800 rounded-full overflow-hidden">
+              <div
+                className="h-full bg-primary transition-all duration-300 ease-in-out"
+                style={{ width: `${(currentStep / TOTAL_STEPS) * 100}%` }}
+              ></div>
+            </div>
+          </div>
+
           <h2 className="text-2xl font-bold text-primary mb-2">Create Account</h2>
           <p className="text-sm text-muted mb-6">
             Register to get started with NirmaanSetu
           </p>
 
-          <BasicDetails formData={formData} setFormData={setFormData} />
-          <AddressDetails formData={formData} setFormData={setFormData} />
-          <RoleSelector role={role} setRole={setRole} />
-          <RoleSpecificDetails role={role} formData={formData} setFormData={setFormData} />
-          <LivePhotoUpload formData={formData} setFormData={setFormData} />
+          <form onSubmit={handleSubmit}>
+            <div className="min-h-[300px]">{renderStep()}</div>
 
-          <Button type="submit" className="mt-6 w-full">
-            Submit
-          </Button>
+            <div className="mt-8 flex gap-4">
+              {currentStep > 1 && (
+                <Button
+                  type="button"
+                  variant="secondary"
+                  onClick={prevStep}
+                  className="flex-1"
+                >
+                  Back
+                </Button>
+              )}
+              {currentStep < TOTAL_STEPS ? (
+                <Button type="button" onClick={nextStep} className="flex-1">
+                  Next
+                </Button>
+              ) : (
+                <Button type="submit" className="flex-1">
+                  Submit
+                </Button>
+              )}
+            </div>
+          </form>
 
-          {/* Register */}
-          <p className="mt-4 text-center text-sm text-muted">
+          {/* Login Link */}
+          <p className="mt-6 text-center text-sm text-muted">
             Already user?{" "}
             <Link
               href="/home/login"
@@ -88,7 +164,7 @@ export default function Register() {
               Login
             </Link>
           </p>
-        </form>
+        </div>
       </div>
 
       {/* SUCCESS MODAL */}

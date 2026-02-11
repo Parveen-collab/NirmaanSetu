@@ -21,7 +21,7 @@ export const authConfig: Record<AuthType, AuthFieldConfig> = {
     type: 'tel',
     validation: 'mobile',
     successText: 'OTP has been sent to your mobile number.',
-    redirectTo: '/home',
+    redirectTo: '/home/register',
   },
   email: {
     title: 'Email Verification',
@@ -31,6 +31,6 @@ export const authConfig: Record<AuthType, AuthFieldConfig> = {
     type: 'email',
     validation: 'email',
     successText: 'OTP has been sent to your email address.',
-    redirectTo: '/dashboard', // example
+    redirectTo: '/home/register', // example
   },
 }
