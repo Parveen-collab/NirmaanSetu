@@ -46,6 +46,15 @@ const employees: Employee[] = [
     availability: "Available",
     photo: "/employees/emp3.jpg",
   },
+  {
+    id: 4,
+    name: "Suresh Singh",
+    category: "Carpenter",
+    specialization: "Modular Furniture",
+    experience: "4 Years",
+    availability: "Available",
+    photo: "/employees/emp3.jpg",
+  },
 ];
 
 export default function EmployeePage() {
@@ -55,7 +64,7 @@ export default function EmployeePage() {
   >(null);
 
   return (
-    <div className="min-h-screen bg-zinc-50 dark:bg-black px-4 py-6 sm:px-6 lg:px-10">
+    <div className="bg-zinc-50 dark:bg-black px-4 py-6 sm:px-6 lg:px-10">
 
       {/* Header */}
       <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">

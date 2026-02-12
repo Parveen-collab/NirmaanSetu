@@ -44,6 +44,14 @@ const projects: Project[] = [
     address: "Noida सेक्टर 62",
     contact: "+91 99887 77665",
   },
+  {
+    id: 4,
+    category: "Commercial Complex",
+    days: "150 Days",
+    wages: "₹1000/day",
+    address: "Noida सेक्टर 62",
+    contact: "+91 99887 77665",
+  },
 ];
 
 export default function ProjectPage() {
@@ -52,7 +60,7 @@ export default function ProjectPage() {
   >(null);
 
   return (
-    <div className="min-h-screen bg-zinc-50 dark:bg-black px-4 py-6 sm:px-6 lg:px-10">
+    <div className="bg-zinc-50 dark:bg-black px-4 py-6 sm:px-6 lg:px-10">
 
       {/* Header */}
       <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">

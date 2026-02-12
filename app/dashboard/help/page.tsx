@@ -32,7 +32,7 @@ const Help = () => {
   )
 
   return (
-    <div className="min-h-[calc(100vh-64px)] bg-zinc-50 dark:bg-black px-4 py-6">
+    <div className="bg-zinc-50 dark:bg-black px-4 py-6">
       <div className="mx-auto max-w-4xl">
 
         {/* Title */}

@@ -14,7 +14,7 @@ interface Props {
   setFormData: React.Dispatch<React.SetStateAction<AddressFormData>>
 }
 
-export default function AddressDetails({ formData, setFormData }: Props) {
+export default function AddressDetailForm({ formData, setFormData }: Props) {
 
   const handleChange = (field: keyof AddressFormData, value: string) => {
     setFormData(prev => ({

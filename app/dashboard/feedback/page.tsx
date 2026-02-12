@@ -46,7 +46,7 @@ const Feedback = () => {
   }
 
   return (
-    <div className="min-h-[calc(100vh-64px)] flex items-center justify-center bg-zinc-50 dark:bg-black px-4">
+    <div className="flex items-center justify-center bg-zinc-50 dark:bg-black px-4">
       <div className="w-full max-w-lg rounded-xl border bg-white dark:bg-zinc-900 p-6 shadow">
 
         {/* Title */}

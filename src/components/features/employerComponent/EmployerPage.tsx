@@ -41,6 +41,14 @@ const employers: Employer[] = [
     location: "Delhi, India",
     photo: "/employers/employer3.jpg",
   },
+  {
+    id: 4,
+    name: "Singh Builders",
+    category: "Commercial Projects",
+    company: "Mall & Office Spaces",
+    location: "Delhi, India",
+    photo: "/employers/employer3.jpg",
+  },
 ];
 
 export default function EmployerPage() {
@@ -48,7 +56,7 @@ export default function EmployerPage() {
     "apply" | "material" | "share" | null
   >(null);
   return (
-    <div className="min-h-screen bg-zinc-50 dark:bg-black px-4 py-6 sm:px-6 lg:px-10">
+    <div className="bg-zinc-50 dark:bg-black px-4 py-6 sm:px-6 lg:px-10">
 
       {/* Header */}
       <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">

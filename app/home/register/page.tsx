@@ -7,17 +7,18 @@ import { useProfile } from "@/src/context/ProfileContext";
 import Button from "@/src/components/common/Button";
 import Modal from "@/src/components/features/SuccessModal";
 
-import BasicDetails from "@/src/components/features/registerComponent/BasicDetails";
-import AddressDetails from "@/src/components/features/registerComponent/AddressDetails";
+import AddressDetailForm from "@/src/components/features/registerComponent/AddressDetailForm";
 import RoleSelector from "@/src/components/features/registerComponent/RoleSelector";
 import RoleSpecificDetails from "@/src/components/features/registerComponent/RoleSpecificDetails";
 import LivePhotoUpload from "@/src/components/features/registerComponent/LivePhotoUpload";
 import LeftInfo from "@/src/components/features/registerComponent/LeftInfo";
 import Link from "next/link";
+import BasicDetailForm from "@/src/components/features/registerComponent/BasicDetailForm";
 
 export default function Register() {
   const [currentStep, setCurrentStep] = useState(1);
   const TOTAL_STEPS = 5;
+
   const [showSuccess, setShowSuccess] = useState(false);
   const [role, setRole] = useState<"employee" | "employer" | "shop" | "">("");
   const { setProfile } = useProfile();
@@ -44,6 +45,10 @@ export default function Register() {
     photo: null,
   });
 
+  /* ============================= */
+  /* Step Navigation Logic (Fixed) */
+  /* ============================= */
+
   const nextStep = () => {
     if (currentStep < TOTAL_STEPS) {
       setCurrentStep((prev) => prev + 1);
@@ -56,40 +61,53 @@ export default function Register() {
     }
   };
 
+  /* ============================= */
+  /* Submit */
+  /* ============================= */
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    // 🛑 Prevent submit unless on last step
+    if (currentStep !== TOTAL_STEPS) return;
 
     const finalData = {
       ...formData,
       role,
     };
 
-    setProfile(finalData); // ✅ Save to context
+    setProfile(finalData);
     setShowSuccess(true);
   };
 
-  const renderStep = () => {
-    switch (currentStep) {
-      case 1:
-        return <BasicDetails formData={formData} setFormData={setFormData} />;
-      case 2:
-        return <AddressDetails formData={formData} setFormData={setFormData} />;
-      case 3:
-        return <RoleSelector role={role} setRole={setRole} />;
-      case 4:
-        return (
-          <RoleSpecificDetails
-            role={role}
-            formData={formData}
-            setFormData={setFormData}
-          />
-        );
-      case 5:
-        return <LivePhotoUpload formData={formData} setFormData={setFormData} />;
-      default:
-        return <BasicDetails formData={formData} setFormData={setFormData} />;
-    }
-  };
+
+  /* ============================= */
+  /* Steps Array (Cleaner Version) */
+  /* ============================= */
+
+  const steps = [
+    <BasicDetailForm
+      key="basic"
+      formData={formData}
+      setFormData={setFormData}
+    />,
+    <AddressDetailForm
+      key="address"
+      formData={formData}
+      setFormData={setFormData}
+    />,
+    <RoleSelector key="role" role={role} setRole={setRole} />,
+    <RoleSpecificDetails
+      key="roleDetails"
+      role={role}
+      formData={formData}
+      setFormData={setFormData}
+    />,
+    <LivePhotoUpload
+      key="photo"
+      formData={formData}
+      setFormData={setFormData}
+    />,
+  ];
 
   const stepTitles = [
     "Identity",
@@ -115,21 +133,29 @@ export default function Register() {
                 {stepTitles[currentStep - 1]}
               </span>
             </div>
+
             <div className="h-2 w-full bg-zinc-100 dark:bg-zinc-800 rounded-full overflow-hidden">
               <div
-                className="h-full bg-primary transition-all duration-300 ease-in-out"
-                style={{ width: `${(currentStep / TOTAL_STEPS) * 100}%` }}
+                className="h-full bg-[rgb(var(--color-primary)/1)] transition-all duration-300 ease-in-out"
+                style={{
+                  width: `${(currentStep / TOTAL_STEPS) * 100}%`,
+                }}
               ></div>
             </div>
           </div>
 
-          <h2 className="text-2xl font-bold text-primary mb-2">Create Account</h2>
+          <h2 className="text-2xl font-bold text-primary mb-2">
+            Create Account
+          </h2>
+
           <p className="text-sm text-muted mb-6">
             Register to get started with NirmaanSetu
           </p>
 
           <form onSubmit={handleSubmit}>
-            <div className="min-h-[300px]">{renderStep()}</div>
+            <div>
+              {steps[currentStep - 1]}
+            </div>
 
             <div className="mt-8 flex gap-4">
               {currentStep > 1 && (
@@ -142,8 +168,13 @@ export default function Register() {
                   Back
                 </Button>
               )}
+
               {currentStep < TOTAL_STEPS ? (
-                <Button type="button" onClick={nextStep} className="flex-1">
+                <Button
+                  type="button"
+                  onClick={nextStep}
+                  className="flex-1"
+                >
                   Next
                 </Button>
               ) : (

@@ -28,7 +28,7 @@ const DashBoardHeader = () => {
       const [showUserMenu, setShowUserMenu] = useState(false)
 
   return (
-    <div className="min-h-screen flex flex-col bg-zinc-50 dark:bg-black">
+    <div>
         {/* ================= HEADER ================= */}
       <header className="sticky top-0 z-50 bg-white/80 dark:bg-zinc-900/80 backdrop-blur border-b">
         <div className="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">

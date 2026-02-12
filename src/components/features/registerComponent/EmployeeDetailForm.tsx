@@ -1,6 +1,6 @@
 import Input from "@/src/components/common/Input";
 
-export default function EmployeeDetails({ formData, setFormData }: any) {
+export default function EmployeeDetailForm({ formData, setFormData }: any) {
   return (
     <div className="mt-6 space-y-4">
       <Input

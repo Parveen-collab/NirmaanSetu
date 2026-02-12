@@ -7,7 +7,7 @@ export const metadata = {
 
 export default function LoginPage() {
   return (
-    <section className="min-h-screen bg-background">
+    <section className="bg-background">
       <LogIn />
     </section>
   );

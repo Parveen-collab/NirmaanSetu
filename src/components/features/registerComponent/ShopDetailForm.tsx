@@ -1,6 +1,6 @@
 import Input from "@/src/components/common/Input";
 
-export default function ShopDetails({ formData, setFormData }: any) {
+export default function ShopDetailForm({ formData, setFormData }: any) {
   return (
     <div className="mt-6 space-y-4">
       <h3 className="text-sm font-semibold">Shop Details</h3>

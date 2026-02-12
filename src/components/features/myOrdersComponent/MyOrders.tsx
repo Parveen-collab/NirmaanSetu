@@ -22,6 +22,24 @@ const orders = [
     status: 'Cancelled',
     amount: '₹499',
   },
+  {
+    id: 'ORD-1004',
+    date: '2026-01-29',
+    status: 'Pending',
+    amount: '₹799',
+  },
+  {
+    id: 'ORD-1005',
+    date: '2026-01-28',
+    status: 'Delivered',
+    amount: '₹1,299',
+  },
+  {
+    id: 'ORD-1006',
+    date: '2026-01-30',
+    status: 'Cancelled',
+    amount: '₹499',
+  },
 ]
 
 const statusStyles: Record<string, string> = {
@@ -32,7 +50,7 @@ const statusStyles: Record<string, string> = {
 
 const MyOrders = () => {
   return (
-    <div className="min-h-screen bg-zinc-50 dark:bg-black px-4 py-10">
+    <div className="bg-zinc-50 dark:bg-black px-4 py-10">
       <div className="max-w-5xl mx-auto space-y-6">
         {/* Header */}
         <div className="flex items-center justify-between">

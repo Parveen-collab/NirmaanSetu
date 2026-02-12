@@ -10,7 +10,7 @@ export default function DashboardPage() {
   const [activeTab, setActiveTab] = useState('employees')
 
   return (
-    <div className="min-h-screen bg-zinc-50 dark:bg-black p-6">
+    <div className="bg-zinc-50 dark:bg-black p-6">
       
       {/* Page Title */}
       <h1 className="text-2xl font-bold mb-6">Dashboard</h1>

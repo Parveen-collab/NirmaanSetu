@@ -1,6 +1,6 @@
 import Input from "@/src/components/common/Input";
 
-export default function BasicDetails({ formData, setFormData }: any) {
+export default function BasicDetailForm({ formData, setFormData }: any) {
   return (
     <div className="space-y-4">
       <Input
