@@ -1,12 +1,12 @@
 'use client'
 
 import { useState } from 'react'
-import { Bell, User, LogOut, Lock, MessageCircle, HelpCircle, UserCircle, Wallet,
-  ShoppingBag } from 'lucide-react'
 import Button from '@/src/components/common/Button'
 import Link from 'next/link'
 import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
+import UserMenu from '@/src/components/features/dashboardComponent/UserMenu'
+import { Bell, User } from 'lucide-react';
 
 const TABS = [
   { label: "Employees", href: "/dashboard/employee" },
@@ -23,13 +23,13 @@ const mockEmployees = Array.from({ length: 12 }, (_, i) => ({
 }))
 
 const DashBoardHeader = () => {
-    const pathname = usePathname();
-      const router = useRouter();
-      const [showUserMenu, setShowUserMenu] = useState(false)
+  const pathname = usePathname();
+  const router = useRouter();
+  const [showUserMenu, setShowUserMenu] = useState(false)
 
   return (
     <div>
-        {/* ================= HEADER ================= */}
+      {/* ================= HEADER ================= */}
       <header className="sticky top-0 z-50 bg-white/80 dark:bg-zinc-900/80 backdrop-blur border-b">
         <div className="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
 
@@ -66,33 +66,21 @@ const DashBoardHeader = () => {
               <Bell className="h-5 w-5" />
             </Button>
 
-            {/* User Button + Menu */}
+            {/* User Button + Dropdown */}
             <div className="relative">
-              <Button onClick={() => setShowUserMenu((prev) => !prev)}>
+
+              <Button
+                onClick={() => setShowUserMenu((prev) => !prev)}
+              // className="p-2 rounded-full hover:bg-zinc-100 dark:hover:bg-zinc-800 transition"
+              >
                 <User className="h-5 w-5" />
               </Button>
 
               {showUserMenu && (
-                <div className="absolute right-0 mt-2 w-56 rounded-xl border bg-white dark:bg-zinc-900 shadow-lg z-50 overflow-hidden animate-fade">
-
-                  <MenuItem href="/dashboard/profile" icon={<UserCircle size={18} />} label="Profile" />
-                  <MenuItem href="/dashboard/help" icon={<HelpCircle size={18} />} label="Help" />
-                  <MenuItem href="/dashboard/feedback" icon={<MessageCircle size={18} />} label="Feedback" />
-                  <MenuItem href="/dashboard/change-password" icon={<Lock size={18} />} label="Change Password" />
-                  <MenuItem href="/dashboard/wallet" icon={<Wallet size={18} />} label="Wallet" />
-                  <MenuItem href="/dashboard/my-orders" icon={<ShoppingBag size={18} />} label="My Orders" />
-
-                  <div className="border-t my-1" />
-
-                  <button
-                    className="flex w-full items-center gap-3 px-4 py-2 text-sm text-red-600 hover:bg-red-50 dark:hover:bg-red-950 transition"
-                    onClick={() => router.push("/home/login")}
-                  >
-                    <LogOut size={18} />
-                    Logout
-                  </button>
-
-                </div>
+                <UserMenu
+                  showUserMenu={showUserMenu}
+                  setShowUserMenu={setShowUserMenu}
+                />
               )}
             </div>
           </div>
@@ -103,23 +91,3 @@ const DashBoardHeader = () => {
 }
 
 export default DashBoardHeader
-/* ================= MENU ITEM COMPONENT ================= */
-function MenuItem({
-  href,
-  icon,
-  label,
-}: {
-  href: string
-  icon: React.ReactNode
-  label: string
-}) {
-  return (
-    <Link
-      href={href}
-      className="flex items-center gap-3 px-4 py-2 text-sm hover:bg-zinc-100 dark:hover:bg-zinc-800 transition"
-    >
-      {icon}
-      {label}
-    </Link>
-  )
-}

@@ -11,17 +11,6 @@ export default function DashboardPage() {
 
   return (
     <div className="bg-zinc-50 dark:bg-black p-6">
-      
-      {/* Page Title */}
-      <h1 className="text-2xl font-bold mb-6">Dashboard</h1>
-
-      {/* Tabs */}
-      <div className="flex gap-3 mb-6">
-        <Tab label="Employees" active={activeTab === 'employees'} onClick={() => setActiveTab('employees')} />
-        <Tab label="Employers" active={activeTab === 'employers'} onClick={() => setActiveTab('employers')} />
-        <Tab label="Projects" active={activeTab === 'projects'} onClick={() => setActiveTab('projects')} />
-        <Tab label="Shop" active={activeTab === 'shop'} onClick={() => setActiveTab('shop')} />
-      </div>
 
       {/* Content */}
       <div className="bg-white dark:bg-zinc-900 rounded-lg p-4">
@@ -33,17 +22,3 @@ export default function DashboardPage() {
     </div>
   )
 }
-
-/* Reusable Tab Button */
-const Tab = ({ label, active, onClick }: any) => (
-  <button
-    onClick={onClick}
-    className={`px-4 py-2 rounded-md text-sm font-medium
-      ${active 
-        ? 'bg-black text-white dark:bg-white dark:text-black'
-        : 'bg-zinc-200 dark:bg-zinc-800'}
-    `}
-  >
-    {label}
-  </button>
-)

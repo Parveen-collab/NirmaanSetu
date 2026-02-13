@@ -1,24 +1,12 @@
-"use client";
-import { useProfile } from "@/src/context/ProfileContext";
+import Profile from '@/src/components/features/profileComponent/Profile'
+import React from 'react'
 
-const ProfilePage = () => {
-  const { profile } = useProfile();
-
-  if (!profile) {
-    return (
-      <div className="p-10 text-center">
-        No profile found. Please register first.
-      </div>
-    );
-  }
-
+const page = () => {
   return (
-    <div className="p-10">
-      <h1>{profile.fullName}</h1>
-      <p>{profile.mobile}</p>
-      <p>{profile.role}</p>
+    <div>
+      <Profile/>
     </div>
-  );
-};
+  )
+}
 
-export default ProfilePage;
+export default page

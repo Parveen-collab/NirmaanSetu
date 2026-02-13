@@ -81,11 +81,6 @@ const Profile = () => {
                             <Pencil className="w-4 h-4" />
                             Edit
                         </button>
-                        {/* <button onClick={() => router.push("/register")}>Edit</button> */}
-                        {/* <button className="flex items-center gap-2 rounded-lg border px-4 py-2 text-sm hover:bg-muted transition">
-              <Share2 className="w-4 h-4" />
-              Share
-            </button> */}
                         <button
                             onClick={() => {
                                 navigator.share?.({
