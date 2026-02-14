@@ -1,66 +1,83 @@
-# NirmaanSetu
+# 🏗️ NirmaanSetu
 
-NirmaanSetu is a comprehensive platform built with **Next.js 16**, designed to bridge the gap in the construction industry by connecting employers and employees.
+[![Next.js](https://img.shields.io/badge/Next.js-15.1.1-black?style=flat-square&logo=next.js)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-19.0.0-blue?style=flat-square&logo=react)](https://react.dev/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.0-38B2AC?style=flat-square&logo=tailwind-css)](https://tailwindcss.com/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-3178C6?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
+
+**NirmaanSetu** is a specialized platform designed to bridge the gap in the construction industry. It serves as a comprehensive hub connecting employers and employees, streamlining project management, and providing a marketplace for industry-specific needs.
+
+---
 
 ## 🚀 Key Features
 
-- **Dual-Role Platform**: Dedicated modules and dashboards for both **Employers** and **Employees**.
-- **Project Management**: Centralized hub for tracking and managing construction projects.
-- **Marketplace (Shop)**: Integrated shopping module for industry-related needs.
-- **Authentication**: Secure login and registration flows for all user types.
-- **Public Content**:
-  - **Blogs & Media**: Industry updates and company news.
-  - **FAQ & About Us**: Detailed information and support resources.
-  - **Contact Us**: Direct communication channel with the NirmaanSetu team.
+### 👥 Dual-Role Platform
+- **Employer Dashboard**: Post work, manage projects, and find qualified labor.
+- **Employee Dashboard**: Find jobs, manage profiles, and track earnings.
 
-## 🚀 Competitors
+### 💼 Project Management
+- **Centralized Tracking**: Monitor project progress and milestones.
+- **Efficient Matching**: Connecting the right skills with the right projects.
 
-**1.Labour Flex**
-**2.Y-Junction**
-**3.eFORCE (Captech Technologies)**
-**4.Digital Labour Chowk**
-**5.Infryo**
-**6.RenoCrew**
+### 🛒 Marketplace (Shop)
+- **Industry Supplies**: Integrated shopping module for construction materials and tools.
+- **Order Tracking**: Manage and track all purchases directly within the platform.
+
+### 🔐 Secure Authentication
+- Robust login and registration flows for all user types.
+- Secure password reset and profile management.
+
+### 📄 Information & Support
+- **Blogs & Media**: Stay updated with industry news and company announcements.
+- **Help Center**: Comprehensive FAQ and support resources.
+- **Contact Channels**: Direct communication with the support team.
+
+---
 
 ## 🛠️ Tech Stack
 
-### Core Framework & Language
-- **Next.js 16.1.1**: Utilizing the App Router for optimized routing and server-side rendering.
-- **React 19.2.3**: Latest features for building interactive user interfaces.
-- **TypeScript 5**: Strong typing for better maintainability and developer experience.
+- **Framework**: [Next.js 15.1.1](https://nextjs.org/) (App Router)
+- **Library**: [React 19.0.0](https://react.dev/)
+- **Styling**: [Tailwind CSS 4](https://tailwindcss.com/)
+- **Icons**: [Lucide React](https://lucide.dev/) & [React Icons](https://react-icons.github.io/react-icons/)
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **Linting**: [ESLint](https://eslint.org/)
 
-### Frontend & Styling
-- **Tailwind CSS 4**: Modern, utility-first CSS framework for rapid and responsive UI development.
-- **Lucide React**: Scalable and clean vector icons.
-- **PostCSS**: CSS transformation tool integrated with Tailwind.
-
-### Tooling & Quality
-- **ESLint 9**: Modern linting configuration for code quality.
-- **TypeScript**: Ensuring type safety across the codebase.
+---
 
 ## 📁 Project Structure
 
 ```text
 nirmaansetu/
-├── app/                # Next.js App Router (Pages and Layouts)
-│   ├── dashboard/      # General user dashboard
-│   ├── employee/       # Employee-specific modules
-│   ├── employer/       # Employer-specific modules
-│   ├── home/           # Public pages (Landing, Login, Register, etc.)
-│   ├── project/        # Project management views
-│   └── shop/           # Marketplace/Shop module
+├── app/                  # Next.js App Router
+│   ├── dashboard/        # Main user dashboards (Employer/Employee)
+│   ├── home/             # Public landing pages & Auth flows
+│   ├── layout.tsx        # Root layout
+│   └── page.tsx          # Entry point
 ├── src/
-│   └── components/     # Reusable React components
-│       ├── layout/     # Header, Footer, and navigation
-│       ├── ui/         # Base UI components (Button, Input, Modals)
-│       └── logic/      # Business logic specific components
-├── public/             # Static assets (logos, images)
-└── config files/       # next.config.ts, tsconfig.json, etc.
+│   ├── components/       # Reusable React components
+│   │   ├── common/       # Atomic UI components (Button, Input)
+│   │   ├── features/     # Feature-specific components
+│   │   └── layout/       # Global components (Header, Footer)
+│   ├── config/           # Application configuration
+│   ├── context/          # React Context providers
+│   ├── hooks/            # Custom React hooks
+│   ├── lib/              # External library integrations
+│   ├── types/            # TypeScript interfaces & types
+│   └── utils/            # Helper functions
+├── public/               # Static assets (images, fonts, etc.)
+└── tailwind.config.ts    # Tailwind CSS configuration
 ```
 
-## 🚀 Getting Started
+---
 
-Follow these steps to set up the project locally:
+## 🏁 Getting Started
+
+### Prerequisites
+- Node.js (Latest LTS recommended)
+- npm or yarn
+
+### Installation
 
 1. **Clone the repository**:
    ```bash
@@ -74,48 +91,41 @@ Follow these steps to set up the project locally:
    ```
 
 3. **Set up Environment Variables**:
-   Create a `.env.local` file in the root directory and add the necessary environment variables (see `.env.example` if available).
+   Create a `.env.local` file in the root and add necessary configurations:
+   ```env
+   NEXT_PUBLIC_API_URL=your_api_url
+   ```
 
-4. **Run the development server**:
+4. **Start the development server**:
    ```bash
    npm run dev
    ```
-   Open [http://localhost:3000](http://localhost:3000) in your browser to see the results.
+   Open [http://localhost:3000](http://localhost:3000) to view the application.
 
-## 🔐 Environment Variables
+---
 
-The following environment variables may be required (depending on implemented features):
-- `NEXT_PUBLIC_API_URL`: Base URL for the backend API.
-- `DATABASE_URL`: Connection string for the database (Prisma).
-- `NEXTAUTH_SECRET`: Secret used for authentication encryption.
+## 🤝 Contributing
 
-## 🚢 Deployment
+We welcome contributions! Please follow these steps:
 
-The easiest way to deploy this Next.js app is via [Vercel](https://vercel.com/new).
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-1. Push your code to a GitHub/GitLab/Bitbucket repository.
-2. Import the project into Vercel.
-3. Configure your environment variables in the Vercel dashboard.
-4. Deploy!
-
-## 🤝 Contribution
-
-Contributions are welcome! Please follow these steps:
-1. Fork the project.
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`).
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`).
-4. Push to the branch (`git push origin feature/AmazingFeature`).
-5. Open a Pull Request.
+---
 
 ## 📄 License
 
-Distributed under the MIT License. See `LICENSE` for more information.
+Distributed under the MIT License.
 
-## 🏗️ Future Implementation (Planned Stack)
-The project aims to integrate the following technologies as it scales:
-- **State Management**: Redux Toolkit
-- **Database & ORM**: Prisma
-- **Authentication**: NextAuth.js
-- **Form Handling**: React Hook Form & Zod
-- **UI Components**: Material UI (MUI) & Radix UI
-- **Visualizations**: ApexCharts & Recharts
+---
+
+## 🏗️ Future Roadmap
+
+- [ ] Redux Toolkit for advanced state management.
+- [ ] Prisma ORM integration for database management.
+- [ ] NextAuth.js for enhanced security.
+- [ ] Advanced data visualization with ApexCharts.
+- [ ] Mobile application integration.
