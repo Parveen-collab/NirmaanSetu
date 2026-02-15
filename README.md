@@ -9,6 +9,37 @@
 
 ---
 
+## API List
+1. mobile otp verification api (public)
+2. login api
+3. registration api
+4. change/forgot password api (click on chnage/forgot/reset=>resetpassword screen=>mobile/email otp verification=>type 5. 5. password=>retype password=>done)
+5. create work api
+6. send enquiry api
+7. send feedback api
+8. get all employees
+9. get employee by id
+10. get all employers
+11. get employer by id
+12. get all shops
+13. get shop by id
+14. get all projects
+15. get project by id
+16. get profile
+17. edit profile
+18. get all notifications
+19. get notification by id
+20. get all summary of payment from the day of registration
+21. get all transactions
+22. payment api
+23. get all orders
+24. get order by id
+25. Hire api
+26. apply work api
+27. add material api
+28. apply for material api
+
+
 ## 🚀 Key Features
 
 ### 👥 Dual-Role Platform

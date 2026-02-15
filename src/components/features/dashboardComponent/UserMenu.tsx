@@ -75,8 +75,8 @@ export default function UserMenu({
                 <MenuItem href="/dashboard/profile" icon={<UserCircle size={18} />} label="Profile" onClick={handleMenuClick} />
                 <MenuItem href="/dashboard/help" icon={<HelpCircle size={18} />} label="Help" onClick={handleMenuClick}/>
                 <MenuItem href="/dashboard/feedback" icon={<MessageCircle size={18} />} label="Feedback" onClick={handleMenuClick}/>
-                <MenuItem href="/dashboard/change-password" icon={<Lock size={18} />} label="Change Password" onClick={handleMenuClick}/>
-                <MenuItem href="/dashboard/wallet" icon={<Wallet size={18} />} label="Wallet" onClick={handleMenuClick}/>
+                <MenuItem href="/home/reset-password" icon={<Lock size={18} />} label="reset Password" onClick={handleMenuClick}/>
+                <MenuItem href="/wallet" icon={<Wallet size={18} />} label="Wallet" onClick={handleMenuClick}/>
                 <MenuItem href="/dashboard/my-orders" icon={<ShoppingBag size={18} />} label="My Orders" onClick={handleMenuClick}/>
 
                 <div className="border-t border-zinc-200 dark:border-zinc-800 my-1" />

@@ -116,6 +116,11 @@ export default function ShopPage() {
               <Button href="/dashboard/shop/shop-details">
                 <Info size={16} />
               </Button>
+
+              <Button href="/dashboard/shop/add-materials">
+                <Info size={16} />
+                Add Materials
+              </Button>
             </div>
           </div>
         ))}
