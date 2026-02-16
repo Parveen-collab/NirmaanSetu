@@ -1,5 +1,5 @@
-import Header from '@/src/components/layout/Header'
-import Footer from '@/src/components/layout/Footer'
+import HomeHeader from '@/src/components/features/home/HomeHeader'
+import HomeFooter from '@/src/components/features/home/HomeFooter'
 
 export default function HomeLayout({
   children,
@@ -8,13 +8,13 @@ export default function HomeLayout({
 }) {
   return (
     <div className="flex flex-col bg-zinc-50 font-sans dark:bg-black">
-      <Header />
+      <HomeHeader />
 
       <main className="flex-1">
         {children}
       </main>
 
-      <Footer />
+      <HomeFooter />
     </div>
   )
 }

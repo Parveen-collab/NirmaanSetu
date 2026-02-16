@@ -1,8 +1,8 @@
 //Blogs page
 import Button from '@/src/components/common/Button';
-import BlogCards from '@/src/components/features/blogComponent/BlogCards';
-import SearchFilters from '@/src/components/features/blogComponent/SearchFilters';
-import Header from '@/src/components/features/blogComponent/Header';
+import BlogCards from '@/src/components/features/blog/BlogCards';
+import SearchFilters from '@/src/components/features/blog/SearchFilters';
+import Header from '@/src/components/features/blog/Header';
 
 export const metadata = {
   title: "Blogs & Articles | NirmaanSetu",

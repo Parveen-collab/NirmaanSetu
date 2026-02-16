@@ -1,5 +1,5 @@
 import React from 'react'
-import TermsConditions from '@/src/components/features/termsConditionsComponent/TermsConditions'
+import TermsConditions from '@/src/components/features/term-condition/TermsConditions'
 
 const Page = () => {
   return (

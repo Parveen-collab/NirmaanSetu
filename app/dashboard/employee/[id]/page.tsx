@@ -1,4 +1,4 @@
-import EmployeeDetails from '@/src/components/features/employeeComponent/EmployeeDetails'
+import EmployeeDetails from '@/src/components/features/employee/EmployeeDetails'
 
 interface PageProps {
   params: {

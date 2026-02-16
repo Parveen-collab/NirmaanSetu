@@ -1,5 +1,5 @@
-import WalletPage from '@/src/components/features/walletComponent/Wallet'
-import Wallet from '@/src/components/features/walletComponent/Wallet'
+import WalletPage from '@/src/components/features/wallet/Wallet'
+import Wallet from '@/src/components/features/wallet/Wallet'
 
 const page = () => {
   return (

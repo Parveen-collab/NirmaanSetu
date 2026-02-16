@@ -1,5 +1,5 @@
 import React from 'react'
-import PostWork from '@/src/components/features/employerComponent/PostWork'
+import PostWork from '@/src/components/features/employer/PostWork'
 
 const page = () => {
   return (

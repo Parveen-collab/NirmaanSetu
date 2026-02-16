@@ -1,3 +1,36 @@
+Based on my analysis of the NirmaanSetu project structure, here are my suggestions to improve organization, maintainability, and adherence to Next.js best practices:
+
+1. Unified Source Directory
+Move the app/ directory into src/.
+
+Reason: You already have a src/ directory for components, hooks, and types. Moving app/ to src/app/ is the recommended Next.js pattern as it keeps all source code in one place and keeps the project root clean.
+
+
+4. Remove Dead Code/Files
+Several files in src/types/ are empty (e.g., index.ts, shop.ts, user.ts).
+
+Suggestion: Either implement the types or remove the files to avoid confusion during development.
+
+5. Asset Management
+You have an empty src/image/ folder and a populated public/ folder.
+
+Suggestion: If src/image/ is intended for React-wrapped SVG icons, rename it to src/components/icons/. For static assets (JPG, PNG, SVG), strictly use the public/ directory.
+6. Logic Grouping
+In src/hooks/, you have a logic/ subfolder.
+
+Suggestion: Unless you have dozens of hooks, it's often better to keep them flat in src/hooks/ for easier discovery.
+7. Global Providers
+Check app/layout.tsx and ensure that common logic (like ProfileContext.tsx) is wrapped at the highest necessary level to avoid prop drilling or redundant declarations in nested layouts (app/home/layout.tsx, etc.).
+
+8. Routing Strategy
+The root route app/page.tsx currently renders AuthPage, while the landing page is at /home.
+
+Suggestion: If this is a public-facing site, the landing page should ideally be at the root (/) and auth pages at /login or /register, unless the app is strictly behind an authentication wall by design.
+
+
+
+
+
 # 🏗️ NirmaanSetu
 
 [![Next.js](https://img.shields.io/badge/Next.js-15.1.1-black?style=flat-square&logo=next.js)](https://nextjs.org/)

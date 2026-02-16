@@ -1,5 +1,5 @@
 import React from 'react'
-import MyOrders from '@/src/components/features/myOrdersComponent/MyOrders'
+import MyOrders from '@/src/components/features/my-orders/MyOrders'
 
 const page = () => {
   return (

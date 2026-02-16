@@ -5,7 +5,7 @@ import Button from '@/src/components/common/Button'
 import Link from 'next/link'
 import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
-import UserMenu from '@/src/components/features/dashboardComponent/UserMenu'
+import UserMenu from '@/src/components/features/dashboard/UserMenu'
 import { Bell, User } from 'lucide-react';
 
 const TABS = [

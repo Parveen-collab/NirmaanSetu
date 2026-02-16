@@ -16,7 +16,7 @@ const NAV_LINKS = [
   { label: 'FAQs', href: '/home/faq' },
 ]
 
-const Header = () => {
+const HomeHeader = () => {
   const pathname = usePathname()
   const [menuOpen, setMenuOpen] = useState(false)
 
@@ -123,4 +123,4 @@ const Header = () => {
   )
 }
 
-export default Header
+export default HomeHeader

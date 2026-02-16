@@ -7,13 +7,13 @@ import { useProfile } from "@/src/context/ProfileContext";
 import Button from "@/src/components/common/Button";
 import Modal from "@/src/components/features/SuccessModal";
 
-import AddressDetailForm from "@/src/components/features/registerComponent/AddressDetailForm";
-import RoleSelector from "@/src/components/features/registerComponent/RoleSelector";
-import RoleSpecificDetails from "@/src/components/features/registerComponent/RoleSpecificDetails";
-import LivePhotoUpload from "@/src/components/features/registerComponent/LivePhotoUpload";
-import LeftInfo from "@/src/components/features/registerComponent/LeftInfo";
+import AddressDetailForm from "@/src/components/features/register/AddressDetailForm";
+import RoleSelector from "@/src/components/features/register/RoleSelector";
+import RoleSpecificDetails from "@/src/components/features/register/RoleSpecificDetails";
+import LivePhotoUpload from "@/src/components/features/register/LivePhotoUpload";
+import LeftInfo from "@/src/components/features/register/LeftInfo";
 import Link from "next/link";
-import BasicDetailForm from "@/src/components/features/registerComponent/BasicDetailForm";
+import BasicDetailForm from "@/src/components/features/register/BasicDetailForm";
 
 export default function Register() {
   const [currentStep, setCurrentStep] = useState(1);

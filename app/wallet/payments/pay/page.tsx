@@ -1,4 +1,4 @@
-import Pay from '@/src/components/features/walletComponent/Pay'
+import Pay from '@/src/components/features/wallet/Pay'
 import React from 'react'
 
 const page = () => {

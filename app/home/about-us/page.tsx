@@ -1,9 +1,9 @@
 //About Us Page
 import Hero from '@/src/components/features/Hero';
-import WhoWeAre from '@/src/components/features/aboutUsComponent/WhoWeAre';
-import MissioVissionValues from '@/src/components/features/aboutUsComponent/MissionVissionValues';
-import WhyNirmaanSetu from '@/src/components/features/aboutUsComponent/WhyNirmaanSetu';
-import OurTeam from '@/src/components/features/aboutUsComponent/OurTeam';
+import WhoWeAre from '@/src/components/features/about-us/WhoWeAre';
+import MissioVissionValues from '@/src/components/features/about-us/MissionVissionValues';
+import WhyNirmaanSetu from '@/src/components/features/about-us/WhyNirmaanSetu';
+import OurTeam from '@/src/components/features/about-us/OurTeam';
 import CallToAction from '@/src/components/features/CallToAction';
 
 export const metadata = {

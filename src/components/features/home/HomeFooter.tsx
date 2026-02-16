@@ -2,10 +2,10 @@
 
 import Link from 'next/link'
 import { Phone, Mail, MapPin } from 'lucide-react'
-import CopyrightFooter from './CopyrightFooter'
+import CopyrightFooter from '../CopyrightFooter'
 import SocialMedia from '@/src/components/features/SocialMedia'
 
-const Footer = () => {
+const HomeFooter = () => {
   return (
     <footer className="relative text-white">
       {/* Background */}
@@ -130,4 +130,4 @@ const Footer = () => {
   )
 }
 
-export default Footer
+export default HomeFooter

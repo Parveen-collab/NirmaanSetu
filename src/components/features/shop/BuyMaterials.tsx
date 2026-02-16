@@ -90,7 +90,7 @@ export default function BuyMaterials() {
 
               {/* Actions */}
               <div className="flex gap-3">
-                <Button href='/dashboard/shop/buy-materials/payment'>
+                <Button href='/wallet/payments/pay'>
                   Buy Now
                 </Button>
 

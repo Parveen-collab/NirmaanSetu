@@ -12,7 +12,7 @@ import {
   UserPlus,
   Share2,
 } from 'lucide-react'
-import HireEmployeeModal from '@/src/components/features/employeeComponent/HireEmployeeModal'
+import HireEmployeeModal from '@/src/components/features/employee/HireEmployeeModal'
 import { useState } from 'react'
 
 interface EmployeeDetailsProps {

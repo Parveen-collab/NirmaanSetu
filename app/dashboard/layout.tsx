@@ -3,8 +3,8 @@
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 
-import CopyrightFooter from '@/src/components/layout/CopyrightFooter'
-import DashBoardHeader from '@/src/components/features/dashboardComponent/DashBoardHeader'
+import CopyrightFooter from '@/src/components/features/CopyrightFooter'
+import DashBoardHeader from '@/src/components/features/dashboard/DashBoardHeader'
 
 export default function DashboardLayout({
   children,
