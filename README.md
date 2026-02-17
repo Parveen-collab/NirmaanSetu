@@ -1,10 +1,5 @@
 Based on my analysis of the NirmaanSetu project structure, here are my suggestions to improve organization, maintainability, and adherence to Next.js best practices:
 
-1. Unified Source Directory
-Move the app/ directory into src/.
-
-Reason: You already have a src/ directory for components, hooks, and types. Moving app/ to src/app/ is the recommended Next.js pattern as it keeps all source code in one place and keeps the project root clean.
-
 
 4. Remove Dead Code/Files
 Several files in src/types/ are empty (e.g., index.ts, shop.ts, user.ts).

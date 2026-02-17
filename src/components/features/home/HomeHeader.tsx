@@ -11,8 +11,8 @@ const NAV_LINKS = [
   { label: 'Home', href: '/home' },
   { label: 'Media & Coverages', href: '/home/media-coverage' },
   { label: 'Blogs', href: '/home/blogs' },
-  { label: 'About Us', href: '/home/aboutUs' },
-  { label: 'Contact Us', href: '/home/contactUs' },
+  { label: 'About Us', href: '/home/about-us' },
+  { label: 'Contact Us', href: '/home/contact-us' },
   { label: 'FAQs', href: '/home/faq' },
 ]
 
