@@ -23,7 +23,7 @@ const employers: Employer[] = [
     category: "Building Contractor",
     company: "Residential Projects",
     location: "Patna, India",
-    photo: "/employers/employer1.jpg",
+    photo: "/Image/employers/employer1.jpg",
   },
   {
     id: 2,
@@ -31,7 +31,7 @@ const employers: Employer[] = [
     category: "Infrastructure",
     company: "Highway Development",
     location: "Ranchi, India",
-    photo: "/employers/employer2.jpg",
+    photo: "/Image/employers/employer2.jpg",
   },
   {
     id: 3,
@@ -39,7 +39,7 @@ const employers: Employer[] = [
     category: "Commercial Projects",
     company: "Mall & Office Spaces",
     location: "Delhi, India",
-    photo: "/employers/employer3.jpg",
+    photo: "/Image/employers/employer3.jpg",
   },
   {
     id: 4,
@@ -47,7 +47,7 @@ const employers: Employer[] = [
     category: "Commercial Projects",
     company: "Mall & Office Spaces",
     location: "Delhi, India",
-    photo: "/employers/employer3.jpg",
+    photo: "/Image/employers/employer3.jpg",
   },
 ];
 

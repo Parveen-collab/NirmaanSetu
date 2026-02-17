@@ -21,28 +21,28 @@ const shops: Shop[] = [
     name: "Patna Hardware Store",
     category: "Construction Materials",
     materials: ["Cement", "Bricks", "Steel", "Sand", "Gravel"],
-    photo: "/shops/shop1.jpg",
+    photo: "/Image/shops/shop1.jpg",
   },
   {
     id: 2,
     name: "Verma Electricals",
     category: "Electrical Supplies",
     materials: ["Wires", "Switches", "Lights", "MCB", "Conduits"],
-    photo: "/shops/shop2.jpg",
+    photo: "/Image/shops/shop2.jpg",
   },
   {
     id: 3,
     name: "Singh Paints",
     category: "Paint & Finishing",
     materials: ["Primer", "Wall Paint", "Enamel", "Brushes", "Rollers"],
-    photo: "/shops/shop3.jpg",
+    photo: "/Image/shops/shop3.jpg",
   },
   {
     id: 4,
     name: "Singh Paints",
     category: "Paint & Finishing",
     materials: ["Primer", "Wall Paint", "Enamel", "Brushes", "Rollers"],
-    photo: "/shops/shop3.jpg",
+    photo: "/Image/shops/shop3.jpg",
   },
 ];
 
