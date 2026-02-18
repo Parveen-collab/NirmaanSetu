@@ -6,8 +6,11 @@ export default function ShopDetailForm({ formData, setFormData }: any) {
       <h3 className="text-sm font-semibold">Shop Details</h3>
 
       <Input
-      type="text"
-        placeholder="Shop Name"
+        label="Shop Name"
+        type="text"
+        variant="name"
+        // type="text"
+        //   placeholder="Shop Name"
         value={formData.shopName}
         onChange={(e) =>
           setFormData({ ...formData, shopName: e.target.value })
@@ -15,8 +18,11 @@ export default function ShopDetailForm({ formData, setFormData }: any) {
       />
 
       <Input
-      type="text"
-        placeholder="Shop Category"
+        label="Shop Category"
+        type="text"
+        variant="name"
+        // type="text"
+        //   placeholder="Shop Category"
         value={formData.shopCategory}
         onChange={(e) =>
           setFormData({ ...formData, shopCategory: e.target.value })
@@ -24,8 +30,11 @@ export default function ShopDetailForm({ formData, setFormData }: any) {
       />
 
       <Input
-      type="text"
-        placeholder="Shop Speciality"
+        label="Shop Speciality"
+        type="text"
+        variant="name"
+        // type="text"
+        //   placeholder="Shop Speciality"
         value={formData.shopSpeciality}
         onChange={(e) =>
           setFormData({ ...formData, shopSpeciality: e.target.value })
@@ -46,8 +55,11 @@ export default function ShopDetailForm({ formData, setFormData }: any) {
       </select>
 
       <Input
-      type="text"
-        placeholder="Shop Address"
+        label="Shop Address"
+        type="text"
+        variant="name"
+        // type="text"
+        //   placeholder="Shop Address"
         value={formData.shopAddress}
         onChange={(e) =>
           setFormData({ ...formData, shopAddress: e.target.value })

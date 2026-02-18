@@ -4,8 +4,11 @@ export default function EmployeeDetailForm({ formData, setFormData }: any) {
   return (
     <div className="mt-6 space-y-4">
       <Input
+        label="Service Category"
         type="text"
-        placeholder="Service Category"
+        variant="name"
+        // type="text"
+        // placeholder="Service Category"
         value={formData.serviceCategory}
         onChange={(e) =>
           setFormData({ ...formData, serviceCategory: e.target.value })
@@ -13,8 +16,11 @@ export default function EmployeeDetailForm({ formData, setFormData }: any) {
       />
 
       <Input
+        label="Service Specialty"
         type="text"
-        placeholder="Service Specialty"
+        variant="name"
+        // type="text"
+        // placeholder="Service Specialty"
         value={formData.serviceSpecialty}
         onChange={(e) =>
           setFormData({ ...formData, serviceSpecialty: e.target.value })
@@ -22,8 +28,11 @@ export default function EmployeeDetailForm({ formData, setFormData }: any) {
       />
 
       <Input
+        label="Experience (years)"
         type="number"
-        placeholder="Experience (years)"
+        // variant="name"
+        // type="number"
+        // placeholder="Experience (years)"
         value={formData.experience}
         onChange={(e) =>
           setFormData({ ...formData, experience: e.target.value })

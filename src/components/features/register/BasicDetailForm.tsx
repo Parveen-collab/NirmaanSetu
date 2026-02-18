@@ -4,22 +4,25 @@ export default function BasicDetailForm({ formData, setFormData }: any) {
   return (
     <div className="space-y-4">
       <Input
-        type="mobile"
-        placeholder="Mobile Number (OTP verified)"
+        label="Mobile Number"
+        type="number"
+        variant="phone"
         value={formData.mobile}
         onChange={(e) => setFormData({ ...formData, mobile: e.target.value })}
       />
 
       <Input
+        label="Full Name"
         type="text"
-        placeholder="Full Name"
+        variant="name"
         value={formData.fullName}
         onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
       />
 
       <Input
+        label="Aadhaar Number"
         type="number"
-        placeholder="Aadhaar Number"
+        variant="aadhaar"
         value={formData.aadhaar}
         onChange={(e) => setFormData({ ...formData, aadhaar: e.target.value })}
       />

@@ -79,6 +79,14 @@ export default function VerifyOtpModal({
         }}
       >
         <p className="text-center">OTP verified successfully 🎉</p>
+        <div className='flex item-center justify-center mt-5'>
+          <Button
+          variant='success'
+          href='/home/register'
+          >
+            ok
+          </Button>
+        </div>
       </SuccessModal>
     </>
   )
