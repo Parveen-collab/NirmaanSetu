@@ -15,6 +15,11 @@ interface SelectProps
   extends React.SelectHTMLAttributes<HTMLSelectElement> {
   label?: string
   options: Option[]
+
+  /* NEW */
+  required?: boolean
+  optionalText?: string
+
   error?: string
 }
 
@@ -31,6 +36,10 @@ const Select = forwardRef<
       className = '',
       onFocus,
       onBlur,
+
+      required = true,
+      optionalText = 'optional',
+
       ...props
     },
     ref
@@ -40,9 +49,32 @@ const Select = forwardRef<
     const [focused, setFocused] =
       useState(false)
 
+    const [touched, setTouched] =
+      useState(false)
+
+    const [internalError, setInternalError] =
+      useState('')
+
     const hasValue =
       value !== undefined &&
       value !== ''
+
+    /* =========================
+       Validation
+    ========================= */
+
+    const validate = (val: string) => {
+      if (required && !val) {
+        setInternalError('This field is required')
+        return false
+      }
+
+      setInternalError('')
+      return true
+    }
+
+    const finalError =
+      error || (touched ? internalError : '')
 
     return (
       <div className="flex flex-col gap-1 w-full">
@@ -55,12 +87,18 @@ const Select = forwardRef<
             ref={ref}
             id={id}
             value={value}
+            aria-invalid={!!finalError}
+            aria-describedby={
+              finalError ? `${id}-error` : undefined
+            }
             onFocus={(e) => {
               setFocused(true)
               onFocus?.(e)
             }}
             onBlur={(e) => {
               setFocused(false)
+              setTouched(true)
+              validate(e.target.value)
               onBlur?.(e)
             }}
             className={`
@@ -75,7 +113,7 @@ const Select = forwardRef<
               appearance-none
 
               ${
-                error
+                finalError
                   ? 'border-red-500 focus:ring-2 focus:ring-red-200'
                   : 'border-zinc-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-100 dark:border-zinc-700'
               }
@@ -115,22 +153,38 @@ const Select = forwardRef<
               `}
             >
               {label}
+
+              {/* Required */}
+              {required && (
+                <span className="text-red-500 ml-0.5">
+                  *
+                </span>
+              )}
+
+              {/* Optional */}
+              {!required && (
+                <span className="text-zinc-400 ml-1 text-[10px]">
+                  ({optionalText})
+                </span>
+              )}
             </label>
           )}
 
           {/* Arrow */}
 
-          <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
+          <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-sm">
             ▼
           </div>
-
         </div>
 
         {/* Error */}
 
-        {error && (
-          <span className="text-xs text-red-500">
-            {error}
+        {finalError && (
+          <span
+            id={`${id}-error`}
+            className="text-xs text-red-500"
+          >
+            {finalError}
           </span>
         )}
       </div>

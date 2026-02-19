@@ -41,6 +41,10 @@ interface InputProps
   errorMessage?: string
   customValidator?: (value: string) => boolean
   onValidityChange?: (isValid: boolean) => void
+  /* NEW */
+  required?: boolean
+  optionalText?: string
+
 }
 
 /* =========================
@@ -108,6 +112,9 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       onBlur,
       onChange,
       value,
+      required = true,
+      optionalText = 'optional',
+
       ...props
     },
     ref
@@ -139,21 +146,30 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
        Validation Function
     ========================= */
 
-    const validate = (
-      val: string,
-      files?: FileList | null
-    ) => {
+    const validate = (val: string, files?: FileList | null) => {
       let isValid = true
       let message = ''
 
-      /* Variant validation (priority) */
+      /* Required validation FIRST */
 
-      if (variant && variantRules[variant]) {
-        const rule = variantRules[variant]
+      if (required) {
+        if (validation === 'file') {
+          isValid = !!files && files.length > 0
+          message = 'This field is required'
+        } else {
+          isValid = val.trim().length > 0
+          message = 'This field is required'
+        }
 
-        isValid = rule.regex.test(val)
-        message = rule.message
+        if (!isValid) {
+          setError(message)
+          onValidityChange?.(false)
+          return false
+        }
       }
+
+      /* Continue existing validation */
+
 
       /* Fallback validation */
 
@@ -256,10 +272,9 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
               bg-white dark:bg-zinc-800
               text-zinc-900 dark:text-white
 
-              ${
-                error
-                  ? 'border-red-500 focus:ring-2 focus:ring-red-200'
-                  : 'border-zinc-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-100 dark:border-zinc-700'
+              ${error
+                ? 'border-red-500 focus:ring-2 focus:ring-red-200'
+                : 'border-zinc-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-100 dark:border-zinc-700'
               }
 
               ${className}
@@ -272,22 +287,33 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             <label
               htmlFor={id}
               className={`
-                absolute left-3 px-1
-                bg-white dark:bg-zinc-800
-                pointer-events-none
+      absolute left-3 px-1
+      bg-white dark:bg-zinc-800
+      pointer-events-none
+      transition-all duration-200 ease-in-out
 
-                transition-all duration-200 ease-in-out
-
-                ${
-                  focused || hasValue
-                    ? '-top-2 text-xs text-blue-600 dark:text-blue-400'
-                    : 'top-3 text-base text-zinc-500 dark:text-zinc-400'
+      ${focused || hasValue
+                  ? '-top-2 text-xs text-blue-600 dark:text-blue-400'
+                  : 'top-3 text-base text-zinc-500 dark:text-zinc-400'
                 }
-              `}
+    `}
             >
               {label}
+
+              {/* Required */}
+              {required && (
+                <span className="text-red-500 ml-0.5">*</span>
+              )}
+
+              {/* Optional */}
+              {!required && (
+                <span className="text-zinc-400 ml-1 text-[10px]">
+                  ({optionalText})
+                </span>
+              )}
             </label>
           )}
+
         </div>
 
         {/* Error */}
