@@ -6,6 +6,15 @@ import React, {
   forwardRef,
 } from 'react'
 
+export type ValidationType =
+  | 'text'
+  | 'number'
+  | 'email'
+  | 'mobile'
+  | 'password'
+  | 'file'
+  | 'none'
+
 interface Option {
   label: string
   value: string
@@ -21,6 +30,8 @@ interface SelectProps
   optionalText?: string
 
   error?: string
+  validation?: ValidationType   // ✅ ADD THIS
+
 }
 
 const Select = forwardRef<

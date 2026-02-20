@@ -1,7 +1,19 @@
+'use client'
+
 import Input from '@/src/components/common/Input'
 import Select from '@/src/components/common/Select'
+import { useState } from 'react'
 
-interface AddressFormData {
+import {
+  getStateOptions,
+  getDistrictOptions
+} from '@/src/utils/formHelpers'
+
+/* =========================
+   TYPES
+========================= */
+
+interface Address {
   area: string
   building: string
   landmark: string
@@ -10,156 +22,395 @@ interface AddressFormData {
   pincode: string
 }
 
-interface Props {
-  formData: AddressFormData
-  setFormData: React.Dispatch<React.SetStateAction<AddressFormData>>
+interface AddressFormData {
+  permanent: Address
+  current: Address
 }
 
-export default function AddressDetailForm({ formData, setFormData }: Props) {
+interface Props {
+  formData: AddressFormData
+  setFormData: React.Dispatch<
+    React.SetStateAction<AddressFormData>
+  >
+}
 
-  const handleChange = (field: keyof AddressFormData, value: string) => {
-    setFormData(prev => ({
-      ...prev,
-      [field]: value
-    }))
+/* =========================
+   COMPONENT
+========================= */
+
+export default function AddressDetailForm({
+  formData,
+  setFormData
+}: Props) {
+
+  const stateOptions = getStateOptions()
+
+  const permanentDistrictOptions =
+    getDistrictOptions(
+      formData.permanent.state
+    )
+
+  const currentDistrictOptions =
+    getDistrictOptions(
+      formData.current.state
+    )
+
+  /* =========================
+     SAME AS PERMANENT
+  ========================= */
+
+  const [sameAsPermanent, setSameAsPermanent] =
+    useState(false)
+
+  /* =========================
+     HANDLE CHANGE
+  ========================= */
+
+  const handleChange = (
+    type: 'permanent' | 'current',
+    field: keyof Address,
+    value: string
+  ) => {
+
+    setFormData(prev => {
+
+      const updated = {
+        ...prev,
+        [type]: {
+          ...prev[type],
+          [field]: value
+        }
+      }
+
+      /* Sync current if sameAsPermanent enabled */
+
+      if (sameAsPermanent && type === 'permanent') {
+        updated.current = {
+          ...updated.permanent
+        }
+      }
+
+      return updated
+    })
   }
 
+  /* =========================
+     HANDLE SAME AS PERMANENT
+  ========================= */
+
+  const handleSameAsPermanent = (
+    checked: boolean
+  ) => {
+
+    setSameAsPermanent(checked)
+
+    if (checked) {
+
+      setFormData(prev => ({
+        ...prev,
+        current: {
+          ...prev.permanent
+        }
+      }))
+    }
+  }
+
+  /* =========================
+     UI
+  ========================= */
+
   return (
-    <div>
-      <div className="space-y-4 mt-4">
-        <h1>Permanent Address</h1>
-        <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
-          <Input
+
+    <div className="space-y-6">
+
+      {/* =========================
+         PERMANENT ADDRESS
+      ========================= */}
+
+      <div className="space-y-4">
+
+        <h2 className="text-lg font-semibold">
+          Permanent Address
+        </h2>
+
+        {/* State + District */}
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+          <Select
             label="State"
-            placeholder="Enter State"
-            value={formData.state}
+            value={formData.permanent.state}
+            options={stateOptions}
             validation="text"
-            onChange={(e) => handleChange('state', e.target.value)}
+            onChange={(e) =>
+              handleChange(
+                'permanent',
+                'state',
+                e.target.value
+              )
+            }
           />
 
-          <Input
+          <Select
+            label="District"
+            value={formData.permanent.district}
+            options={permanentDistrictOptions}
+            validation="text"
+            disabled={!formData.permanent.state}
+            onChange={(e) =>
+              handleChange(
+                'permanent',
+                'district',
+                e.target.value
+              )
+            }
+          />
+
+          {/* <Input
             label="District"
             placeholder="Enter District"
-            value={formData.district}
+            value={formData.permanent.district}
             validation="text"
-            onChange={(e) => handleChange('district', e.target.value)}
-          />
+            onChange={(e) =>
+              handleChange(
+                'permanent',
+                'district',
+                e.target.value
+              )
+            }
+          /> */}
+
         </div>
 
-        <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
+        {/* Landmark + Pincode */}
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+
           <Input
             label="Landmark"
             placeholder="Enter Landmark"
-            value={formData.landmark}
+            value={formData.permanent.landmark}
             validation="text"
             required={false}
-            onChange={(e) => handleChange('landmark', e.target.value)}
+            onChange={(e) =>
+              handleChange(
+                'permanent',
+                'landmark',
+                e.target.value
+              )
+            }
           />
+
           <Input
             label="Pincode"
             placeholder="Enter 6-digit Pincode"
-            value={formData.pincode}
+            value={formData.permanent.pincode}
             validation="number"
             maxLength={6}
             onChange={(e) => {
-              const cleaned = e.target.value.replace(/\D/g, '').slice(0, 6)
-              handleChange('pincode', cleaned)
+
+              const cleaned =
+                e.target.value
+                  .replace(/\D/g, '')
+                  .slice(0, 6)
+
+              handleChange(
+                'permanent',
+                'pincode',
+                cleaned
+              )
             }}
           />
+
         </div>
 
+        {/* Area + Building */}
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+
           <Input
             label="Area"
             placeholder="Enter Area"
-            value={formData.area}
+            value={formData.permanent.area}
             validation="text"
-            onChange={(e) => handleChange('area', e.target.value)}
+            onChange={(e) =>
+              handleChange(
+                'permanent',
+                'area',
+                e.target.value
+              )
+            }
           />
 
           <Input
             label="Building"
             placeholder="Enter Building"
-            value={formData.building}
+            value={formData.permanent.building}
             validation="text"
-            onChange={(e) => handleChange('building', e.target.value)}
+            onChange={(e) =>
+              handleChange(
+                'permanent',
+                'building',
+                e.target.value
+              )
+            }
           />
+
         </div>
 
       </div>
 
-      <div className="flex items-center mt-2">
+      {/* =========================
+         SAME AS PERMANENT
+      ========================= */}
+
+      <div className="flex items-center gap-2">
+
         <input
           type="checkbox"
+          checked={sameAsPermanent}
+          onChange={(e) =>
+            handleSameAsPermanent(
+              e.target.checked
+            )
+          }
         />
+
         <label>
           Same as Permanent Address
         </label>
+
       </div>
 
-      <div className="space-y-4 mt-4">
-        <h1>Current Address</h1>
-        <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
-          <Input
+      {/* =========================
+         CURRENT ADDRESS
+      ========================= */}
+
+      <div className="space-y-4">
+
+        <h2 className="text-lg font-semibold">
+          Current Address
+        </h2>
+
+        {/* State + District */}
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+          <Select
             label="State"
-            placeholder="Enter State"
-            value={formData.state}
+            value={formData.current.state}
+            options={stateOptions}
             validation="text"
-            onChange={(e) => handleChange('state', e.target.value)}
+            disabled={sameAsPermanent}
+            onChange={(e) =>
+              handleChange(
+                'current',
+                'state',
+                e.target.value
+              )
+            }
           />
 
-          <Input
+          <Select
             label="District"
-            placeholder="Enter District"
-            value={formData.district}
+            value={formData.current.district}
+            options={currentDistrictOptions}
             validation="text"
-            onChange={(e) => handleChange('district', e.target.value)}
+            disabled={sameAsPermanent || !formData.current.state}
+            onChange={(e) =>
+              handleChange(
+                'current',
+                'district',
+                e.target.value
+              )
+            }
           />
+
         </div>
 
-        <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
+        {/* Landmark + Pincode */}
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+
           <Input
             label="Landmark"
             placeholder="Enter Landmark"
-            value={formData.landmark}
+            value={formData.current.landmark}
             validation="text"
             required={false}
-            onChange={(e) => handleChange('landmark', e.target.value)}
+            disabled={sameAsPermanent}
+            onChange={(e) =>
+              handleChange(
+                'current',
+                'landmark',
+                e.target.value
+              )
+            }
           />
+
           <Input
             label="Pincode"
             placeholder="Enter 6-digit Pincode"
-            value={formData.pincode}
+            value={formData.current.pincode}
             validation="number"
             maxLength={6}
+            disabled={sameAsPermanent}
             onChange={(e) => {
-              const cleaned = e.target.value.replace(/\D/g, '').slice(0, 6)
-              handleChange('pincode', cleaned)
+
+              const cleaned =
+                e.target.value
+                  .replace(/\D/g, '')
+                  .slice(0, 6)
+
+              handleChange(
+                'current',
+                'pincode',
+                cleaned
+              )
             }}
           />
+
         </div>
 
+        {/* Area + Building */}
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+
           <Input
             label="Area"
             placeholder="Enter Area"
-            value={formData.area}
+            value={formData.current.area}
             validation="text"
-            onChange={(e) => handleChange('area', e.target.value)}
+            disabled={sameAsPermanent}
+            onChange={(e) =>
+              handleChange(
+                'current',
+                'area',
+                e.target.value
+              )
+            }
           />
 
           <Input
             label="Building"
             placeholder="Enter Building"
-            value={formData.building}
+            value={formData.current.building}
             validation="text"
-            onChange={(e) => handleChange('building', e.target.value)}
+            disabled={sameAsPermanent}
+            onChange={(e) =>
+              handleChange(
+                'current',
+                'building',
+                e.target.value
+              )
+            }
           />
+
         </div>
 
       </div>
-    </div>
 
+    </div>
 
   )
 }
