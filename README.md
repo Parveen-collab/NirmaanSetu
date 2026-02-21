@@ -1,13 +1,14 @@
-# 🏗️ NirmaanSetu
-
-[![Next.js](https://img.shields.io/badge/Next.js-15.1.1-black?style=flat-square&logo=next.js)](https://nextjs.org/)
-[![React](https://img.shields.io/badge/React-19.0.0-blue?style=flat-square&logo=react)](https://react.dev/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.0-38B2AC?style=flat-square&logo=tailwind-css)](https://tailwindcss.com/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-3178C6?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
 
 **NirmaanSetu** is a specialized platform designed to bridge the gap in the construction industry. It serves as a comprehensive hub connecting employers and employees, streamlining project management, and providing a marketplace for industry-specific needs.
-
 ---
+
+TO DO
+1.Create a System Design for the Frontend and Backend of Nirmaansetu
+2.Create a UML Diagram
+3.Create a High Level Design
+4.Create a Low Level Design
+5.Cretae a Schema for the Database
+6.Think it as a Global Level Scalable Product
 
 ## API List
 1. mobile otp verification api (public)
