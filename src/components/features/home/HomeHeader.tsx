@@ -29,7 +29,7 @@ const HomeHeader = () => {
         {/* Logo */}
         <div className="flex items-center gap-2">
           <Image
-            src="/logo-NirmaanSetu.jpg"
+            src="/image/logo-NirmaanSetu.jpg"
             alt="NirmaanSetu logo"
             width={32}
             height={32}
