@@ -3,15 +3,12 @@
 ---
 
 TO DO
-1.Create a System Design for the Frontend and Backend of Nirmaansetu
-2.Create a UML Diagram
-3.Create a High Level Design
-4.Create a Low Level Design
-5.Cretae a Schema for the Database
-6.Think it as a Global Level Scalable Product
+add "select country" ui in the verify-otp ui
+on selecting the country name the country code and the length of the number must be get decided 
+user must be able to type only number and based on the country he must not be able to enter more than required digit 
 
 ## API List
-1. mobile otp verification api (public)
+1. mobile otp verification api (public) = done
 2. login api
 3. registration api
 4. change/forgot password api (click on chnage/forgot/reset=>resetpassword screen=>mobile/email otp verification=>type 5. 5. password=>retype password=>done)
