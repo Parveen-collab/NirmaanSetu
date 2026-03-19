@@ -34,6 +34,12 @@ export default function AuthPage({ type }: Props) {
     return val.length === selectedCountry.length && /^\d+$/.test(val);
   };
 
+  useEffect(() => {
+    if (type === 'mobile' && phoneNumber.length > selectedCountry.length) {
+      setPhoneNumber(phoneNumber.slice(0, selectedCountry.length));
+    }
+  }, [selectedCountry, type, phoneNumber]);
+
   // Update the main 'value' state whenever country or phone changes
   useEffect(() => {
     if (type === 'mobile') {
@@ -89,10 +95,23 @@ export default function AuthPage({ type }: Props) {
           <Input
             label={config.label}
             type={config.type}
-            validation={config.validation}
+            // Change validation to 'custom' for mobile to use our logic
+            validation={type === 'mobile' ? 'custom' : config.validation}
+            customValidator={type === 'mobile' ? validatePhone : undefined}
+            errorMessage={`Enter a valid ${selectedCountry.length}-digit number`}
             placeholder={config.placeholder}
-            value={value}
-            onChange={(e) => setValue(e.target.value)}
+            value={type === 'mobile' ? phoneNumber : value}
+            maxLength={type === 'mobile' ? selectedCountry.length : undefined}
+            onChange={(e) => {
+              if (type === 'mobile') {
+                const val = e.target.value.replace(/\D/g, ''); // Only digits
+                if (val.length <= selectedCountry.length) {
+                  setPhoneNumber(val);
+                }
+              } else {
+                setValue(e.target.value);
+              }
+            }}
             onValidityChange={setIsValid}
           />
 

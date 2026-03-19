@@ -21,7 +21,6 @@ export type InputVariant =
   | 'aadhaar' //as UIDAI
   | 'otp' //4-digit
   | 'bankAccount' //all worlds bank account
-  // | 'phone' //
   | 'name' //
   | 'address' //
 
@@ -66,12 +65,6 @@ const variantRules: Record<
     message: 'Enter valid bank account number',
     maxLength: 18,
   },
-
-  // phone: {
-  //   regex: /^[6-9]\d{9}$/,
-  //   message: 'Enter valid 10-digit phone number',
-  //   maxLength: 10,
-  // },
 
   name: {
     regex: /^[A-Za-z ]+$/,

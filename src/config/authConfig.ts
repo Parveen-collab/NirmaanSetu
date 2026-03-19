@@ -31,6 +31,6 @@ export const authConfig: Record<AuthType, AuthFieldConfig> = {
     type: 'email',
     validation: 'email',
     successText: 'OTP has been sent to your email address.',
-    redirectTo: '/home/register', // example
+    redirectTo: '/home/register',
   },
 }
