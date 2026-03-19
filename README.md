@@ -1,11 +1,10 @@
 
-**NirmaanSetu** is a specialized platform designed to bridge the gap in the construction industry. It serves as a comprehensive hub connecting employers and employees, streamlining project management, and providing a marketplace for industry-specific needs.
----
+**NirmaanSetu** 
+A platform designed to bridge the gap in the construction industry. It serves as a comprehensive hub connecting employers, employees and supliers, streamlining project management, and providing a marketplace for industry-specific needs.
 
 TO DO
-add "select country" ui in the verify-otp ui
-on selecting the country name the country code and the length of the number must be get decided 
-user must be able to type only number and based on the country he must not be able to enter more than required digit 
+2. on selecting the country name the country code and the length of the number must be get decided 
+3. user must be able to type only number and based on the country he must not be able to enter more than required digit 
 
 ## API List
 1. mobile otp verification api (public) = done

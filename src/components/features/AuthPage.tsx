@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 
 import Input from '@/src/components/common/Input'
@@ -10,12 +10,37 @@ import VerifyOtpModal from '@/src/components/features/auth/VerifyOtpModal'
 
 import { authConfig } from '@/src/config/authConfig'
 import { AuthType } from '@/src/types/auth'
+import Select from '@/src/components/common/Select'
+
+const COUNTRIES = [
+  { label: 'India', value: '+91', length: 10 },
+  { label: 'Norway', value: '+47', length: 8 },
+  { label: 'China', value: '+86', length: 11 },
+  // Add more countries as needed
+];
+
 
 type Props = {
   type: AuthType
 }
 
 export default function AuthPage({ type }: Props) {
+
+  // Inside AuthPage component
+  const [selectedCountry, setSelectedCountry] = useState(COUNTRIES[0]);
+  const [phoneNumber, setPhoneNumber] = useState('');
+
+  const validatePhone = (val: string) => {
+    return val.length === selectedCountry.length && /^\d+$/.test(val);
+  };
+
+  // Update the main 'value' state whenever country or phone changes
+  useEffect(() => {
+    if (type === 'mobile') {
+      setValue(`${selectedCountry.value}${phoneNumber}`);
+    }
+  }, [selectedCountry, phoneNumber, type]);
+
   const router = useRouter()
   const config = authConfig[type]
 
@@ -45,6 +70,21 @@ export default function AuthPage({ type }: Props) {
           <p className="mb-6 text-center text-sm text-zinc-500">
             {config.description}
           </p>
+
+          {type === 'mobile' && (
+            <div className="mb-4">
+              <Select
+                label="Select Country"
+                options={COUNTRIES.map(c => ({ label: `${c.label} (${c.value})`, value: c.value }))}
+                value={selectedCountry.value}
+                onChange={(e) => {
+                  const country = COUNTRIES.find(c => c.value === e.target.value);
+                  if (country) setSelectedCountry(country);
+                }}
+              />
+            </div>
+          )}
+
 
           <Input
             label={config.label}

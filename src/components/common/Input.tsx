@@ -1,4 +1,3 @@
-// src/components/features/Input.tsx
 'use client'
 
 import React, {
@@ -8,30 +7,24 @@ import React, {
   useMemo,
 } from 'react'
 
-/* =========================
-   Validation Types
-========================= */
 
 export type ValidationType =
-  | 'text'
-  | 'number'
-  | 'mobile'
-  | 'email'
-  | 'password'
-  | 'file'
+  | 'text' //no numbers are allowed
+  | 'number' //no texts are allowed
+  | 'mobile' //all worlds' mobile numbers with country code as prefix with + symbol
+  | 'email' //
+  | 'password' //
+  | 'file' //
   | 'custom'
 
 export type InputVariant =
-  | 'aadhaar'
-  | 'otp'
-  | 'bankAccount'
-  | 'phone'
-  | 'name'
-  | 'address'
+  | 'aadhaar' //as UIDAI
+  | 'otp' //4-digit
+  | 'bankAccount' //all worlds bank account
+  // | 'phone' //
+  | 'name' //
+  | 'address' //
 
-/* =========================
-   Props
-========================= */
 
 interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -47,10 +40,7 @@ interface InputProps
 
 }
 
-/* =========================
-   Variant Rules
-========================= */
-
+//Variant Rules
 const variantRules: Record<
   InputVariant,
   {
@@ -66,9 +56,9 @@ const variantRules: Record<
   },
 
   otp: {
-    regex: /^\d{4,6}$/,
-    message: 'OTP must be 4–6 digits',
-    maxLength: 6,
+    regex: /^\d{4}$/,
+    message: 'OTP must be 4 digits',
+    maxLength: 4,
   },
 
   bankAccount: {
@@ -77,11 +67,11 @@ const variantRules: Record<
     maxLength: 18,
   },
 
-  phone: {
-    regex: /^[6-9]\d{9}$/,
-    message: 'Enter valid 10-digit phone number',
-    maxLength: 10,
-  },
+  // phone: {
+  //   regex: /^[6-9]\d{9}$/,
+  //   message: 'Enter valid 10-digit phone number',
+  //   maxLength: 10,
+  // },
 
   name: {
     regex: /^[A-Za-z ]+$/,
@@ -94,10 +84,8 @@ const variantRules: Record<
   },
 }
 
-/* =========================
-   Component
-========================= */
 
+//Component
 const Input = forwardRef<HTMLInputElement, InputProps>(
   (
     {
@@ -125,33 +113,25 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     const [focused, setFocused] = useState(false)
     const [touched, setTouched] = useState(false)
 
-    /* =========================
-       Check if has value
-    ========================= */
-
+    //Check if has value
     const hasValue = useMemo(() => {
       if (value !== undefined)
         return String(value).length > 0
       return false
     }, [value])
 
-    /* =========================
-       Max length from variant
-    ========================= */
 
+    //Max length from variant
     const maxLength =
       variant && variantRules[variant]?.maxLength
 
-    /* =========================
-       Validation Function
-    ========================= */
 
+    //  Validation Function
     const validate = (val: string, files?: FileList | null) => {
       let isValid = true
       let message = ''
 
-      /* Required validation FIRST */
-
+      //Required validation FIRST
       if (required) {
         if (validation === 'file') {
           isValid = !!files && files.length > 0
@@ -168,11 +148,8 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         }
       }
 
-      /* Continue existing validation */
 
-
-      /* Fallback validation */
-
+      //Fallback validation
       else if (validation) {
         switch (validation) {
           case 'text':
@@ -226,10 +203,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       return isValid
     }
 
-    /* =========================
-       Render
-    ========================= */
-
+    //Render
     return (
       <div className="flex flex-col gap-1 w-full">
         {/* Floating Input Wrapper */}
