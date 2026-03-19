@@ -6,7 +6,6 @@ export default function BasicDetailForm({ formData, setFormData }: any) {
       <Input
         label="Mobile Number"
         type="number"
-        variant="phone"
         value={formData.mobile}
         onChange={(e) => setFormData({ ...formData, mobile: e.target.value })}
       />
