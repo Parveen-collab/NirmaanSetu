@@ -3,7 +3,11 @@
 A platform designed to bridge the gap in the construction industry. It serves as a comprehensive hub connecting employers, employees and supliers, streamlining project management, and providing a marketplace for industry-specific needs.
 
 TO DO
-1. 
+1. 🎯 What to improve (important for AI apps):
+Streaming UI (chat like ChatGPT)
+Optimistic UI updates
+Error handling + retry logic
+Responsive + accessibility (your checklist ✔)
 
 ## API List
 1. mobile otp verification api (public) = done
