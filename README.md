@@ -1,6 +1,6 @@
 
 TO DO
-1. implement API as you have learnt in Yuktisoft.
+1. implement OTP verification API
 
 ## Problem Statement
 The construction sector faces major challenges due to the lack of a unified digital platform connecting workers, contractors, suppliers, and customers. Communication gaps, unverified labor availability, inefficient material procurement, delayed project coordination, and limited transparency create difficulties for all stakeholders involved in construction projects.
