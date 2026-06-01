@@ -56,106 +56,139 @@ export default function AuthPage({ type }: Props) {
   const [showSuccess, setShowSuccess] = useState(false)
   const [showOtp, setShowOtp] = useState(false)
 
-  const handleSendOtp = () => {
-    setLoading(true)
+  const handleSendOtp = async () => {
+    try {
+      if (!isValid || loading) return;
 
-    setTimeout(() => {
-      setLoading(false)
-      setShowSuccess(true)
-    }, 1500)
-  }
+      setLoading(true);
 
-  return (
-    <>
-      <div className="flex min-h-screen items-center justify-center bg-zinc-50 px-4 dark:bg-black">
-        <div className="w-full max-w-sm rounded-xl bg-white p-6 shadow-md dark:bg-zinc-900">
-          <h1 className="mb-2 text-center text-2xl font-semibold dark:text-white">
-            {config.title}
-          </h1>
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/auth/send-otp`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            phoneNumber: value
+          })
+        }
+      );
 
-          <p className="mb-6 text-center text-sm text-zinc-500">
-            {config.description}
-          </p>
+      const result = await response.text();
 
-          {type === 'mobile' && (
-            <div className="mb-4">
-              <Select
-                label="Select Country"
-                options={COUNTRIES.map(c => ({ label: `${c.label} (${c.value})`, value: c.value }))}
-                value={selectedCountry.value}
-                onChange={(e) => {
-                  const country = COUNTRIES.find(c => c.value === e.target.value);
-                  if (country) setSelectedCountry(country);
-                }}
-              />
-            </div>
-          )}
+      if (!response.ok) {
+        throw new Error(result || 'Failed to send OTP');
+      }
 
+      setShowSuccess(true);
 
-          <Input
-            label={config.label}
-            type={config.type}
-            // Change validation to 'custom' for mobile to use our logic
-            validation={type === 'mobile' ? 'custom' : config.validation}
-            customValidator={type === 'mobile' ? validatePhone : undefined}
-            errorMessage={`Enter a valid ${selectedCountry.length}-digit number`}
-            placeholder={config.placeholder}
-            value={type === 'mobile' ? phoneNumber : value}
-            maxLength={type === 'mobile' ? selectedCountry.length : undefined}
-            onChange={(e) => {
-              if (type === 'mobile') {
-                const val = e.target.value.replace(/\D/g, ''); // Only digits
-                if (val.length <= selectedCountry.length) {
-                  setPhoneNumber(val);
-                }
-              } else {
-                setValue(e.target.value);
-              }
-            }}
-            onValidityChange={setIsValid}
-          />
+    } catch (error) {
+      alert(
+        error instanceof Error
+          ? error.message
+          : 'Something went wrong'
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
+};
 
-          <div className="mt-4 flex justify-center">
-            <Button
-              loading={loading}
-              disabled={!isValid || loading}
-              onClick={handleSendOtp}
-            >
-              Send OTP
-            </Button>
-          </div>
-        </div>
-      </div>
+if (!config) {
+  return <div>Invalid auth type</div>;
+}
 
-      <Modal
-        open={showSuccess}
-        onClose={() => setShowSuccess(false)}
-        title="OTP Sent"
-      >
-        <p className="mb-6 text-center text-sm text-zinc-600 dark:text-zinc-300">
-          {config.successText}
+return (
+  <>
+    <div className="flex min-h-screen items-center justify-center bg-zinc-50 px-4 dark:bg-black">
+      <div className="w-full max-w-sm rounded-xl bg-white p-6 shadow-md dark:bg-zinc-900">
+        <h1 className="mb-2 text-center text-2xl font-semibold dark:text-white">
+          {config.title}
+        </h1>
+
+        <p className="mb-6 text-center text-sm text-zinc-500">
+          {config.description}
         </p>
 
-        <div className="flex justify-center">
+        {type === 'mobile' && (
+          <div className="mb-4">
+            <Select
+              label="Select Country"
+              options={COUNTRIES.map(c => ({ label: `${c.label} (${c.value})`, value: c.value }))}
+              value={selectedCountry.value}
+              onChange={(e) => {
+                const country = COUNTRIES.find(c => c.value === e.target.value);
+                if (country) setSelectedCountry(country);
+              }}
+            />
+          </div>
+        )}
+
+
+        <Input
+          label={config.label}
+          type={config.type}
+          // Change validation to 'custom' for mobile to use our logic
+          validation={type === 'mobile' ? 'custom' : config.validation}
+          customValidator={type === 'mobile' ? validatePhone : undefined}
+          errorMessage={`Enter a valid ${selectedCountry.length}-digit number`}
+          placeholder={config.placeholder}
+          value={type === 'mobile' ? phoneNumber : value}
+          maxLength={type === 'mobile' ? selectedCountry.length : undefined}
+          onChange={(e) => {
+            if (type === 'mobile') {
+              const val = e.target.value.replace(/\D/g, ''); // Only digits
+              if (val.length <= selectedCountry.length) {
+                setPhoneNumber(val);
+              }
+            } else {
+              setValue(e.target.value);
+            }
+          }}
+          onValidityChange={setIsValid}
+        />
+
+        <div className="mt-4 flex justify-center">
           <Button
-            variant="success"
-            onClick={() => {
-              setShowSuccess(false)
-              setShowOtp(true)
-            }}
+            loading={loading}
+            disabled={!isValid || loading}
+            onClick={handleSendOtp}
           >
-            OK
+            Send OTP
           </Button>
         </div>
-      </Modal>
+      </div>
+    </div>
 
-      <VerifyOtpModal
-        open={showOtp}
-        onClose={() => setShowOtp(false)}
-        identifier={value}
-        type={type}
-        onVerifySuccess={() => router.push(config.redirectTo)}
-      />
-    </>
-  )
-}
+    <Modal
+      open={showSuccess}
+      onClose={() => setShowSuccess(false)}
+      title="OTP Sent"
+    >
+      <p className="mb-6 text-center text-sm text-zinc-600 dark:text-zinc-300">
+        {config.successText}
+      </p>
+
+      <div className="flex justify-center">
+        <Button
+          variant="success"
+          onClick={() => {
+            setShowSuccess(false)
+            setShowOtp(true)
+          }}
+        >
+          OK
+        </Button>
+      </div>
+    </Modal>
+
+    <VerifyOtpModal
+      open={showOtp}
+      onClose={() => setShowOtp(false)}
+      identifier={value}
+      type={type}
+      onVerifySuccess={() => router.push(config.redirectTo)}
+    />
+  </>
+);
