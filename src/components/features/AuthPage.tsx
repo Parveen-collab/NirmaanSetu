@@ -93,11 +93,6 @@ export default function AuthPage({ type }: Props) {
       setLoading(false);
     }
   };
-};
-
-if (!config) {
-  return <div>Invalid auth type</div>;
-}
 
 return (
   <>
