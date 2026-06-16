@@ -19,10 +19,10 @@ export interface Employer {
   profileImageUrl: string;
 }
 
-export const getEmployerById = async (id) => {
+export const getEmployerById = async () => {
   try {
     const response = await axios.get(
-      `${BASE_URL}/api/v1/employers/${id}`
+      `${BASE_URL}/api/v1/employers`
     );
 
     return response.data;
