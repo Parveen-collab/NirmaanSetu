@@ -1,6 +1,6 @@
 'use client'
 
-import { sendOtp } from '@/src/services/AuthService';
+import { sendOtp } from '@/src/services/authService';
 
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
