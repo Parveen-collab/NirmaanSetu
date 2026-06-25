@@ -1,5 +1,7 @@
 'use client'
 
+import { sendOtp } from '@/src/services/AuthService';
+
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 
@@ -57,42 +59,31 @@ export default function AuthPage({ type }: Props) {
   const [showOtp, setShowOtp] = useState(false)
 
   const handleSendOtp = async () => {
-    try {
-      if (!isValid || loading) return;
+  if (!isValid || loading) return;
 
-      setLoading(true);
+  try {
+    setLoading(true);
 
-      const response = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/auth/send-otp`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            phoneNumber: value
-          })
-        }
-      );
+    const payload =
+      type === 'mobile'
+        ? { phoneNumber: value }
+        : { email: value };
 
-      const result = await response.text();
+    const result = await sendOtp(payload);
 
-      if (!response.ok) {
-        throw new Error(result || 'Failed to send OTP');
-      }
+    console.log(result);
 
-      setShowSuccess(true);
-
-    } catch (error) {
-      alert(
-        error instanceof Error
-          ? error.message
-          : 'Something went wrong'
-      );
-    } finally {
-      setLoading(false);
-    }
-  };
+    setShowSuccess(true);
+  } catch (error: any) {
+    alert(
+      error.response?.data?.message ||
+      error.message ||
+      'Something went wrong'
+    );
+  } finally {
+    setLoading(false);
+  }
+};
 
 return (
   <>

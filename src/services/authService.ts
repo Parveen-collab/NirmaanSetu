@@ -6,8 +6,10 @@ interface VerifyOtpPayload {
 }
 
 interface SendOtpPayload {
-  phoneNumber: string;
+  phoneNumber?: string;
+  email?: string;
 }
+
 
 interface SendOtpResponse {
   success: boolean;
