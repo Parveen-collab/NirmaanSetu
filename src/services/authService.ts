@@ -2,7 +2,8 @@ import axios from "axios";
 
 interface VerifyOtpPayload {
   otp: string;
-  phoneNumber: string;
+  phoneNumber?: string;
+  email?: string;
 }
 
 interface SendOtpPayload {
