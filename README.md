@@ -1,6 +1,12 @@
 
 TO DO
-1. implement OTP verification API
+2. integrate registration API and Login API
+3. Create A floating chat widget visible across the application for Conversational Support Bot (LLM Chat) Feature
+4. Create a UI on Enquiry page for Smart Enquiry Processing AI Feature
+5. create a dedicated estimator page for AI Cost & Material Estimator Feature
+6. create UI in registration process for OCR Verification AI Feature
+7. Create an UI for Admin only to manage Review and Feedback for Sentiment Analysis AI Feature
+8. Integrate AI-Powered Matching Engine (Recommendation System) Feature with Search API to work better
 
 ## Problem Statement
 The construction sector faces major challenges due to the lack of a unified digital platform connecting workers, contractors, suppliers, and customers. Communication gaps, unverified labor availability, inefficient material procurement, delayed project coordination, and limited transparency create difficulties for all stakeholders involved in construction projects.
