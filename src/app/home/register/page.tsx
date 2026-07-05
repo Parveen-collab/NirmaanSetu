@@ -15,6 +15,9 @@ import LeftInfo from "@/src/components/features/register/LeftInfo";
 import Link from "next/link";
 import BasicDetailForm from "@/src/components/features/register/BasicDetailForm";
 
+import {RegisterPayload, registerUser} from "@/src/services/userService"
+import {toast} from "sonner";
+
 export default function Register() {
   const [currentStep, setCurrentStep] = useState(1);
   const TOTAL_STEPS = 5;
@@ -75,23 +78,63 @@ export default function Register() {
     }
   };
 
-  /* ============================= */
-  /* Submit */
-  /* ============================= */
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
 
-    // 🛑 Prevent submit unless on last step
-    if (currentStep !== TOTAL_STEPS) return;
+  try {
+    const payload: RegisterPayload = {
+      mobileNumber: formData.mobile,
+      fullName: formData.fullName,
+      aadhaarNumber: formData.aadhaar,
 
-    const finalData = {
-      ...formData,
-      role,
+      permanentAddress: formData.permanent,
+
+      currentAddress: formData.current,
+
+      role: formData.role,
+
+      employeeDetails:
+        role === "employee"
+          ? {
+              serviceCategory: formData.serviceCategory,
+              serviceSpecialty: formData.serviceSpecialty,
+              experience: Number(formData.experience),
+            }
+          : undefined,
+
+      employerDetails:
+        role === "employer"
+          ? {
+              companyName: formData.companyName,
+              companyAddress: formData.companyAddress,
+              companyPhotos: formData.companyPhotos,
+            }
+          : undefined,
+
+      shopDetails:
+        role === "shop"
+          ? {
+              shopName: formData.shopName,
+              shopCategory: formData.shopCategory,
+              shopSpeciality: formData.shopSpeciality,
+              shopType: formData.shopType,
+              shopAddress: formData.shopAddress,
+            }
+          : undefined,
     };
 
-    setProfile(finalData);
-    setShowSuccess(true);
-  };
+    const response = await registerUser(payload, formData.photo);
+
+    console.log(response);
+
+    toast.success(response.message);
+
+    router.push("/home/login");
+  } catch (error) {
+    console.error(error);
+    toast.error("Registration failed");
+  }
+};
 
 
   /* ============================= */
