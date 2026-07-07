@@ -4,8 +4,38 @@ import React from "react";
 import Link from "next/link";
 import Input from "@/src/components/common/Input";
 import Button from "@/src/components/common/Button";
+import { LoginPayload, userLogin } from "@/src/services/authService";
+import { toast } from "sonner";
+import router from "next/router";
+
 
 const LogIn = () => {
+
+  const [phoneNumber, setPhoneNumber] = React.useState("");
+  const [password, setPassword] = React.useState("");
+
+  const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log("Login clicked");
+    const payload: LoginPayload = {
+      password,
+      phoneNumber
+    };
+
+    try {
+      const response = await userLogin(payload);
+
+      console.log(response);
+
+      toast.success(response.message);
+
+      router.push("/dashboard");
+    } catch (error) {
+      console.error(error);
+      toast.error("Login failed");
+    }
+  };
+
   return (
     <div className="flex min-h-screen items-center justify-center px-4">
       {/* Card */}
@@ -19,13 +49,20 @@ const LogIn = () => {
         </p>
 
         {/* Form */}
-        <form className="space-y-6">
+        <form 
+        onSubmit={handleLogin}
+        className="space-y-6"
+        >
           {/* Username */}
           <div>
             <label className="mb-1 block text-sm font-medium">
               Username
             </label>
-            <Input placeholder="Enter username or mobile" />
+            <Input
+              value={phoneNumber}
+              onChange={(e) => setPhoneNumber(e.target.value)}
+              placeholder="Enter username or mobile"
+            />
           </div>
 
           {/* Password */}
@@ -33,11 +70,20 @@ const LogIn = () => {
             <label className="mb-1 block text-sm font-medium">
               Password
             </label>
-            <Input type="password" placeholder="Enter password" />
+            <Input
+              type="password"
+              placeholder="Enter password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
           </div>
 
           {/* Login Button */}
-          <Button href="/dashboard" className="w-full">
+          <Button
+            // href="/dashboard"
+            className="w-full"
+            type="submit"
+          >
             Log In
           </Button>
         </form>

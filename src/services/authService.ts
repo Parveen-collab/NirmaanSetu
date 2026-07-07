@@ -25,6 +25,17 @@ interface VerifyOtpResponse {
   message?: string;
 }
 
+
+export interface LoginPayload {
+  password: string,
+  phoneNumber: string
+}
+
+export interface LoginResponse {
+  success: boolean,
+  message: string
+}
+
 export const sendOtp = async (
   payload: SendOtpPayload
 ): Promise<SendOtpResponse> => {
@@ -56,3 +67,21 @@ export const verifyOtp = async (
     throw error;
   }
 };
+
+export const userLogin = async (
+  payload:LoginPayload
+): Promise<LoginResponse> => {
+  try{
+        const response = await axios.post<LoginResponse>(
+      `${process.env.NEXT_PUBLIC_API_URL}/auth/login`,
+      payload
+    );
+
+    return response.data;
+
+  } catch (error) {
+    console.error("Login failed:", error);
+    throw error;
+  }
+
+}
