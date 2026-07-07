@@ -1,6 +1,6 @@
 
 TO DO
-2. integrate registration API 
+2. integrate registration API = done
 3. integrate Login API
 3. Create A floating chat widget visible across the application for Conversational Support Bot (LLM Chat) Feature
 4. Create a UI on Enquiry page for Smart Enquiry Processing AI Feature
