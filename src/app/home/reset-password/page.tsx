@@ -1,12 +1,19 @@
-import React from 'react'
-import ResetPassword from '@/src/components/features/reset-password/ResetPassword'
+import ResetPassword from '@/src/components/features/reset-password/ResetPassword';
 
-const page = () => {
+type Props = {
+  searchParams: Promise<{
+    phoneNumber?: string;
+    otp?: string;
+  }>;
+};
+
+export default async function Page({ searchParams }: Props) {
+  const params = await searchParams;
+
   return (
-    <div>
-        <ResetPassword/>
-    </div>
-  )
+    <ResetPassword
+      identifier={params.phoneNumber ?? ''}
+      otp={params.otp ?? ''}
+    />
+  );
 }
-
-export default page

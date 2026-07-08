@@ -36,6 +36,17 @@ export interface LoginResponse {
   message: string
 }
 
+export interface ResetPasswordPayload {
+  confirmPassword: string,
+  newPassword: string,
+  otp: string,
+  phoneNumber: string
+}
+
+export interface ResetPasswordResponse {
+  message: string;
+}
+
 export const sendOtp = async (
   payload: SendOtpPayload
 ): Promise<SendOtpResponse> => {
@@ -69,10 +80,10 @@ export const verifyOtp = async (
 };
 
 export const userLogin = async (
-  payload:LoginPayload
+  payload: LoginPayload
 ): Promise<LoginResponse> => {
-  try{
-        const response = await axios.post<LoginResponse>(
+  try {
+    const response = await axios.post<LoginResponse>(
       `${process.env.NEXT_PUBLIC_API_URL}/auth/login`,
       payload
     );
@@ -85,3 +96,22 @@ export const userLogin = async (
   }
 
 }
+
+export const resetPassword = async (
+  payload: ResetPasswordPayload
+): Promise<ResetPasswordResponse> => {
+  try {
+    const response = await axios.post<ResetPasswordResponse>(
+      `${process.env.NEXT_PUBLIC_API_URL}//auth/reset-password`,
+      payload
+    );
+
+    return response.data;
+
+  } catch (error) {
+    console.error("Reset Password failed:", error);
+    throw error;
+  }
+
+}
+
