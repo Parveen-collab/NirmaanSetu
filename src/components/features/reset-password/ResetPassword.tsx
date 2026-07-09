@@ -7,7 +7,7 @@ import Input from '@/src/components/common/Input';
 import Button from '@/src/components/common/Button';
 import Modal from '@/src/components/features/SuccessModal';
 
-import { resetPassword } from '@/src/services/authService';
+import { sendForgotOtp, resetPassword } from '@/src/services/authService';
 
 type Props = {
   identifier: string;
@@ -20,6 +20,9 @@ export default function ResetPassword({ identifier, otp }: Props) {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
+  const [otpSent, setOtpSent] = useState(false);
+  const [sendingOtp, setSendingOtp] = useState(false);
+
   const [number, setNumber] = useState('');
   const [otpValue, setOtpValue] = useState('');
 
@@ -31,6 +34,29 @@ export default function ResetPassword({ identifier, otp }: Props) {
   const [loading, setLoading] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
 
+  const handleSendOtp = async () => {
+    if (!numberValid || sendingOtp) return;
+
+    try {
+      setSendingOtp(true);
+
+      await sendForgotOtp({
+        phoneNumber: number,
+      });
+
+      alert("OTP sent successfully");
+
+      setOtpSent(true);
+    } catch (error: any) {
+      alert(
+        error.response?.data?.message ||
+        "Failed to send OTP"
+      );
+    } finally {
+      setSendingOtp(false);
+    }
+  };
+
   const handleResetPassword = async () => {
     if (!passwordValid || !confirmValid || loading) return;
 
@@ -38,8 +64,8 @@ export default function ResetPassword({ identifier, otp }: Props) {
       setLoading(true);
 
       await resetPassword({
-        phoneNumber: identifier,
-        otp,
+        phoneNumber: number,
+        otp: otpValue,
         newPassword: password,
         confirmPassword,
       });
@@ -69,10 +95,6 @@ export default function ResetPassword({ identifier, otp }: Props) {
             Create a new secure password.
           </p>
 
-          <div className="mb-6 rounded-md bg-zinc-100 p-3 text-center text-sm dark:bg-zinc-800 dark:text-white">
-            {identifier}
-          </div>
-
           <Input
             label="Mobile Number"
             type="number"
@@ -83,15 +105,27 @@ export default function ResetPassword({ identifier, otp }: Props) {
             onValidityChange={setNumberValid}
           />
 
-          <Input
-            label="OTP"
-            type="number"
-            validation="number"
-            value={otp}
-            placeholder="Enter OTP"
-            onChange={(e) => setOtpValue(e.target.value)}
-            onValidityChange={setOtpValueValid}
-          />
+          <div className="mt-4 flex justify-center">
+            <Button
+              loading={sendingOtp}
+              disabled={!numberValid || sendingOtp}
+              onClick={handleSendOtp}
+            >
+              {otpSent ? "Resend OTP" : "Send OTP"}
+            </Button>
+          </div>
+
+          {otpSent && (
+            <Input
+              label="OTP"
+              type="tel"
+              validation="number"
+              value={otpValue}
+              placeholder="Enter OTP"
+              onChange={(e) => setOtpValue(e.target.value)}
+              onValidityChange={setOtpValueValid}
+            />
+          )}
 
           <Input
             label="New Password"
@@ -123,6 +157,8 @@ export default function ResetPassword({ identifier, otp }: Props) {
             <Button
               loading={loading}
               disabled={
+                !numberValid ||
+                !otpValueValid ||
                 !passwordValid ||
                 !confirmValid ||
                 loading
