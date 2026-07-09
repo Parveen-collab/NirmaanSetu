@@ -102,7 +102,7 @@ export const resetPassword = async (
 ): Promise<ResetPasswordResponse> => {
   try {
     const response = await axios.post<ResetPasswordResponse>(
-      `${process.env.NEXT_PUBLIC_API_URL}//auth/reset-password`,
+      `${process.env.NEXT_PUBLIC_API_URL}/auth/reset-password`,
       payload
     );
 
@@ -115,3 +115,26 @@ export const resetPassword = async (
 
 }
 
+export interface SendForgotOtpPayload {
+  phoneNumber: string;
+}
+
+export interface SendForgotOtpResponse {
+  message: string;
+}
+
+export const sendForgotOtp = async (
+  payload: SendForgotOtpPayload
+): Promise<SendForgotOtpResponse> => {
+  try {
+    const response = await axios.post<SendForgotOtpResponse>(
+      `${process.env.NEXT_PUBLIC_API_URL}/auth/send-otp-forgot`,
+      payload
+    );
+
+    return response.data;
+  } catch (error) {
+    console.error("Send Forgot OTP failed:", error);
+    throw error;
+  }
+};
