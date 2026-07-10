@@ -55,6 +55,7 @@ const projects: Project[] = [
 ];
 
 export default function ProjectPage() {
+  const [keyword, setKeyword] = useState("");
   const [openModal, setOpenModal] = useState<
     "apply" | "material" | "share" | null
   >(null);
@@ -71,7 +72,10 @@ export default function ProjectPage() {
           Explore and apply for active construction projects
         </p>
         {/* Search */}
-        <SearchBar />
+        <SearchBar
+          value={keyword}
+          onChange={setKeyword}
+        />
       </div>
 
       {/* Projects Grid */}

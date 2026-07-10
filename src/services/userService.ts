@@ -48,3 +48,77 @@ export const registerUser = async (
 
   return response.data;
 };
+
+
+export interface FullAddress {
+  areaVillage: string;
+  district: string;
+  state: string;
+  pincode: string;
+  wardNumber: string;
+  landmark: string;
+  building: string;
+  latitude: number;
+  longitude: number;
+  type: "CURRENT" | "PERMANENT";
+}
+
+export interface EmployeeProfile {
+  experienceYears: number;
+  serviceCategory: string;
+  serviceSpeciality: string;
+  verificationDocumentUrl: string;
+}
+
+export interface EmployerProfile {
+  companyName: string;
+}
+
+export interface SupplierProfile {
+  shopName: string;
+  shopCategory: string;
+  shopSpeciality: string;
+  shopType: string;
+}
+
+export interface User {
+  id: number;
+  phoneNumber: string;
+  name: string;
+  email: string;
+  username: string;
+  aadhaarNumber: string;
+  role: string;
+  profileImageUrl: string;
+
+  addresses: FullAddress[];
+
+  employeeProfile?: EmployeeProfile;
+
+  employerProfile?: EmployerProfile;
+
+  supplierProfile?: SupplierProfile;
+
+  message: string;
+}
+
+
+interface Params {
+  role?: string;
+  keyword?: string;
+}
+
+export const getUsers = async ({
+  role,
+  keyword,
+}: Params): Promise<User[]> => {
+
+  const response = await axios.get("/user/all", {
+    params: {
+      role,
+      keyword,
+    },
+  });
+
+  return response.data;
+};

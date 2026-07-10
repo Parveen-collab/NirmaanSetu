@@ -52,6 +52,7 @@ const employers: Employer[] = [
 ];
 
 export default function EmployerPage() {
+  const [keyword, setKeyword] = useState("");
   const [openModal, setOpenModal] = useState<
     "apply" | "material" | "share" | null
   >(null);
@@ -68,7 +69,10 @@ export default function EmployerPage() {
         </p>
 
         {/* Search */}
-        <SearchBar />
+        <SearchBar
+          value={keyword}
+          onChange={setKeyword}
+        />
       </div>
 
       {/* Employer Grid */}

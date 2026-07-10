@@ -47,6 +47,7 @@ const shops: Shop[] = [
 ];
 
 export default function ShopPage() {
+  const [keyword, setKeyword] = useState("");
   const [openModal, setOpenModal] = useState<
     "apply" | "material" | "share" | null
   >(null);
@@ -62,7 +63,10 @@ export default function ShopPage() {
           Find material suppliers and shops for your projects
         </p>
         {/* Search */}
-        <SearchBar />
+        <SearchBar
+          value={keyword}
+          onChange={setKeyword}
+        />
       </div>
 
       {/* Shops Grid */}
