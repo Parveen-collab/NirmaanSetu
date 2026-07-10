@@ -7,6 +7,10 @@ import Button from "@/src/components/common/Button";
 import ShareModal from "@/src/components/features/ShareModal";
 import HireEmployeeModal from "@/src/components/features/employee/HireEmployeeModal";
 import SearchBar from "@/src/components/features/SearchBar";
+import { useMemo } from "react";
+import { useUsers } from "@/src/hooks/useUsers";
+import { useDebounce } from "@/src/hooks/useDebounce";
+
 
 interface Employee {
   id: number;
@@ -18,7 +22,7 @@ interface Employee {
   photo: string;
 }
 
-const employees: Employee[] = [
+const defaultEmployees: Employee[] = [
   {
     id: 1,
     name: "Amit Kumar",
@@ -59,11 +63,46 @@ const employees: Employee[] = [
 
 export default function EmployeePage() {
   const [showHireModal, setShowHireModal] = useState(false);
+  const [keyword, setKeyword] = useState("");
+
+  const debouncedKeyword = useDebounce(keyword, 500);
+
+  const {
+    data: apiUsers,
+    isLoading,
+    isError,
+  } = useUsers("EMPLOYEE", debouncedKeyword);
+
+  const employees = useMemo(() => {
+    if (isError) {
+      return defaultEmployees;
+    }
+
+    if (!apiUsers) {
+      return [];
+    }
+
+    return apiUsers.map((user) => ({
+      id: user.id,
+      name: user.name,
+      category: user.employeeProfile?.serviceCategory ?? "N/A",
+      specialization:
+        user.employeeProfile?.serviceSpeciality ?? "N/A",
+      experience: `${user.employeeProfile?.experienceYears ?? 0
+        } Years`,
+      availability: "Available" as const, // until backend sends this
+      photo:
+        user.profileImageUrl?.trim() ||
+        "/employees/default.jpg",
+    }));
+  }, [apiUsers, isError]);
+
   const [openModal, setOpenModal] = useState<
     "apply" | "material" | "share" | null
   >(null);
 
   return (
+
     <div className="bg-zinc-50 dark:bg-black px-4 py-6 sm:px-6 lg:px-10">
 
       {/* Header */}
@@ -77,8 +116,17 @@ export default function EmployeePage() {
           </p>
         </div>
 
-        <SearchBar />
+        <SearchBar
+          value={keyword}
+          onChange={setKeyword}
+        />
       </div>
+
+      {isLoading && (
+        <p className="mb-4 text-sm text-zinc-500">
+          Loading employees...
+        </p>
+      )}
 
       {/* Employee Grid */}
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -131,11 +179,10 @@ export default function EmployeePage() {
                   Availability:
                 </span>{" "}
                 <span
-                  className={`ml-1 rounded-full px-2 py-0.5 text-xs font-medium ${
-                    emp.availability === "Available"
-                      ? "bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300"
-                      : "bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300"
-                  }`}
+                  className={`ml-1 rounded-full px-2 py-0.5 text-xs font-medium ${emp.availability === "Available"
+                    ? "bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300"
+                    : "bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300"
+                    }`}
                 >
                   {emp.availability}
                 </span>

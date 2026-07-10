@@ -1,7 +1,17 @@
-import { Search } from 'lucide-react'
-import React from 'react'
+import { Search } from "lucide-react";
+import React from "react";
 
-const SearchBar = () => {
+interface SearchBarProps {
+  value: string;
+  onChange: (value: string) => void;
+  placeholder?: string;
+}
+
+const SearchBar = ({
+  value,
+  onChange,
+  placeholder = "Search",
+}: SearchBarProps) => {
   return (
     <div className="relative w-full sm:w-80">
       <Search
@@ -11,7 +21,9 @@ const SearchBar = () => {
 
       <input
         type="text"
-        placeholder="Search"
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        placeholder={placeholder}
         className="
           w-full rounded-xl
           border border-solid border-primary/60
@@ -26,7 +38,7 @@ const SearchBar = () => {
         "
       />
     </div>
-  )
-}
+  );
+};
 
-export default SearchBar
+export default SearchBar;
