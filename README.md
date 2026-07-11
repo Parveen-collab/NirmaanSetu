@@ -2,7 +2,7 @@
 TO DO
 2. integrate registration API = done
 3. integrate Login API = done
-/auth/send-otp-forgot=done, /auth/reset-password=done, /auth/refresh?refreshToken=string, get/user/:id, delete/user/:id, Patch/user/:id, /user/all?role=EMPLOYEE&keyword=string, /sms/send?phone=string
+/auth/send-otp-forgot=done, /auth/reset-password=done, /auth/refresh?refreshToken=string, get/user/:id, delete/user/:id, Patch/user/:id, /user/all?role=EMPLOYEE&keyword=string = done, /sms/send?phone=string
 3. Create A floating chat widget visible across the application for Conversational Support Bot (LLM Chat) Feature
 4. Create a UI on Enquiry page for Smart Enquiry Processing AI Feature
 5. create a dedicated estimator page for AI Cost & Material Estimator Feature

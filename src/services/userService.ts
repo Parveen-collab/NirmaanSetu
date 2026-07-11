@@ -72,6 +72,7 @@ export interface EmployeeProfile {
 
 export interface EmployerProfile {
   companyName: string;
+  pincode: number;
 }
 
 export interface SupplierProfile {
