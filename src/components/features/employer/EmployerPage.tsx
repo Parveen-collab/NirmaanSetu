@@ -6,6 +6,9 @@ import { MapPin, Share2, Info, Briefcase } from "lucide-react";
 import Button from "@/src/components/common/Button";
 import ShareModal from "@/src/components/features/ShareModal";
 import SearchBar from "@/src/components/features/SearchBar";
+import { useMemo } from "react";
+import { useUsers } from "@/src/hooks/useUsers";
+import { useDebounce } from "@/src/hooks/useDebounce";
 
 interface Employer {
   id: number;
@@ -16,7 +19,7 @@ interface Employer {
   photo: string;
 }
 
-const employers: Employer[] = [
+const defaultEmployers: Employer[] = [
   {
     id: 1,
     name: "Sharma Constructions",
@@ -52,7 +55,39 @@ const employers: Employer[] = [
 ];
 
 export default function EmployerPage() {
+
   const [keyword, setKeyword] = useState("");
+
+  const debouncedKeyword = useDebounce(keyword, 500);
+
+  const {
+    data: apiUsers,
+    isLoading,
+    isError,
+  } = useUsers("EMPLOYER", debouncedKeyword);
+
+  const employers = useMemo(() => {
+    if (isError) {
+      return defaultEmployers;
+    }
+
+    if (!apiUsers) {
+      return [];
+    }
+
+    return apiUsers.map((user) => ({
+      id: user.id,
+      name: user.name,
+      company: user.employerProfile?.companyName ?? "N/A",
+      location: user.employerProfile?.pincode ?? "N/A",
+      category: user.employeeProfile?.serviceCategory ?? "N/A",
+      photo:
+        user.profileImageUrl?.trim() ||
+        "/employees/default.jpg",
+    }));
+  }, [apiUsers, isError]);
+
+  // const [keyword, setKeyword] = useState("");
   const [openModal, setOpenModal] = useState<
     "apply" | "material" | "share" | null
   >(null);
@@ -74,6 +109,12 @@ export default function EmployerPage() {
           onChange={setKeyword}
         />
       </div>
+
+            {isLoading && (
+        <p className="mb-4 text-sm text-zinc-500">
+          Loading employees...
+        </p>
+      )}
 
       {/* Employer Grid */}
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
