@@ -3,12 +3,6 @@ TO DO
 2. integrate registration API = done
 3. integrate Login API = done
 /auth/send-otp-forgot=done, /auth/reset-password=done, /auth/refresh?refreshToken=string, get/user/:id, delete/user/:id, Patch/user/:id, /user/all?role=EMPLOYEE&keyword=string = done, /sms/send?phone=string
-3. Create A floating chat widget visible across the application for Conversational Support Bot (LLM Chat) Feature
-4. Create a UI on Enquiry page for Smart Enquiry Processing AI Feature
-5. create a dedicated estimator page for AI Cost & Material Estimator Feature
-6. create UI in registration process for OCR Verification AI Feature
-7. Create an UI for Admin only to manage Review and Feedback for Sentiment Analysis AI Feature
-8. Integrate AI-Powered Matching Engine (Recommendation System) Feature with Search API to work better
 
 ## Problem Statement
 The construction sector faces major challenges due to the lack of a unified digital platform connecting workers, contractors, suppliers, and customers. Communication gaps, unverified labor availability, inefficient material procurement, delayed project coordination, and limited transparency create difficulties for all stakeholders involved in construction projects.
@@ -36,7 +30,6 @@ To address these issues, **NirmaanSetu** aims to develop a centralized digital p
 
 ## 🚀 Key Features
 - **Multi-Stakeholder Ecosystem**: Integrated platform for Employees, Employers, and Suppliers.
-- **AI-Powered Search**: Advanced vector search capabilities using Spring AI and Elasticsearch for matching skills with requirements.
 - **Secure Authentication**: Robust security implementation using JWT (JSON Web Tokens) and Twilio for OTP-based verification.
 - **ELK Stack Integration**: Centralized logging and monitoring using Elasticsearch, Logstash, and Kibana.
 - **Real-time Data Management**: Optimized performance with Redis caching.
@@ -45,7 +38,6 @@ To address these issues, **NirmaanSetu** aims to develop a centralized digital p
 ## 🛠 Tech Stack
 - **Framework**: Spring Boot 3.x
 - **Language**: Java 17
-- **AI/ML**: Spring AI (OpenAI Embeddings)
 - **Database**: MySQL (Persistence), Redis (Caching)
 - **Search Engine**: Elasticsearch (Vector Store)
 - **Monitoring**: ELK Stack (Elasticsearch, Logstash, Kibana), Prometheus, Actuator
@@ -57,7 +49,6 @@ To address these issues, **NirmaanSetu** aims to develop a centralized digital p
 - JDK 17 or higher
 - Maven 3.6+
 - Docker & Docker Compose
-- OpenAI API Key (for AI features)
 - Twilio Account (for SMS features)
 
 ## Architecture
@@ -392,7 +383,6 @@ NirmaanSetu is designed as a scalable construction ecosystem platform, and sever
 
 ### Planned Features
 * Real-time chat between workers, employers, and suppliers
-* AI-based worker and supplier recommendation system
 * Geo-location and nearby service discovery
 * Multi-language support for regional and international users
 * Mobile application for Android and iOS
