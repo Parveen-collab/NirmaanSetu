@@ -1,9 +1,4 @@
 
-TO DO
-2. integrate registration API = done
-3. integrate Login API = done
-/auth/send-otp-forgot=done, /auth/reset-password=done, /auth/refresh?refreshToken=string, get/user/:id, delete/user/:id, Patch/user/:id, /user/all?role=EMPLOYEE&keyword=string = done, /sms/send?phone=string
-
 ## Problem Statement
 The construction sector faces major challenges due to the lack of a unified digital platform connecting workers, contractors, suppliers, and customers. Communication gaps, unverified labor availability, inefficient material procurement, delayed project coordination, and limited transparency create difficulties for all stakeholders involved in construction projects.
 
