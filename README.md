@@ -422,8 +422,8 @@ NirmaanSetu is designed as a scalable construction ecosystem platform, and sever
 * Advanced admin moderation system
 ---
 
-```md id="rzk8yu"
 NirmaanSetu aims to become a complete digital ecosystem for the construction industry by continuously improving scalability, accessibility, security, and user experience.
-```
+
+
 
      ## NirmaanSetu - Building Bridges in Construction.
