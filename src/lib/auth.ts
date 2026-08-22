@@ -1,5 +1,7 @@
 import { AuthResponse } from "@/src/types/auth";
 
+export type AuthType = 'mobile' | 'email'
+
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export async function refreshAccessToken(): Promise<AuthResponse | null> {
