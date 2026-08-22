@@ -32,8 +32,11 @@ export interface LoginPayload {
 }
 
 export interface LoginResponse {
-  success: boolean,
-  message: string
+  accessToken: string;
+  refreshToken: string;
+  userId: number;
+  role: string;
+  registrationStatus: string;
 }
 
 export interface ResetPasswordPayload {
@@ -84,18 +87,16 @@ export const userLogin = async (
 ): Promise<LoginResponse> => {
   try {
     const response = await axios.post<LoginResponse>(
-      `${process.env.NEXT_PUBLIC_API_URL}/auth/login`,
+      "/auth/login",
       payload
     );
 
     return response.data;
-
   } catch (error) {
     console.error("Login failed:", error);
     throw error;
   }
-
-}
+};
 
 export const resetPassword = async (
   payload: ResetPasswordPayload

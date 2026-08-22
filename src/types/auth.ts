@@ -1,2 +1,10 @@
-// types/auth.ts
+export interface AuthResponse {
+  accessToken: string;
+  refreshToken: string;
+  userId: number;
+  role: string;
+  registrationStatus: string;
+}
+
+
 export type AuthType = 'mobile' | 'email'
