@@ -27,7 +27,7 @@ const LogIn = () => {
 
       console.log(response);
 
-      toast.success(response.message);
+      toast.success("Something went wrong");
 
       router.push("/dashboard");
     } catch (error) {
