@@ -5,3 +5,6 @@ export interface AuthResponse {
   role: string;
   registrationStatus: string;
 }
+
+
+export type AuthType = 'mobile' | 'email'
