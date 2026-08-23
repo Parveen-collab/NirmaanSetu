@@ -1,7 +1,12 @@
+import api from "@/src/lib/axios";
 
-import axios from "axios";
-
-import {Address, EmployeeDetails, EmployerDetails, ShopDetails, UserRole} from "@/src/types/user"
+import {
+  Address,
+  EmployeeDetails,
+  EmployerDetails,
+  ShopDetails,
+  UserRole,
+} from "@/src/types/user";
 
 export interface RegisterPayload {
   // Step 1 - Identity
@@ -22,14 +27,13 @@ export interface RegisterPayload {
   shopDetails?: ShopDetails;
 }
 
-
 export const registerUser = async (
   user: RegisterPayload,
   photo?: File
 ) => {
   const formData = new FormData();
 
-  // Convert object to JSON string
+  // Convert user object to JSON
   formData.append(
     "user",
     new Blob([JSON.stringify(user)], {
@@ -41,14 +45,10 @@ export const registerUser = async (
     formData.append("photo", photo);
   }
 
-  const response = await axios.post(
-    `${process.env.NEXT_PUBLIC_API_URL}/user/register`,
-    formData
-  );
+  const response = await api.post("/user/register", formData);
 
   return response.data;
 };
-
 
 export interface FullAddress {
   areaVillage: string;
@@ -103,7 +103,6 @@ export interface User {
   message: string;
 }
 
-
 interface Params {
   role?: string;
   keyword?: string;
@@ -113,13 +112,20 @@ export const getUsers = async ({
   role,
   keyword,
 }: Params): Promise<User[]> => {
-
-  const response = await axios.get("/user/all", {
+  const response = await api.get("/user/all", {
     params: {
       role,
       keyword,
     },
   });
+
+  return response.data;
+};
+
+export const getUserById = async (
+  id: number | string
+): Promise<User> => {
+  const response = await api.get(`/user/${id}`);
 
   return response.data;
 };
