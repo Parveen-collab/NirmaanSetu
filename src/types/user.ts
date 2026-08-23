@@ -27,4 +27,15 @@ export interface ShopDetails {
   shopAddress: string;
 }
 
-export type UserRole = "EMPLOYEE" | "EMPLOYER" | "SHOP";
+export type UserRole =
+  | "EMPLOYEE"
+  | "EMPLOYER"
+  | "SHOP";
+
+export type BackendUserRole =
+  | "EMPLOYEE"
+  | "EMPLOYER"
+  | "SUPPLIER"
+  | "ADMIN"
+  | "SUPER_ADMIN"
+  | "GUEST";

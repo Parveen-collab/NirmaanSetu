@@ -1,15 +1,17 @@
-import EmployeeDetails from '@/src/components/features/employee/EmployeeDetails'
+import EmployeeDetails from "@/src/components/features/employee/EmployeeDetails";
 
 interface PageProps {
-  params: {
-    id: string
-  }
+  params: Promise<{
+    id: string;
+  }>;
 }
 
-export default function Page({ params }: PageProps) {
+export default async function Page({ params }: PageProps) {
+  const { id } = await params;
+
   return (
     <div>
-      <EmployeeDetails employeeId={params.id} />
+      <EmployeeDetails employeeId={id} />
     </div>
-  )
+  );
 }
