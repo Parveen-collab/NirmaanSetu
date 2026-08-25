@@ -43,33 +43,52 @@ export default function VerifyOtpModal({
       const payload =
         type === 'mobile'
           ? {
-              otp: otp.value,
-              phoneNumber: identifier,
-            }
+            otp: otp.value,
+            phoneNumber: identifier,
+          }
           : {
-              otp: otp.value,
-              email: identifier,
-            }
-
-      const result = await verifyOtp(payload)
-
-      console.log('OTP Verification Response:', result)
+            otp: otp.value,
+            email: identifier,
+          }
 
       // Optional: Save tokens if returned
+      // Save authentication data
+      const result = await verifyOtp(payload)
+      console.log(
+        "OTP Verification Response:",
+        result
+      );
+
       if (result.accessToken) {
-        localStorage.setItem('accessToken', result.accessToken)
+        localStorage.setItem(
+          "accessToken",
+          result.accessToken
+        );
       }
 
       if (result.refreshToken) {
-        localStorage.setItem('refreshToken', result.refreshToken)
+        localStorage.setItem(
+          "refreshToken",
+          result.refreshToken
+        );
+      }
+
+      if (
+        result.userId !== undefined &&
+        result.userId !== null
+      ) {
+        localStorage.setItem(
+          "userId",
+          String(result.userId)
+        );
       }
 
       setShowSuccess(true)
     } catch (err: any) {
       setError(
         err?.response?.data?.message ||
-          err?.message ||
-          'OTP verification failed'
+        err?.message ||
+        'OTP verification failed'
       )
     } finally {
       setLoading(false)

@@ -129,3 +129,91 @@ export const getUserById = async (
 
   return response.data;
 };
+
+export interface UpdateUserPayload {
+    phoneNumber: string;
+    name: string;
+    email?: string;
+    aadhaarNumber: string;
+    role: string;
+    profileImageUrl?: string;
+
+    addresses?: AddressDto[];
+
+    employeeProfile?: EmployeeProfileDto;
+    employerProfile?: EmployerProfileDto;
+    supplierProfile?: SupplierProfileDto;
+}
+
+export interface AddressDto {
+    type: "PERMANENT" | "CURRENT";
+    state: string;
+    district: string;
+    wardNumber?: string;
+    landmark?: string;
+    pincode: string;
+    areaVillage: string;
+    building?: string;
+    latitude?: number;
+    longitude?: number;
+}
+
+export interface EmployeeProfileDto {
+    serviceCategory: string;
+    serviceSpeciality: string;
+    experienceYears: number;
+    verificationDocumentUrl?: string;
+}
+
+export interface EmployerProfileDto {
+    companyName: string;
+    state: string;
+    district: string;
+    wardNumber?: string;
+    landmark?: string;
+    pincode: string;
+    areaVillage: string;
+    building?: string;
+    latitude?: number;
+    longitude?: number;
+}
+
+export interface SupplierProfileDto {
+    shopName: string;
+    shopCategory: string;
+    shopSpeciality: string;
+    shopType: string;
+    state: string;
+    district: string;
+    wardNumber?: string;
+    landmark?: string;
+    pincode: string;
+    areaVillage: string;
+    building?: string;
+    latitude?: number;
+    longitude?: number;
+    verificationDocumentUrl?: string;
+}
+
+export const updateUser = async (
+    id: string,
+    data: any,
+    photo?: File
+) => {
+    const formData = new FormData();
+
+    formData.append(
+        "user",
+        new Blob([JSON.stringify(data)], {
+            type: "application/json",
+        })
+    );
+
+    if (photo) {
+        formData.append("photo", photo);
+    }
+
+    const response = await api.patch(`/user/${id}`, formData);
+
+    return response.data;
+};
