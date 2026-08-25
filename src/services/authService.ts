@@ -18,11 +18,17 @@ interface SendOtpResponse {
 }
 
 interface VerifyOtpResponse {
-  success?: boolean;
-  accessToken: string;
-  refreshToken: string;
-  token?: string;
-  message?: string;
+    success?: boolean;
+
+    accessToken: string;
+    refreshToken: string;
+
+    userId: number;
+    role: string;
+    registrationStatus: string;
+
+    token?: string;
+    message?: string;
 }
 
 
