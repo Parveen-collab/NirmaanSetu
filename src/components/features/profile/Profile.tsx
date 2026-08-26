@@ -9,7 +9,7 @@ import EditProfileModal, {
     AddressFormData,
 } from "@/src/components/features/profile/EditProfileModal";
 
-import { updateUser } from "@/src/services/userService";
+import { deleteUser, updateUser } from "@/src/services/userService";
 
 interface ProfileData {
     id: string;
@@ -363,52 +363,48 @@ const Profile = () => {
 
 
     /* ----------------------------------------
-       Delete User
-    ----------------------------------------- */
+   Delete User
+----------------------------------------- */
 
-    const handleDelete = async () => {
-        try {
-            setIsDeleting(true);
+const handleDelete = async () => {
+    try {
+        setIsDeleting(true);
 
-            /*
-             * DELETE API will be implemented here.
-             *
-             * Example:
-             *
-             * await deleteUser(currentUserId);
-             */
+        await deleteUser(currentUserId);
 
-            console.log(
-                "Deleting user:",
-                currentUserId
-            );
+        console.log(
+            "User deleted successfully:",
+            currentUserId
+        );
 
-            setShowDeletePopup(false);
+        setShowDeletePopup(false);
 
-            /*
-             * After successful deletion:
-             *
-             * - clear auth token
-             * - clear user state
-             * - redirect to login
-             */
+        /*
+         * After successful deletion:
+         *
+         * - clear auth token
+         * - clear user state
+         * - redirect to login
+         */
 
-            router.push("/login");
+        localStorage.removeItem("token");
 
-        } catch (error) {
-            console.error(
-                "Failed to delete user:",
-                error
-            );
+        router.push("/login");
 
-            alert(
-                "Failed to delete account. Please try again."
-            );
+    } catch (error) {
+        console.error(
+            "Failed to delete user:",
+            error
+        );
 
-        } finally {
-            setIsDeleting(false);
-        }
-    };
+        alert(
+            "Failed to delete account. Please try again."
+        );
+
+    } finally {
+        setIsDeleting(false);
+    }
+};
 
 
     /* ----------------------------------------
