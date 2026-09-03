@@ -1,4 +1,4 @@
-import axios from "axios";
+import api from "@/src/lib/axios";
 
 interface VerifyOtpPayload {
   otp: string;
@@ -11,30 +11,28 @@ interface SendOtpPayload {
   email?: string;
 }
 
-
 interface SendOtpResponse {
   success: boolean;
   message: string;
 }
 
 interface VerifyOtpResponse {
-    success?: boolean;
+  success?: boolean;
 
-    accessToken: string;
-    refreshToken: string;
+  accessToken: string;
+  refreshToken: string;
 
-    userId: number;
-    role: string;
-    registrationStatus: string;
+  userId: number;
+  role: string;
+  registrationStatus: string;
 
-    token?: string;
-    message?: string;
+  token?: string;
+  message?: string;
 }
 
-
 export interface LoginPayload {
-  password: string,
-  phoneNumber: string
+  password: string;
+  phoneNumber: string;
 }
 
 export interface LoginResponse {
@@ -46,10 +44,10 @@ export interface LoginResponse {
 }
 
 export interface ResetPasswordPayload {
-  confirmPassword: string,
-  newPassword: string,
-  otp: string,
-  phoneNumber: string
+  confirmPassword: string;
+  newPassword: string;
+  otp: string;
+  phoneNumber: string;
 }
 
 export interface ResetPasswordResponse {
@@ -60,8 +58,8 @@ export const sendOtp = async (
   payload: SendOtpPayload
 ): Promise<SendOtpResponse> => {
   try {
-    const response = await axios.post<SendOtpResponse>(
-      `${process.env.NEXT_PUBLIC_API_URL}/auth/send-otp`,
+    const response = await api.post<SendOtpResponse>(
+      "/auth/send-otp",
       payload
     );
 
@@ -76,8 +74,8 @@ export const verifyOtp = async (
   payload: VerifyOtpPayload
 ): Promise<VerifyOtpResponse> => {
   try {
-    const response = await axios.post<VerifyOtpResponse>(
-      `${process.env.NEXT_PUBLIC_API_URL}/auth/verify-otp`,
+    const response = await api.post<VerifyOtpResponse>(
+      "/auth/verify-otp",
       payload
     );
 
@@ -92,7 +90,7 @@ export const userLogin = async (
   payload: LoginPayload
 ): Promise<LoginResponse> => {
   try {
-    const response = await axios.post<LoginResponse>(
+    const response = await api.post<LoginResponse>(
       "/auth/login",
       payload
     );
@@ -108,19 +106,17 @@ export const resetPassword = async (
   payload: ResetPasswordPayload
 ): Promise<ResetPasswordResponse> => {
   try {
-    const response = await axios.post<ResetPasswordResponse>(
-      `${process.env.NEXT_PUBLIC_API_URL}/auth/reset-password`,
+    const response = await api.post<ResetPasswordResponse>(
+      "/auth/reset-password",
       payload
     );
 
     return response.data;
-
   } catch (error) {
     console.error("Reset Password failed:", error);
     throw error;
   }
-
-}
+};
 
 export interface SendForgotOtpPayload {
   phoneNumber: string;
@@ -134,8 +130,8 @@ export const sendForgotOtp = async (
   payload: SendForgotOtpPayload
 ): Promise<SendForgotOtpResponse> => {
   try {
-    const response = await axios.post<SendForgotOtpResponse>(
-      `${process.env.NEXT_PUBLIC_API_URL}/auth/send-otp-forgot`,
+    const response = await api.post<SendForgotOtpResponse>(
+      "/auth/send-otp-forgot",
       payload
     );
 

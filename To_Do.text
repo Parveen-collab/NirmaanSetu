@@ -1,10 +1,10 @@
 
 TO DO
 1. for /auth/send-otp-forgot, /sms/send?phone=string, /auth/reset-password, registration API, Login API, /user/all, /auth/refresh?refreshToken=string, get/user/:id, delete/user/:id, Patch/user/:id APIs check for proper implementation for both backend and frontend
-    -Try to deploy Backend on railway
     -handle error properly
 2. add skeleton wherever API is hitting
     -Add skeleton for all above implemented APIs wherever needed
+
 
 
 Seed login credentials

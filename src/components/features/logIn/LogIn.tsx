@@ -7,9 +7,12 @@ import Button from "@/src/components/common/Button";
 import { LoginPayload, userLogin } from "@/src/services/authService";
 import { toast } from "sonner";
 import router from "next/router";
+import { useRouter } from "next/navigation";
 
 
 const LogIn = () => {
+
+  const router = useRouter();
 
   const [phoneNumber, setPhoneNumber] = React.useState("");
   const [password, setPassword] = React.useState("");
