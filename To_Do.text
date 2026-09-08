@@ -4,7 +4,7 @@ TO DO
     -handle error properly
 2. add skeleton wherever API is hitting
     -Add skeleton for all above implemented APIs wherever needed
-
+3. why aadhaar number is compulsory for guest user fix that
 
 
 Seed login credentials
