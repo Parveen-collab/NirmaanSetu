@@ -17,8 +17,8 @@ import AuthPageSkeleton from '@/src/components/common/skeletons/AuthPageSkeleton
 
 const COUNTRIES = [
   { label: 'India', value: '+91', length: 10 },
-  { label: 'Norway', value: '+47', length: 8 },
-  { label: 'China', value: '+86', length: 11 },
+  // { label: 'Norway', value: '+47', length: 8 },
+  // { label: 'China', value: '+86', length: 11 },
   // Add more countries as needed
 ];
 
