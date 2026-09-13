@@ -8,9 +8,12 @@ import { LoginPayload, userLogin } from "@/src/services/authService";
 import { toast } from "sonner";
 import router from "next/router";
 import { useRouter } from "next/navigation";
-
+import { Eye, EyeOff } from "lucide-react";
+import { useState } from "react";
 
 const LogIn = () => {
+
+  const [showPassword, setShowPassword] = useState(false);
 
   const router = useRouter();
 
@@ -52,9 +55,9 @@ const LogIn = () => {
         </p>
 
         {/* Form */}
-        <form 
-        onSubmit={handleLogin}
-        className="space-y-6"
+        <form
+          onSubmit={handleLogin}
+          className="space-y-6"
         >
           {/* Username */}
           <div>
@@ -73,12 +76,29 @@ const LogIn = () => {
             <label className="mb-1 block text-sm font-medium">
               Password
             </label>
-            <Input
-              type="password"
-              placeholder="Enter password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
+
+            <div className="relative">
+              <Input
+                type={showPassword ? "text" : "password"}
+                placeholder="Enter password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="pr-10"
+              />
+
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                aria-label={showPassword ? "Hide password" : "Show password"}
+              >
+                {showPassword ? (
+                  <EyeOff size={20} />
+                ) : (
+                  <Eye size={20} />
+                )}
+              </button>
+            </div>
           </div>
 
           {/* Login Button */}
