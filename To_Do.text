@@ -1,5 +1,6 @@
 
 TO DO
+6. add cursor pointer for each button
 3. understand the complete flow of verify-otp API url
 4. why aadhaar number is compulsory for guest user fix that
 5. increase otp expiry time 
