@@ -55,9 +55,11 @@ export default function WorkDetail() {
 
           {/* Call Button */}
           <a href="tel:9876543210">
-            <button className="mt-6 w-full rounded-full bg-primary py-3 text-red font-semibold hover:opacity-90 transition cursor-pointer">
+            <Button 
+            variant='success'
+            className="mt-6 w-full rounded-full py-3 text-red font-semibold hover:opacity-90 transition">
               📞 Call Now – 9876543210
-            </button>
+            </Button>
           </a>
         </section>
 
