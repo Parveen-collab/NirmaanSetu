@@ -89,15 +89,17 @@ export default function Button({
   ...props
 }: ButtonProps) {
   const classes = `
-    ${fullWidth ? 'w-full' : ''}
-    rounded-lg px-4 py-2 text-sm font-medium
-    inline-flex items-center justify-center gap-2
-    transition active:scale-95
-    focus:outline-none focus:ring-2
-    disabled:cursor-not-allowed disabled:opacity-60
-    ${VARIANT_CLASSES[variant]}
-    ${className}
-  `
+  ${fullWidth ? 'w-full' : ''}
+  cursor-pointer
+  rounded-lg px-4 py-2 text-sm font-medium
+  inline-flex items-center justify-center gap-2
+  transition active:scale-95
+  focus:outline-none focus:ring-2
+  disabled:cursor-not-allowed
+  disabled:opacity-60
+  ${VARIANT_CLASSES[variant]}
+  ${className}
+`
 
   const isDisabled = disabled || loading
 

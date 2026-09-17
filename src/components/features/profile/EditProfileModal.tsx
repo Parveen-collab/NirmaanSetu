@@ -1,5 +1,6 @@
 "use client";
 
+import Button from "@/src/components/common/Button";
 import { X } from "lucide-react";
 import React, { useEffect, useState } from "react";
 
@@ -373,12 +374,12 @@ export default function EditProfileModal({
                             Cancel
                         </button>
 
-                        <button
+                        <Button
                             type="submit"
-                            className="cursor-pointer rounded-lg bg-primary px-4 py-2 text-sm text-white hover:opacity-90"
+                            className="rounded-lg bg-primary px-4 py-2 text-sm text-white hover:opacity-90"
                         >
                             Save Changes
-                        </button>
+                        </Button>
 
                     </div>
 
