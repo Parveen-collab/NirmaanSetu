@@ -10,6 +10,7 @@ import SearchBar from "@/src/components/features/SearchBar";
 import { useMemo } from "react";
 import { useUsers } from "@/src/hooks/useUsers";
 import { useDebounce } from "@/src/hooks/useDebounce";
+import EmployeeGridSkeleton from "@/src/components/common/skeletons/EmployeeGridSkeleton";
 
 
 interface Employee {
@@ -123,9 +124,7 @@ export default function EmployeePage() {
       </div>
 
       {isLoading && (
-        <p className="mb-4 text-sm text-zinc-500">
-          Loading employees...
-        </p>
+        <EmployeeGridSkeleton />
       )}
 
       {/* Employee Grid */}
