@@ -1,13 +1,30 @@
 
-TO DO
-2. create a own universal skeleton ui system for this project and add skeleton wherever API is hitting
-    -Add skeleton for all above implemented APIs wherever needed
-3. understand the complete flow of verify-otp API url
-4. why aadhaar number is compulsory for guest user fix that
-5. increase otp expiry time 
+TO DO LIST
+
+### Backend Related
+6. understand and verify the working of User Registartion API 
+5. understand the working of Login API endpoiont
+3. when a user click on find works, hire skilled workers, sell construction materials then first if role is guest redirect it to Registartion page second if role is Employee, Employer, Supplier, Admin, Super_Admin then redirect it to Login Page.
+4. when already existed user is coming to the Nirmaansetu Website then
+        -case1 = coming within a specific time window = then user should get redirected to the dashboard Page
+        -case2 = coming after a specific time window = then user should get redirected to the login page
+        -case3 = coming within or after a specific time window but on a new device = then redirect the user on the otp verification page
+2. understand working of /auth/refresh?refreshToken=string API endpoint
 1. for /auth/send-otp-forgot, /sms/send?phone=string, /auth/reset-password, registration API, Login API, /user/all, /auth/refresh?refreshToken=string, get/user/:id, delete/user/:id, Patch/user/:id APIs check for proper implementation for both backend and frontend
     -handle error properly
 
+### Frontend Related
+4. why register API is getting called on 4th step
+5. when i click on submit no error, no loading ui, nothing shows so that user can know about what is going on
+6. in registration ui if landmark is optional field then why "this field cannot be empty" is showing.
+7. API is getting hit but no payload is going with the request.
+2. create a own universal skeleton ui system for this project and add skeleton wherever API is hitting
+    -Add skeleton for all above implemented APIs wherever needed
+3. implement access toekn and refresh token, userId, UserRole, registration status in the Nirmaansetu frontend
+4. for now service category filed should have Construction selected as default and disabled later we will add a list of service category
+5. while registration for employer role improve Company photos UI ( improve Upload file or folder or image ui)
+6. when data is not filled why next button is working 
+7. 
 
 Seed login credentials
 Role	Phone	Password
