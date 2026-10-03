@@ -10,20 +10,21 @@ import Modal from "@/src/components/features/SuccessModal";
 import AddressDetailForm from "@/src/components/features/register/AddressDetailForm";
 import RoleSelector from "@/src/components/features/register/RoleSelector";
 import RoleSpecificDetails from "@/src/components/features/register/RoleSpecificDetails";
-import LivePhotoUpload from "@/src/components/features/register/LivePhotoUpload";
+import LivePhotoUpload from "@/src/components/features/register/PhotoUpload";
 import LeftInfo from "@/src/components/features/register/LeftInfo";
 import Link from "next/link";
 import BasicDetailForm from "@/src/components/features/register/BasicDetailForm";
 
-import {RegisterPayload, registerUser} from "@/src/services/userService"
-import {toast} from "sonner";
+import { registerUser } from "@/src/services/userService"
+import { toast } from "sonner";
+import { RegisterPayload } from "@/src/types/user";
 
 export default function Register() {
   const [currentStep, setCurrentStep] = useState(1);
   const TOTAL_STEPS = 5;
 
   const [showSuccess, setShowSuccess] = useState(false);
-  const [role, setRole] = useState<"employee" | "employer" | "shop" | "">("");
+  const [role, setRole] = useState<"EMPLOYEE" | "EMPLOYER" | "SUPPLIER" | "">("");
   const { setProfile } = useProfile();
   const router = useRouter();
 
@@ -78,63 +79,102 @@ export default function Register() {
     }
   };
 
-const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-  e.preventDefault();
+  const handleSubmit = async (
+    e: React.FormEvent<HTMLFormElement>
+  ) => {
+    e.preventDefault();
 
-  try {
-    const payload: RegisterPayload = {
-      mobileNumber: formData.mobile,
-      fullName: formData.fullName,
-      aadhaarNumber: formData.aadhaar,
+    try {
+      const payload: RegisterPayload = {
+        phoneNumber: formData.mobile,
+        name: formData.fullName,
+        aadhaarNumber: formData.aadhaar,
 
-      permanentAddress: formData.permanent,
+        addresses: [
+          {
+            type: "PERMANENT",
+            areaVillage: formData.permanent.areaVillage,
+            building: formData.permanent.building,
+            landmark: formData.permanent.landmark,
+            district: formData.permanent.district,
+            state: formData.permanent.state,
+            pincode: formData.permanent.pincode,
+            wardNumber: formData.permanent.wardNumber,
+          },
+          {
+            type: "CURRENT",
+            areaVillage: formData.current.areaVillage,
+            building: formData.current.building,
+            landmark: formData.current.landmark,
+            district: formData.current.district,
+            state: formData.current.state,
+            pincode: formData.current.pincode,
+            wardNumber: formData.current.wardNumber,
+          },
+        ],
 
-      currentAddress: formData.current,
+        role: formData.role,
 
-      role: formData.role,
-
-      employeeDetails:
-        role === "employee"
-          ? {
+        employeeProfile:
+          role === "EMPLOYEE"
+            ? {
               serviceCategory: formData.serviceCategory,
-              serviceSpecialty: formData.serviceSpecialty,
-              experience: Number(formData.experience),
+              serviceSpeciality: formData.serviceSpecialty,
+              experienceYears: Number(formData.experience),
             }
-          : undefined,
+            : undefined,
 
-      employerDetails:
-        role === "employer"
-          ? {
+        employerProfile:
+          role === "EMPLOYER"
+            ? {
               companyName: formData.companyName,
-              companyAddress: formData.companyAddress,
-              companyPhotos: formData.companyPhotos,
+              state: formData.companyState,
+              district: formData.companyDistrict,
+              wardNumber: formData.companyWardNumber,
+              landmark: formData.companyLandmark,
+              pincode: formData.companyPincode,
+              areaVillage: formData.companyAreaVillage,
+              building: formData.companyBuilding,
             }
-          : undefined,
+            : undefined,
 
-      shopDetails:
-        role === "shop"
-          ? {
+        supplierProfile:
+          role === "SUPPLIER"
+            ? {
               shopName: formData.shopName,
               shopCategory: formData.shopCategory,
               shopSpeciality: formData.shopSpeciality,
               shopType: formData.shopType,
-              shopAddress: formData.shopAddress,
+              state: formData.shopState,
+              district: formData.shopDistrict,
+              wardNumber: formData.shopWardNumber,
+              landmark: formData.shopLandmark,
+              pincode: formData.shopPincode,
+              areaVillage: formData.shopAreaVillage,
+              building: formData.shopBuilding,
             }
-          : undefined,
-    };
+            : undefined,
+      };
 
-    const response = await registerUser(payload, formData.photo);
+      console.log("Registration payload:", payload);
 
-    console.log(response);
+      const response = await registerUser(
+        payload,
+        formData.photo
+      );
 
-    toast.success(response.message);
+      console.log("Registration response:", response);
 
-    router.push("/home/login");
-  } catch (error) {
-    console.error(error);
-    toast.error("Registration failed");
-  }
-};
+      toast.success(response.message);
+
+      router.push("/home/login");
+
+    } catch (error) {
+      console.error("Registration error:", error);
+
+      toast.error("Registration failed");
+    }
+  };
 
 
   /* ============================= */

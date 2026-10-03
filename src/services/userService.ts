@@ -1,31 +1,6 @@
 import api from "@/src/lib/axios";
 
-import {
-  Address,
-  EmployeeDetails,
-  EmployerDetails,
-  ShopDetails,
-  UserRole,
-} from "@/src/types/user";
-
-export interface RegisterPayload {
-  // Step 1 - Identity
-  mobileNumber: string;
-  fullName: string;
-  aadhaarNumber: string;
-
-  // Step 2 - Address
-  permanentAddress: Address;
-  currentAddress: Address;
-
-  // Step 3 - Role
-  role: UserRole;
-
-  // Step 4 - Role Specific Details
-  employeeDetails?: EmployeeDetails;
-  employerDetails?: EmployerDetails;
-  shopDetails?: ShopDetails;
-}
+import {RegisterPayload} from "@/src/types/user";
 
 export const registerUser = async (
   user: RegisterPayload,
@@ -129,71 +104,6 @@ export const getUserById = async (
 
   return response.data;
 };
-
-export interface UpdateUserPayload {
-    phoneNumber: string;
-    name: string;
-    email?: string;
-    aadhaarNumber: string;
-    role: string;
-    profileImageUrl?: string;
-
-    addresses?: AddressDto[];
-
-    employeeProfile?: EmployeeProfileDto;
-    employerProfile?: EmployerProfileDto;
-    supplierProfile?: SupplierProfileDto;
-}
-
-export interface AddressDto {
-    type: "PERMANENT" | "CURRENT";
-    state: string;
-    district: string;
-    wardNumber?: string;
-    landmark?: string;
-    pincode: string;
-    areaVillage: string;
-    building?: string;
-    latitude?: number;
-    longitude?: number;
-}
-
-export interface EmployeeProfileDto {
-    serviceCategory: string;
-    serviceSpeciality: string;
-    experienceYears: number;
-    verificationDocumentUrl?: string;
-}
-
-export interface EmployerProfileDto {
-    companyName: string;
-    state: string;
-    district: string;
-    wardNumber?: string;
-    landmark?: string;
-    pincode: string;
-    areaVillage: string;
-    building?: string;
-    latitude?: number;
-    longitude?: number;
-}
-
-export interface SupplierProfileDto {
-    shopName: string;
-    shopCategory: string;
-    shopSpeciality: string;
-    shopType: string;
-    state: string;
-    district: string;
-    wardNumber?: string;
-    landmark?: string;
-    pincode: string;
-    areaVillage: string;
-    building?: string;
-    latitude?: number;
-    longitude?: number;
-    verificationDocumentUrl?: string;
-}
 
 export const updateUser = async (
     id: string,
