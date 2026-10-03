@@ -14,7 +14,7 @@ TO DO LIST
     -handle error properly
 
 ### Frontend Related
-4. why register API is getting called on 4th step
+4. why register API is getting called on 4th step (sent payload must show in network tab instead of console)
 5. when i click on submit no error, no loading ui, nothing shows so that user can know about what is going on
 6. in registration ui if landmark is optional field then why "this field cannot be empty" is showing.
 7. API is getting hit but no payload is going with the request.
@@ -24,7 +24,7 @@ TO DO LIST
 4. for now service category filed should have Construction selected as default and disabled later we will add a list of service category
 5. while registration for employer role improve Company photos UI ( improve Upload file or folder or image ui)
 6. when data is not filled why next button is working 
-7. 
+7. create a different ui page and route for forgot-password, reset-password, change-password etc.
 
 Seed login credentials
 Role	Phone	Password
