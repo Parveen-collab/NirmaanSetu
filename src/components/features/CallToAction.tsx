@@ -1,8 +1,11 @@
 'use client'
 
 import Button from "@/src/components/common/Button"
+import { useRouteGuard } from "@/src/hooks/useRouteGuard"
 
 export default function CallToAction() {
+  const { navigateGuarded } = useRouteGuard({ mode: "point3" });
+
   return (
     <section className="py-20 px-6 text-center">
       <h2 className="text-3xl font-bold mb-4 text-primary">
@@ -15,15 +18,15 @@ export default function CallToAction() {
       </p>
 
       <div className="flex flex-wrap gap-4 justify-center">
-        <Button href="/home/login">
+        <Button onClick={() => navigateGuarded()}>
           Find Work
         </Button>
 
-        <Button href="/home/login">
+        <Button onClick={() => navigateGuarded()}>
           Hire Skilled Workers
         </Button>
 
-        <Button href="/home/login">
+        <Button onClick={() => navigateGuarded()}>
           Sell Construction Materials
         </Button>
       </div>
@@ -34,3 +37,4 @@ export default function CallToAction() {
     </section>
   )
 }
+

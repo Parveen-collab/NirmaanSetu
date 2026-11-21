@@ -1,4 +1,5 @@
 import { AuthResponse } from "@/src/types/auth";
+import { setStoredAuth } from "@/src/utils/authStorage";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -26,20 +27,13 @@ export async function refreshAccessToken(): Promise<AuthResponse | null> {
 
         const data: AuthResponse = await response.json();
 
-        localStorage.setItem(
-            "accessToken",
-            data.accessToken
-        );
-
-        localStorage.setItem(
-            "refreshToken",
-            data.refreshToken
-        );
-
-        localStorage.setItem(
-            "userId",
-            String(data.userId)
-        );
+        setStoredAuth({
+            accessToken: data.accessToken,
+            refreshToken: data.refreshToken,
+            userId: data.userId,
+            role: data.role,
+            registrationStatus: data.registrationStatus,
+        });
 
         return data;
 

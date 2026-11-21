@@ -4,8 +4,10 @@ import Link from 'next/link'
 import { Phone, Mail, MapPin } from 'lucide-react'
 import CopyrightFooter from '../CopyrightFooter'
 import SocialMedia from '@/src/components/features/SocialMedia'
+import { useRouteGuard } from '@/src/hooks/useRouteGuard'
 
 const HomeFooter = () => {
+  const { navigateGuarded } = useRouteGuard({ mode: "point3" });
   return (
     <footer className="relative text-white">
       {/* Background */}
@@ -55,14 +57,17 @@ const HomeFooter = () => {
             <h3 className="font-semibold mb-4">Services</h3>
             <ul className="space-y-2 text-sm text-zinc-300 mb-6">
               {[
-                { label: 'Find Works', href: '/home/login' },
-                { label: 'Hiring', href: '/home/login' },
-                { label: 'Selling', href: '/home/login' },
+                { label: 'Find Works' },
+                { label: 'Hiring' },
+                { label: 'Selling' },
               ].map((item) => (
                 <li key={item.label}>
-                  <Link href={item.href} className="hover:text-primary transition">
+                  <button
+                    onClick={() => navigateGuarded()}
+                    className="hover:text-primary transition cursor-pointer text-left"
+                  >
                     » {item.label}
-                  </Link>
+                  </button>
                 </li>
               ))}
             </ul>

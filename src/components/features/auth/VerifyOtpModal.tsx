@@ -9,6 +9,7 @@ import Button from '@/src/components/common/Button'
 import SuccessModal from '@/src/components/features/SuccessModal'
 
 import { useOtp } from '@/src/hooks/useOtp'
+import { setStoredAuth } from '@/src/utils/authStorage'
 
 interface VerifyOtpModalProps {
   open: boolean
@@ -59,29 +60,14 @@ export default function VerifyOtpModal({
         result
       );
 
-      if (result.accessToken) {
-        localStorage.setItem(
-          "accessToken",
-          result.accessToken
-        );
-      }
-
-      if (result.refreshToken) {
-        localStorage.setItem(
-          "refreshToken",
-          result.refreshToken
-        );
-      }
-
-      if (
-        result.userId !== undefined &&
-        result.userId !== null
-      ) {
-        localStorage.setItem(
-          "userId",
-          String(result.userId)
-        );
-      }
+      const userRole = result.role || "GUEST";
+      setStoredAuth({
+        accessToken: result.accessToken,
+        refreshToken: result.refreshToken,
+        userId: result.userId,
+        role: userRole,
+        registrationStatus: result.registrationStatus,
+      });
 
       setShowSuccess(true)
     } catch (err: any) {

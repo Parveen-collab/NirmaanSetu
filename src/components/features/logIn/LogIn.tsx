@@ -1,21 +1,19 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import Input from "@/src/components/common/Input";
 import Button from "@/src/components/common/Button";
 import { LoginPayload, userLogin } from "@/src/services/authService";
 import { toast } from "sonner";
-import router from "next/router";
 import { useRouter } from "next/navigation";
 import { Eye, EyeOff } from "lucide-react";
-import { useState } from "react";
+import { useAuth } from "@/src/context/AuthContext";
 
 const LogIn = () => {
-
   const [showPassword, setShowPassword] = useState(false);
-
   const router = useRouter();
+  const { login } = useAuth();
 
   const [phoneNumber, setPhoneNumber] = React.useState("");
   const [password, setPassword] = React.useState("");
@@ -31,9 +29,18 @@ const LogIn = () => {
     try {
       const response = await userLogin(payload);
 
-      console.log(response);
+      console.log("Login response:", response);
 
-      toast.success("Something went wrong");
+      // Persist auth state (tokens, role, userId, registrationStatus)
+      login({
+        accessToken: response.accessToken,
+        refreshToken: response.refreshToken,
+        userId: response.userId,
+        role: response.role,
+        registrationStatus: response.registrationStatus,
+      });
+
+      toast.success("Login successful");
 
       router.push("/dashboard");
     } catch (error) {
