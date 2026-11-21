@@ -2,14 +2,6 @@
 TO DO LIST
 
 ### Backend Related
-6. understand and verify the working of User Registartion API 
-5. understand the working of Login API endpoiont
-3. when a user click on find works, hire skilled workers, sell construction materials then first if role is guest redirect it to Registartion page second if role is Employee, Employer, Supplier, Admin, Super_Admin then redirect it to Login Page.
-4. when already existed user is coming to the Nirmaansetu Website then
-        -case1 = coming within a specific time window = then user should get redirected to the dashboard Page
-        -case2 = coming after a specific time window = then user should get redirected to the login page
-        -case3 = coming within or after a specific time window but on a new device = then redirect the user on the otp verification page
-2. understand working of /auth/refresh?refreshToken=string API endpoint
 1. for /auth/send-otp-forgot, /sms/send?phone=string, /auth/reset-password, registration API, Login API, /user/all, /auth/refresh?refreshToken=string, get/user/:id, delete/user/:id, Patch/user/:id APIs check for proper implementation for both backend and frontend
     -handle error properly
 

@@ -2,6 +2,7 @@ import axios, {
   AxiosError,
   InternalAxiosRequestConfig,
 } from "axios";
+import { clearStoredAuth, setStoredAuth } from "@/src/utils/authStorage";
 
 const api = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_URL,
@@ -68,11 +69,10 @@ api.interceptors.response.use(
         } = response.data;
 
         // Save new tokens
-        localStorage.setItem("accessToken", accessToken);
-
-        if (newRefreshToken) {
-          localStorage.setItem("refreshToken", newRefreshToken);
-        }
+        setStoredAuth({
+          accessToken,
+          refreshToken: newRefreshToken,
+        });
 
         // Update original request with new token
         originalRequest.headers.Authorization = `Bearer ${accessToken}`;
@@ -81,11 +81,7 @@ api.interceptors.response.use(
         return api(originalRequest);
       } catch (refreshError) {
         // Refresh failed → logout
-        localStorage.removeItem("accessToken");
-        localStorage.removeItem("refreshToken");
-        localStorage.removeItem("userId");
-        localStorage.removeItem("role");
-        localStorage.removeItem("registrationStatus");
+        clearStoredAuth();
 
         window.location.href = "/login";
 

@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react"
 import { useRouter } from "next/navigation"
 import Link from 'next/link'
 import { Lock, MessageCircle, HelpCircle, UserCircle, Wallet, ShoppingBag } from 'lucide-react'
+import { useAuth } from "@/src/context/AuthContext"
 
 /* ================= MENU ITEM COMPONENT ================= */
 function MenuItem({
@@ -42,6 +43,7 @@ export default function UserMenu({
         setShowUserMenu(false)
     }
     const router = useRouter()
+    const { logout } = useAuth()
     const menuRef = useRef<HTMLDivElement>(null)
 
     // Close on outside click
@@ -82,8 +84,11 @@ export default function UserMenu({
                 <div className="border-t border-zinc-200 dark:border-zinc-800 my-1" />
 
                 <button
-                    className="flex w-full items-center gap-3 px-4 py-2 text-sm text-red-600 hover:bg-red-50 dark:hover:bg-red-950 transition"
-                    onClick={() => router.push("/home/login")}
+                    className="flex w-full items-center gap-3 px-4 py-2 text-sm text-red-600 hover:bg-red-50 dark:hover:bg-red-950 transition cursor-pointer"
+                    onClick={() => {
+                        logout()
+                        router.push("/login")
+                    }}
                 >
                     Logout
                 </button>

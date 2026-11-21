@@ -3,6 +3,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { ProfileProvider } from "@/src/context/ProfileContext";
+import { AuthProvider } from "@/src/context/AuthContext";
 import QueryProvider from "@/src/providers/query-provider";
 
 
@@ -32,10 +33,12 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <QueryProvider>
-          {/* ✅ Wrap app with ProfileProvider */}
-          <ProfileProvider>
-            {children}
-          </ProfileProvider>
+          {/* ✅ Wrap app with AuthProvider & ProfileProvider */}
+          <AuthProvider>
+            <ProfileProvider>
+              {children}
+            </ProfileProvider>
+          </AuthProvider>
         </QueryProvider>
       </body>
     </html>
